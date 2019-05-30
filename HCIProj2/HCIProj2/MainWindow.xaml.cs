@@ -74,5 +74,23 @@ namespace HCIProj2
             }
 
         }
+
+        private void dodajLokal(object sender, RoutedEventArgs e)
+        {
+            DodajLokal dodaj = new DodajLokal();
+            dodaj.Show();
+        }
+
+        private void dodajTip(object sender, RoutedEventArgs e)
+        {
+            dodajTip dodajTip = new dodajTip();
+            dodajTip.Show();
+        }
+
+        private void dodajEtiketu(object sender, RoutedEventArgs e)
+        {
+            dodajEtiketu dodajEtiketu = new dodajEtiketu();
+            dodajEtiketu.Show();
+        }
     }
 }

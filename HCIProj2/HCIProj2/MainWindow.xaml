@@ -12,9 +12,9 @@
             </MenuItem>
             <Separator></Separator>
             <MenuItem Header="_Dodaj" FontSize="34" BorderThickness="1" BorderBrush="Black">
-                <MenuItem Header="_Dodaj lokal" FontSize="34" />
-                <MenuItem Header="_Dodaj Etiketu" FontSize="34" />
-                <MenuItem Header="_Dodaj Tip" FontSize="34" />
+                <MenuItem Click="dodajLokal" Header="_Dodaj lokal" FontSize="34" />
+                <MenuItem Click="dodajEtiketu" Header="_Dodaj Etiketu" FontSize="34" />
+                <MenuItem Click="dodajTip" Header="_Dodaj Tip" FontSize="34" />
             </MenuItem>
             <Separator/>
             <MenuItem Header="_Prikazi" FontSize="34" BorderThickness="1" BorderBrush="Black">

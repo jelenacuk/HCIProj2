@@ -1,0 +1,212 @@
+﻿<Window x:Class="HCIProj2.DodajLokal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HCIProj2"
+        mc:Ignorable="d"
+        Title="DodajLokal" Height="700" Width="1100">
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+            <StackPanel>
+                <TextBlock Text="Novi Lokal" FontSize="38" HorizontalAlignment="Center"></TextBlock>
+                <Grid Margin="0 30 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="ID:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25"></TextBox>
+                </Grid>
+                <Grid Margin="0 30 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Naziv:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25"></TextBox>
+                </Grid>
+                <Grid Margin="0 30 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Opis:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25"></TextBox>
+                </Grid>
+                <Grid Margin="0 30 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Datum otvaranja:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25"></TextBox>
+                </Grid>
+                <Grid Margin="0 30 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Kapacitet:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25"></TextBox>
+                </Grid>
+                <Grid Margin="0 30 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Ikonica:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25"></TextBox>
+                </Grid>
+                <Grid Margin="0 30 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Etikete:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                        <ListView>
+                            <ListViewItem  FontSize="38" Background="Green">Etiketa 1</ListViewItem>
+                            <ListViewItem FontSize="38">Etiketa 2</ListViewItem>
+                            <ListViewItem FontSize="38">Etiketa 3</ListViewItem>
+                        </ListView>
+                    </ScrollViewer>
+                </Grid>
+                <Grid Margin="0 30 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Tip:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                        <ListView>
+                            <ListViewItem  FontSize="38" Background="Green">Tip 1</ListViewItem>
+                            <ListViewItem FontSize="38">Tip 2</ListViewItem>
+                            <ListViewItem FontSize="38">Tip 3</ListViewItem>
+                        </ListView>
+                    </ScrollViewer>
+                </Grid>
+                <Grid Margin="0 30 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Alkohol:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <ComboBox Grid.Column="1">
+                        <ComboBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="38">Ne služi</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="38">Služi do 23</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="38">Služi i kasno noću</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Grid Margin="0 30 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Pušenje:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <ComboBox Grid.Column="1">
+                        <ComboBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="38">Dozvoljeno</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="38">Zabranjeno</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Grid Margin="0 30 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Cene:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <ComboBox Grid.Column="1">
+                        <ComboBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="38">Niske</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="38">Srednje</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="38">Visoke</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="38">Izuzetno visoke</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Grid Margin="0 30 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Rezervacije:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <ComboBox Grid.Column="1">
+                        <ComboBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="38">Da</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="38">Ne</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Grid Margin="0 30 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Hendikepirani:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <ComboBox Grid.Column="1">
+                        <ComboBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="38">Da</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="38">Ne</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <Grid Margin="0 30 0 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Dodaj" FontSize="38" Width="400"></Button>
+                    <Button Content="Odustani" FontSize="38" Width="400" Grid.Column="1"></Button>
+                </Grid>
+                
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

@@ -5,8 +5,87 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCIProj2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="600" Width="800">
+        <DockPanel>
+        <Menu DockPanel.Dock="Top" >
+            <MenuItem Click="Button_Click" Header="_Sakrij Lokale" FontSize="34" BorderThickness="1" BorderBrush="Black">
+            </MenuItem>
+            <Separator></Separator>
+            <MenuItem Header="_Dodaj" FontSize="34" BorderThickness="1" BorderBrush="Black">
+                <MenuItem Header="_Dodaj lokal" FontSize="34" />
+                <MenuItem Header="_Dodaj Etiketu" FontSize="34" />
+                <MenuItem Header="_Dodaj Tip" FontSize="34" />
+            </MenuItem>
+            <Separator/>
+            <MenuItem Header="_Prikazi" FontSize="34" BorderThickness="1" BorderBrush="Black">
+                <MenuItem Header="_Prikazi sve Lokale" FontSize="34" />
+                <MenuItem Header="_Priakzi sve Etikete" FontSize="34" />
+                <MenuItem Header="_Prikazi Tipove" FontSize="34" />
+            </MenuItem>
+            <Separator/>
+            <MenuItem Header="_Pretraga" FontSize="34" BorderThickness="1" BorderBrush="Black">
+                <MenuItem Header="_Pretrazi Lokale" FontSize="34" />
+            </MenuItem>
+        </Menu>
+        <Canvas Name="Mapa" AllowDrop="True" Mouse.PreviewMouseDown="Mapa_PreviewMouseDown" MouseRightButtonDown="Mapa_MouseRightButtonDown" MouseMove="Mapa_MouseMove" DragEnter="Mapa_DragEnter" Drop="Mapa_Drop">
+            <Canvas.Background>
+                <ImageBrush ImageSource="Images/mapaNS.jpg" AlignmentX="Right" AlignmentY="Top" Stretch="Uniform"></ImageBrush>
+            </Canvas.Background>
+            <StackPanel >
+                <StackPanel Orientation="Horizontal">
+                    <!--<Button Click="Button_Click" x:Name="prikaziBt" Content="Sakrij lokale" Height="50"  HorizontalAlignment="Left" FontSize="25"></Button>-->
+                </StackPanel>
+                <ListView Margin="0 40 0 0" x:Name="ListaLokala" Grid.Column="0" Grid.Row="0"  PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown" MouseMove="ListView_MouseMove">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <Image Source="/Images/java.png"/>
+                                <TextBlock Text=", " />
+                                <TextBlock Text="LOKAL NAZIV" />
+                                <TextBlock Text=" (" />
+                                <TextBlock Text="LOKAL PREZIME" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
+                                <TextBlock Text=")" />
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListViewItem>
+                        <WrapPanel>
+                            <Image Source="Images/java.png" Width="45"/>
+                            <TextBlock Text="ID ," FontSize="25" VerticalAlignment="Center" />
+                            <TextBlock Text="Naziv lokala" FontSize="25" VerticalAlignment="Center" />
+                        </WrapPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <WrapPanel>
+                            <Image Source="Images/java.png" Width="45"/>
+                            <TextBlock Text="ID ," FontSize="25" VerticalAlignment="Center" />
+                            <TextBlock Text="Naziv lokala" FontSize="25" VerticalAlignment="Center" />
+                        </WrapPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <WrapPanel>
+                            <Image Source="Images/java.png" Width="45"/>
+                            <TextBlock Text="ID ," FontSize="25" VerticalAlignment="Center" />
+                            <TextBlock Text="Naziv lokala" FontSize="25" VerticalAlignment="Center" />
+                        </WrapPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <WrapPanel>
+                            <Image Source="Images/java.png" Width="45"/>
+                            <TextBlock Text="ID ," FontSize="25" VerticalAlignment="Center" />
+                            <TextBlock Text="Naziv lokala" FontSize="25" VerticalAlignment="Center" />
+                        </WrapPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <WrapPanel>
+                            <Image Source="Images/java.png" Width="45"/>
+                            <TextBlock Text="ID ," FontSize="25" VerticalAlignment="Center" />
+                            <TextBlock Text="Naziv lokala" FontSize="25" VerticalAlignment="Center" />
+                        </WrapPanel>
+                    </ListViewItem>
+                </ListView>
+                
+            </StackPanel>
+        </Canvas>
+    </DockPanel>
 </Window>

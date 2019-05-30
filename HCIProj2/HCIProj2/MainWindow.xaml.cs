@@ -24,5 +24,55 @@ namespace HCIProj2
         {
             InitializeComponent();
         }
+
+        private void Mapa_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Mapa_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Mapa_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void Mapa_DragEnter(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void Mapa_Drop(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void ListView_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void ListView_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(this.ListaLokala.Visibility == Visibility.Hidden)
+            {
+                this.ListaLokala.Visibility = Visibility.Visible;
+                ((MenuItem)sender).Header = "Sakrij Lokale";
+            }
+            else
+            {
+                this.ListaLokala.Visibility = Visibility.Hidden;
+                ((MenuItem)sender).Header = "Izlistaj lokale";
+            }
+
+        }
     }
 }

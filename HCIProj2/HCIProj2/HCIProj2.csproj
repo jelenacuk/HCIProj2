@@ -55,14 +55,44 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="dodajEtiketu.xaml.cs">
+      <DependentUpon>dodajEtiketu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DodajLokal.xaml.cs">
+      <DependentUpon>DodajLokal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dodajTip.xaml.cs">
+      <DependentUpon>dodajTip.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Etiketa.cs" />
     <Compile Include="Model\Lokal.cs" />
+    <Compile Include="PrikaziEtikete.xaml.cs">
+      <DependentUpon>PrikaziEtikete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrikaziLokale.xaml.cs">
+      <DependentUpon>PrikaziLokale.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrikaziTipove.xaml.cs">
+      <DependentUpon>PrikaziTipove.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
     <Page Include="Detaljnije.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dodajEtiketu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DodajLokal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="dodajTip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -79,6 +109,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PrikaziEtikete.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PrikaziLokale.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PrikaziTipove.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="StartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

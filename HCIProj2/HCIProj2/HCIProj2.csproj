@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="Model\Etiketa.cs" />
     <Compile Include="Model\Lokal.cs" />
+    <Compile Include="Model\Podaci.cs" />
     <Compile Include="Model\Tip.cs" />
     <Compile Include="PrikaziEtikete.xaml.cs">
       <DependentUpon>PrikaziEtikete.xaml</DependentUpon>
@@ -158,6 +159,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\mapans.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

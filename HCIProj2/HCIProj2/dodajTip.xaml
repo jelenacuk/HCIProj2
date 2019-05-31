@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="dodajTip" Height="700" Width="1100">
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0 0 10 0">
 
             <StackPanel>
                 <TextBlock Text="Novi tip" FontSize="38" HorizontalAlignment="Center"></TextBlock>
@@ -16,7 +16,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="ID:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Text="ID:" Name="id" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                     <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25"></TextBox>
                 </Grid>
                 <Grid Margin="0 30 0 0">
@@ -24,7 +24,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Ime:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Text="Ime:" Name="ime" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                     <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25"></TextBox>
                 </Grid>
                 <Grid Margin="0 30 0 0">
@@ -32,7 +32,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Opis:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Text="Opis:" Name ="opis" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                     <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25"></TextBox>
                 </Grid>
                 <Grid Margin="0 30 0 0">
@@ -41,15 +41,27 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Ikonica:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25"></TextBox>
+                    <Grid Margin="0 0 0 0" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox AcceptsReturn="True" Name="IconPath" TextWrapping="Wrap" BorderThickness="5" Height="100" FontSize="38"></TextBox>
+                        <Button Grid.Column="1" Name="loadIcon" Margin="2" Padding="15,0" Click="Button_Click_UcitajIkonicu">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Images/search.png" Height="40" Width="40" HorizontalAlignment="Left"/>
+                                <TextBlock Text="Izaberi" FontSize="38" VerticalAlignment="Center" HorizontalAlignment="Right" Padding="2"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
                 </Grid>
                 <Grid Margin="0 30 0 10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Dodaj" FontSize="38" Width="400"></Button>
-                    <Button Content="Odustani" FontSize="38" Width="400" Grid.Column="1"></Button>
+                    <Button Content="Dodaj" Name="dodajTipBtn" Click="dodajTipBtn_Click" FontSize="38" Width="400"></Button>
+                    <Button Content="Odustani" Name="odustaniBtn" Click="odustaniBtn_Click" FontSize="38" Width="400" Grid.Column="1"></Button>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

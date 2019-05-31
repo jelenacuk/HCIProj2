@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace HCIProj2
 {
@@ -22,6 +23,27 @@ namespace HCIProj2
         public dodajTip()
         {
             InitializeComponent();
+        }
+
+        private void dodajTipBtn_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void Button_Click_UcitajIkonicu(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Image files (*.png;*.jpg,*.ico)|*.ico;*.png;*.jpg";
+            if (dialog.ShowDialog() == true)
+            {
+                IconPath.Text = dialog.FileName;
+            }
+
+        }
+
+        private void odustaniBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

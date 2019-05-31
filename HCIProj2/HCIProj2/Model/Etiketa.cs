@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace HCIProj2.Model
 {
-    class Etiketa
+    public class Etiketa
     {
         private string id;
         public string Id {
@@ -41,6 +41,24 @@ namespace HCIProj2.Model
                     OnPropertyChanged("Boja");
                 }
             }
+        }
+
+        public Etiketa()
+        {
+        }
+
+        public Etiketa(string id, string opis, string boja)
+        {
+            Id = id;
+            Opis = opis;
+            Boja = boja;
+        }
+
+        public Etiketa(Etiketa etiketa)
+        {
+            Id = etiketa.Id;
+            Opis = etiketa.Opis;
+            Boja = etiketa.Boja;
         }
 
 

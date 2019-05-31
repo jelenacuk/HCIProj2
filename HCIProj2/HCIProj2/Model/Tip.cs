@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace HCIProj2.Model
 {
-    class Tip
+    public class Tip
     {
         private string id;
         public string Id {
@@ -57,6 +57,26 @@ namespace HCIProj2.Model
                     OnPropertyChanged("Ikonica");
                 }
             }
+        }
+
+        public Tip()
+        {
+        }
+
+        public Tip(string id, string naziv, string opis, string ikonica)
+        {
+            Id = id;
+            Naziv = naziv;
+            Opis = opis;
+            Ikonica = ikonica;
+        }
+
+        public Tip(Tip tip)
+        {
+            Id = tip.Id;
+            Naziv = tip.Naziv;
+            Opis = tip.Opis;
+            Ikonica = tip.Ikonica;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

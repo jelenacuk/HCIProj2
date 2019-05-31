@@ -10,7 +10,7 @@ using System.IO;
 
 namespace HCIProj2.Model
 {
-    class Lokal
+    public class Lokal
     {
         private string id;
         public string Id {
@@ -24,14 +24,14 @@ namespace HCIProj2.Model
             }
         }
 
-        private string name;
-        public string Name {
-            get { return name; }
+        private string naziv;
+        public string Naziv {
+            get { return naziv; }
             set {
-                if (value != name)
+                if (value != naziv)
                 {
-                    name = value;
-                    OnPropertyChanged("Name");
+                    naziv = value;
+                    OnPropertyChanged("Naziv");
                 }
             }
         }
@@ -172,6 +172,44 @@ namespace HCIProj2.Model
                     OnPropertyChanged("Ikonica");
                 }
             }
+        }
+
+        public Lokal()
+        {
+            Etikete = new ObservableCollection<Etiketa>();
+        }
+
+        public Lokal(string id, string naziv, string opis, DateTime datumOtvaranja, string dozvoljenoPusenje, int kapacitet, string primaRezervacije, string dostupanHendikepiranim, string sluziAlkohol, string cenovnaKategorija, ObservableCollection<Etiketa> etikete, Tip tip, string ikonica)
+        {
+            Id = id;
+            Naziv = naziv;
+            Opis = opis;
+            DatumOtvaranja = datumOtvaranja;
+            DozvoljenoPusenje = dozvoljenoPusenje;
+            Kapacitet = kapacitet;
+            PrimaRezervacije = primaRezervacije;
+            DostupanHendikepiranim = dostupanHendikepiranim;
+            SluziAlkohol = sluziAlkohol;
+            CenovnaKategorija = cenovnaKategorija;
+            Etikete = etikete;
+            Tip = tip;
+            Ikonica = ikonica;
+        }
+        public Lokal(Lokal l)
+        {
+            Id = l.Id;
+            Naziv = l.Naziv;
+            Opis = l.Opis;
+            DatumOtvaranja = l.DatumOtvaranja;
+            DozvoljenoPusenje = l.DozvoljenoPusenje;
+            Kapacitet = l.Kapacitet;
+            PrimaRezervacije = l.PrimaRezervacije;
+            DostupanHendikepiranim = l.DostupanHendikepiranim;
+            SluziAlkohol = l.SluziAlkohol;
+            CenovnaKategorija = l.CenovnaKategorija;
+            Etikete = l.Etikete;
+            Tip = l.Tip;
+            Ikonica = l.Ikonica;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

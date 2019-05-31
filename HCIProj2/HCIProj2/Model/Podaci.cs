@@ -53,12 +53,37 @@ namespace HCIProj2.Model
             }
         }
 
+        public static void dodajTip( Tip tip)
+        {
+            getInstance().tipovi.Add(tip);
+        }
+
+        public static void dodajEtiketu(Etiketa etiketa)
+        {
+            getInstance().etikete.Add(etiketa);
+        }
+
+        public static void dodajLokal(Lokal lokal)
+        {
+            getInstance().lokali.Add(lokal);
+        }
+
         private Podaci()
         {
             lokali = new ObservableCollection<Lokal>();
             tipovi = new ObservableCollection<Tip>();
             etikete = new ObservableCollection<Etiketa>();
         }
+
+        public static Podaci getInstance()
+        {
+            if (instance == null)
+            {
+                instance = new Podaci();
+            }
+            return instance;
+        }
+
 
         #region PropertyChangedNotifier
         public event PropertyChangedEventHandler PropertyChanged;

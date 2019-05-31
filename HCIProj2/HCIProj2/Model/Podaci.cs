@@ -63,6 +63,18 @@ namespace HCIProj2.Model
             getInstance().etikete.Add(etiketa);
         }
 
+        public static Etiketa getEtiketa(String id)
+        {
+            foreach(Etiketa etiketa in Podaci.getInstance().Etikete)
+            {
+                if (etiketa.Id == id)
+                {
+                    return etiketa;
+                }
+            }
+            return null;
+        }
+
         public static void dodajLokal(Lokal lokal)
         {
             getInstance().lokali.Add(lokal);

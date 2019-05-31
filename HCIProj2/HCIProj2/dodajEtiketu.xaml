@@ -3,13 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         xmlns:local="clr-namespace:HCIProj2"
         mc:Ignorable="d"
         Title="dodajEtiketu" Height="700" Width="1100">
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
 
-            <StackPanel>
+            <StackPanel Margin="0 0 10 0">
                 <TextBlock Text="Nova etiketa" FontSize="38" HorizontalAlignment="Center"></TextBlock>
                 <Grid Margin="0 30 0 0">
                     <Grid.ColumnDefinitions>
@@ -17,7 +18,12 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="ID:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25"></TextBox>
+                    <TextBox AcceptsReturn="True" Name="textB_id" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25">
+                        <TextBox.Text>
+                            <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                            </Binding>
+                        </TextBox.Text>
+                   </TextBox>
                 </Grid>
                 <Grid Margin="0 30 0 0">
                     <Grid.ColumnDefinitions>
@@ -25,7 +31,12 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Opis:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25"></TextBox>
+                    <TextBox AcceptsReturn="True" Name="textB_opis" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25">
+                        <TextBox.Text>
+                            <Binding Path="Opis" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
                 </Grid>
                 <Grid Margin="0 30 0 0">
                     <Grid.ColumnDefinitions>
@@ -33,15 +44,38 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Boja:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25"></TextBox>
+                    <ComboBox Grid.Column="1" Name="combo_color">
+                        <ComboBoxItem>
+                            <TextBlock FontSize="38" Width="700" Background="Red" Foreground="Red" Text="Red"></TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock FontSize="38" Width="700" Background="Yellow" Foreground="Yellow" Text="Yellow"></TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock FontSize="38" Width="700" Background="Pink" Foreground="Pink" Text="Pink"></TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock FontSize="38" Width="700" Background="Orange" Foreground="Orange" Text="Orange"></TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock FontSize="38" Width="700" Background="Green" Foreground="Green" Text="Green"></TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock FontSize="38" Width="700" Background="Brown" Foreground="Brown" Text="Brown"></TextBlock>
+                        </ComboBoxItem>
+
+                        <ComboBoxItem>
+                            <TextBlock FontSize="38" Width="700" Background="Blue" Foreground="Blue" Text="Blue"></TextBlock>
+                        </ComboBoxItem>
+                    </ComboBox>
                 </Grid>
                 <Grid Margin="0 30 0 10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Dodaj" FontSize="38" Width="400"></Button>
-                    <Button Content="Odustani" FontSize="38" Width="400" Grid.Column="1"></Button>
+                    <Button Content="Dodaj" Click="Button_Click_dodajEtiketu" FontSize="38" Width="400"></Button>
+                    <Button Content="Odustani" Click="Button_Click_Odustani" FontSize="38" Width="400" Grid.Column="1"></Button>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

@@ -16,24 +16,39 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="ID:" Name="id" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25"></TextBox>
+                    <TextBlock Text="ID:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBox AcceptsReturn="True" Name="textB_id" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25">
+                        <TextBox.Text>
+                            <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
                 </Grid>
                 <Grid Margin="0 30 0 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Ime:" Name="ime" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25"></TextBox>
+                    <TextBlock Text="Ime:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBox AcceptsReturn="True" Name="textB_naziv" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25">
+                        <TextBox.Text>
+                            <Binding Path="Naziv" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
                 </Grid>
                 <Grid Margin="0 30 0 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Opis:" Name ="opis" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25"></TextBox>
+                    <TextBlock Text="Opis:"  FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <TextBox AcceptsReturn="True" Name ="textB_opis" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25">
+                        <TextBox.Text>
+                            <Binding Path="Opis" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
                 </Grid>
                 <Grid Margin="0 30 0 0">
                     <Grid.ColumnDefinitions>
@@ -46,7 +61,12 @@
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox AcceptsReturn="True" Name="IconPath" TextWrapping="Wrap" BorderThickness="5" Height="100" FontSize="38"></TextBox>
+                        <TextBox AcceptsReturn="True" Name="textB_ikonica" TextWrapping="Wrap" BorderThickness="5" Height="100" FontSize="38">
+                            <TextBox.Text>
+                                <Binding Path="Ikonica" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                         <Button Grid.Column="1" Name="loadIcon" Margin="2" Padding="15,0" Click="Button_Click_UcitajIkonicu">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Images/search.png" Height="40" Width="40" HorizontalAlignment="Left"/>

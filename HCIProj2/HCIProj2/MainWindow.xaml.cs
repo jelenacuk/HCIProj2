@@ -31,12 +31,12 @@ namespace HCIProj2
             l.X = -1;
             l.Y = -1;
             l.Naziv = "Fensi kafanica";
-            l.Ikonica = "C:\\Users\\Mile\\Desktop\\HCIPROJEKAT\\HCIProj2\\HCIProj2\\HCIProj2\\Images\\java.png";
+            l.Ikonica = "Images\\java.png";
             lokali = new ObservableCollection<Lokal>();
             Lokal l2 = new Lokal();
             l2.Id = "001";
             l2.Naziv = "Kafana";
-            l2.Ikonica = "C:\\Users\\Mile\\Desktop\\HCIPROJEKAT\\HCIProj2\\HCIProj2\\HCIProj2\\Images\\java.png";
+            l2.Ikonica = "Images\\java.png";
             l2.X = -1;
             l2.Y = -1;
             lokali.Add(l);

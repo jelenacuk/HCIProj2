@@ -114,12 +114,12 @@ namespace HCIProj2
             if(this.ListaLokala.Visibility == Visibility.Hidden)
             {
                 this.ListaLokala.Visibility = Visibility.Visible;
-                ((MenuItem)sender).Header = "Sakrij Lokale";
+                Izlistaj.Header = "Sakrij Lokale";
             }
             else
             {
                 this.ListaLokala.Visibility = Visibility.Hidden;
-                ((MenuItem)sender).Header = "Izlistaj lokale";
+                Izlistaj.Header = "Izlistaj lokale";
             }
 
         }

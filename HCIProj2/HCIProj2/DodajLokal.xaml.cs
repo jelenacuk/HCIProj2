@@ -271,5 +271,10 @@ namespace HCIProj2
         {
             tipoviError_tb.Visibility = Visibility.Hidden;
         }
+
+        private void zatvoriProzor(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

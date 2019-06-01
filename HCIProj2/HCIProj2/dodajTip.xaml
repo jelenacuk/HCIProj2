@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCIProj2"
         xmlns:validation="clr-namespace:HCIProj2"
+        xmlns:commands="clr-namespace:HCIProj2.Shortcuts"
         mc:Ignorable="d"
         Title="dodajTip" Height="700" Width="1100">
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="commands:Precice.ZatvoriProzorCmd" Executed="zatvoriProzor"/>
+    </Window.CommandBindings>
+    
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0 0 10 0">
 

@@ -92,5 +92,10 @@ namespace HCIProj2
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
+
+        private void zatvoriProzor(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

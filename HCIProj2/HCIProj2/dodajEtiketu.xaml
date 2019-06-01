@@ -6,8 +6,14 @@
         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         xmlns:validation="clr-namespace:HCIProj2"
         xmlns:local="clr-namespace:HCIProj2"
+        xmlns:commands="clr-namespace:HCIProj2.Shortcuts"
         mc:Ignorable="d"
         Title="dodajEtiketu" Height="700" Width="1100">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="commands:Precice.ZatvoriProzorCmd" Executed="zatvoriProzor"/>
+    </Window.CommandBindings>
+    
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
 

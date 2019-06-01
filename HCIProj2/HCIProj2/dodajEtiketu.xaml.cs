@@ -82,5 +82,10 @@ namespace HCIProj2
             else
                 Didaj_Btn.IsEnabled = false;
         }
+
+        private void zatvoriProzor(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -113,5 +113,10 @@ namespace HCIProj2
             if (e.Action == ValidationErrorEventAction.Added)
                 ikonica_Error = true;
         }
+
+        private void zatvoriProzor(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

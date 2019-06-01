@@ -6,9 +6,15 @@
         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
         xmlns:local="clr-namespace:HCIProj2"
-         xmlns:validation="clr-namespace:HCIProj2"
+        xmlns:validation="clr-namespace:HCIProj2"
+        xmlns:commands="clr-namespace:HCIProj2.Shortcuts"
         mc:Ignorable="d"
         Title="DodajLokal" Height="700" Width="1100">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="commands:Precice.ZatvoriProzorCmd" Executed="zatvoriProzor"/>
+    </Window.CommandBindings>
+
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel  Margin="0 0 10 0">

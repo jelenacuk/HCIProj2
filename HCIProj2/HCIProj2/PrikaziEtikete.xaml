@@ -4,8 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCIProj2"
+        xmlns:commands="clr-namespace:HCIProj2.Shortcuts"
         mc:Ignorable="d"
         Title="PrikaziEtikete" Height="450" Width="800">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="commands:Precice.ZatvoriProzorCmd" Executed="zatvoriProzor"/>
+    </Window.CommandBindings>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />

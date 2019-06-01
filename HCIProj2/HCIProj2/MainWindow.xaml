@@ -4,23 +4,35 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCIProj2"
+        xmlns:commands="clr-namespace:HCIProj2.Shortcuts"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="1000">
-        <DockPanel>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="commands:Precice.IzlistajSakrijLokale" Executed="Button_Click"/>
+        <CommandBinding Command="commands:Precice.DodajLokalCmd" Executed="dodajLokal"/>
+        <CommandBinding Command="commands:Precice.DodajEtiketuCmd" Executed="dodajEtiketu"/>
+        <CommandBinding Command="commands:Precice.DodajTipCmd" Executed="dodajTip"/>
+        <CommandBinding Command="commands:Precice.PrikaziLokaleCmd" Executed="prikaziLokale"/>
+        <CommandBinding Command="commands:Precice.PrikaziEtiketeCmd" Executed="prikaziEtikete"/>
+        <CommandBinding Command="commands:Precice.PrikaziTipoveCmd" Executed="prikaziTipove"/>
+    </Window.CommandBindings>
+
+    <DockPanel>
         <Menu DockPanel.Dock="Top" >
-            <MenuItem Click="Button_Click" Header="_Sakrij Lokale" FontSize="34" BorderThickness="1" BorderBrush="Black">
+            <MenuItem Name="Izlistaj"  Command="commands:Precice.IzlistajSakrijLokale" Header="_Sakrij Lokale" FontSize="34" BorderThickness="1" BorderBrush="Black" InputGestureText="">
             </MenuItem>
             <Separator></Separator>
             <MenuItem Header="_Dodaj" FontSize="34" BorderThickness="1" BorderBrush="Black">
-                <MenuItem Click="dodajLokal" Header="_Dodaj lokal" FontSize="34" />
-                <MenuItem Click="dodajEtiketu" Header="_Dodaj Etiketu" FontSize="34" />
-                <MenuItem Click="dodajTip" Header="_Dodaj Tip" FontSize="34" />
+                <MenuItem Command="commands:Precice.DodajLokalCmd" Header="_Dodaj Lokal" FontSize="34" InputGestureText="Ctrl+Q"/>
+                <MenuItem Command="commands:Precice.DodajEtiketuCmd" Header="_Dodaj Etiketu" FontSize="34" InputGestureText="Ctrl+W"/>
+                <MenuItem Command="commands:Precice.DodajTipCmd" FontSize="34" Header="_Dodaj Tip" InputGestureText="Ctrl+E"/>
             </MenuItem>
             <Separator/>
             <MenuItem Header="_Prikazi" FontSize="34" BorderThickness="1" BorderBrush="Black">
-                <MenuItem Header="_Prikazi sve Lokale" FontSize="34" Click="prikaziLokale"/>
-                <MenuItem Header="_Priakzi sve Etikete" FontSize="34" Click="prikaziEtikete"/>
-                <MenuItem Header="_Prikazi Tipove" FontSize="34" Click="prikaziTipove"/>
+                <MenuItem Command="commands:Precice.PrikaziLokaleCmd" Header="_Prikazi Lokale" FontSize="34" Click="prikaziLokale" InputGestureText="Alt+Q"/>
+                <MenuItem Command="commands:Precice.PrikaziEtiketeCmd" Header="_Priakzi Etikete" FontSize="34" Click="prikaziEtikete" InputGestureText="Alt+W"/>
+                <MenuItem Command="commands:Precice.PrikaziTipoveCmd" Header="_Prikazi Tipove" FontSize="34" Click="prikaziTipove" InputGestureText="Alt+E"/>
             </MenuItem>
             <Separator/>
             <MenuItem Header="_Pretraga" FontSize="34" BorderThickness="1" BorderBrush="Black">

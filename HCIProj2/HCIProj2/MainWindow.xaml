@@ -18,9 +18,9 @@
             </MenuItem>
             <Separator/>
             <MenuItem Header="_Prikazi" FontSize="34" BorderThickness="1" BorderBrush="Black">
-                <MenuItem Header="_Prikazi sve Lokale" FontSize="34" />
-                <MenuItem Header="_Priakzi sve Etikete" FontSize="34" />
-                <MenuItem Header="_Prikazi Tipove" FontSize="34" />
+                <MenuItem Header="_Prikazi sve Lokale" FontSize="34" Click="prikaziLokale"/>
+                <MenuItem Header="_Priakzi sve Etikete" FontSize="34" Click="prikaziEtikete"/>
+                <MenuItem Header="_Prikazi Tipove" FontSize="34" Click="prikaziTipove"/>
             </MenuItem>
             <Separator/>
             <MenuItem Header="_Pretraga" FontSize="34" BorderThickness="1" BorderBrush="Black">

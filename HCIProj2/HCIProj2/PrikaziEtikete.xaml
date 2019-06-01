@@ -21,23 +21,35 @@
                 <ColumnDefinition Width="130" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="150" />
             </Grid.ColumnDefinitions>
 
             <Label x:Name="labelIdEtikete" Content="ID:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontSize="38" Grid.Row="0" Grid.Column="0"/>
             <TextBox Name="textBoxIdEtikete" MaxLength="50" ToolTip="Unesite ID tipa" FontSize="30" Margin="0,4,0,0" Grid.Row="0" Grid.Column="1"/>
-            <Button Name="buttonPretragaEtikete" ToolTip="Pretraga Tipova" VerticalAlignment="Center" Margin="0,4,0,0"  Height="50" Grid.Row="0" Grid.Column="2">
+            <Button Name="buttonPretragaEtikete" ToolTip="Pretraga Tipova" VerticalAlignment="Center" Margin="0,4,0,0"  Height="50" Grid.Row="0" Grid.Column="2" Click="buttonPretraziClick">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Pretraži" VerticalAlignment="Center" HorizontalAlignment="Right" Height="30" FontSize="26"/>
+                    <TextBlock Text="PRETRAŽI" VerticalAlignment="Center" HorizontalAlignment="Right" Height="30" FontSize="26"/>
+                </StackPanel>
+            </Button>
+            <Button Name="buttonPonistiPretragu" ToolTip="Pretraga Etiketa" VerticalAlignment="Center" Margin="0,4,0,0"  Height="50" Grid.Row="0" Grid.Column="3" Click="buttonPonistiClick">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="PONIŠTI" VerticalAlignment="Center" HorizontalAlignment="Right" Height="30" FontSize="26"/>
                 </StackPanel>
             </Button>
 
         </Grid>
 
-        <DataGrid Name="typesGrid"  AutoGenerateColumns="False"  Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7" >
+        <DataGrid Name="typesGrid"  AutoGenerateColumns="False"  Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7" SelectedItem="{Binding Path=SelektovanaEtiketa, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Etikete}" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" MinWidth="100" Width="*" FontSize="30" />
-                <DataGridTextColumn Header="Boja Etikete" MinWidth="100" Width="*" FontSize="30"/>
-                <DataGridTextColumn Header="Opis Etikete"  MinWidth="100" Width="*" FontSize="30"/>
+                <DataGridTextColumn Header="ID" MinWidth="100" Width="*" FontSize="30" Binding="{Binding Id}"/>
+                <DataGridTemplateColumn Header="Boja etikete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Background="{Binding Path=Boja}" MinWidth="30" Margin="5"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Opis Etikete"  MinWidth="100" Width="*" FontSize="30" Binding="{Binding Opis}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

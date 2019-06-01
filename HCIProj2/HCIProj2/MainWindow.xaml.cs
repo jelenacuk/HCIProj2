@@ -128,6 +128,22 @@ namespace HCIProj2
             dodajEtiketu.Show();
         }
 
+        private void prikaziLokale(object sender, RoutedEventArgs e)
+        {
+            PrikaziLokale prikaziLokale = new PrikaziLokale();
+            prikaziLokale.Show();
+        }
+        private void prikaziEtikete(object sender, RoutedEventArgs e)
+        {
+            PrikaziEtikete prikaziEtikete = new PrikaziEtikete();
+            prikaziEtikete.Show();
+        }
+        private void prikaziTipove(object sender, RoutedEventArgs e)
+        {
+            PrikaziTipove prikaziTipove = new PrikaziTipove();
+            prikaziTipove.Show();
+        }
+
 
         Point startPoint = new Point();
 

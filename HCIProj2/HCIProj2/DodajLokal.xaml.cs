@@ -46,7 +46,7 @@ namespace HCIProj2
         private bool naziv_Error;
         private bool datum_Error;
 
-        private bool cene_error;
+        
 
         public DodajLokal()
         {
@@ -74,6 +74,7 @@ namespace HCIProj2
             textB_naziv.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             textB_opis.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             textB_ikonica.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textB_datum.GetBindingExpression(TextBox.TextProperty).UpdateSource();
 
             if (id_Eror == false && opis_Error == false && naziv_Error == false && ikonica_Error == false && datum_Error == false)
             {
@@ -83,11 +84,12 @@ namespace HCIProj2
                 textB_opis.GetBindingExpression(TextBox.TextProperty).UpdateSource();
                 textB_kapacitet.GetBindingExpression(TextBox.TextProperty).UpdateSource();
                 textB_ikonica.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                textB_datum.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
                 if (textB_ikonica.Text.Equals(""))
                 {
                     lokal.Ikonica = lokal.Tip.Ikonica;
                 }
-                textB_datum.GetBindingExpression(TextBox.TextProperty).UpdateSource();
                 lokal.CenovnaKategorija = ((combo_cene.SelectedItem as ComboBoxItem).Content as TextBlock).Text;
                 lokal.DostupanHendikepiranim = ((combo_hendikepirani.SelectedItem as ComboBoxItem).Content as TextBlock).Text;
                 lokal.PrimaRezervacije = ((combo_rezervacije.SelectedItem as ComboBoxItem).Content as TextBlock).Text;

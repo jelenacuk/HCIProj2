@@ -32,13 +32,18 @@ namespace HCIProj2
             l.Y = -1;
             l.Naziv = "Fensi kafanica";
             l.Ikonica = "Images\\java.png";
-            lokali = new ObservableCollection<Lokal>();
+            l.DostupanHendikepiranim = "DA";
+            l.DozvoljenoPusenje = "Zabranjeno";
+            l.SluziAlkohol = "Služi do 23h";
+            lokali = Podaci.getInstance().Lokali;
             Lokal l2 = new Lokal();
             l2.Id = "001";
             l2.Naziv = "Kafana";
             l2.Ikonica = "Images\\java.png";
             l2.X = -1;
             l2.Y = -1;
+            l.PrimaRezervacije = "DA";
+            l2.PrimaRezervacije = "NE";
             lokali.Add(l);
             lokali.Add(l2);
             lokaliNaMapi = new ObservableCollection<Lokal>();
@@ -71,7 +76,16 @@ namespace HCIProj2
 
         private void Mapa_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            Point mousePosition = e.GetPosition(Mapa);
+            selektovanLokal = Lokal_Click((int)mousePosition.X, (int)mousePosition.Y);
+            if (e.ChangedButton == MouseButton.Left && e.ClickCount == 2)
+            {
+                if (selektovanLokal != null)
+                {
+                    Detaljnije detaljnije = new Detaljnije(selektovanLokal);
+                    detaljnije.Show();
+                }
+            }
         }
 
         private void Mapa_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
@@ -190,7 +204,7 @@ namespace HCIProj2
         }
         private Lokal Lokal_Click(int x, int y)
         {
-            foreach (Lokal lokal in lokali)
+            foreach (Lokal lokal in LokaliNaMapi)
             {
                 if (lokal.X != -1 && lokal.Y != -1)
                 {

@@ -6,6 +6,7 @@
         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
         xmlns:local="clr-namespace:HCIProj2"
+         xmlns:validation="clr-namespace:HCIProj2"
         mc:Ignorable="d"
         Title="DodajLokal" Height="700" Width="1100">
     <Grid>
@@ -14,58 +15,107 @@
                 <TextBlock Text="Novi Lokal" FontSize="38" HorizontalAlignment="Center"></TextBlock>
 
                 <!-- ID -->
-                <Grid Margin="0 30 0 0">
+                <Grid Margin="0 30 0 20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="ID:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" Name="textB_id" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25">
+                    <TextBox AcceptsReturn="True" Name="textB_id" TextChanged="textB_id_TextChanged" Validation.Error="textB_id_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="38">
                         <TextBox.Text>
                             <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Id" Min="3" Max="10"/>
+                                    <validation:ID_Provera ValidationStep="RawProposedValue" klasa="lokal"/>
+                                </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate  >
+                                <Grid>
+                                    <AdornedElementPlaceholder   x:Name="textBox"/>
+                                    <TextBlock TextWrapping="Wrap" Margin="0 90 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
                     </TextBox>
                 </Grid>
 
                 <!-- NAZIV -->
-                <Grid Margin="0 30 0 0">
+                <Grid Margin="0 30 0 20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Naziv:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" Name="textB_naziv" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25">
+                    <TextBox AcceptsReturn="True" Name="textB_naziv" Validation.Error="textB_naziv_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="38">
                         <TextBox.Text>
                             <Binding Path="Naziv" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Naziv" Min="3" Max="30"/>
+                                </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate  >
+                                <Grid>
+                                    <AdornedElementPlaceholder   x:Name="textBox"/>
+                                    <TextBlock TextWrapping="Wrap" Margin="0 90 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
                     </TextBox>
                 </Grid>
 
                 <!-- OPIS -->
-                <Grid Margin="0 30 0 0">
+                <Grid Margin="0 30 0 20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Opis:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" Name="textB_opis" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="200" FontSize="25">
+                    <TextBox AcceptsReturn="True" Name="textB_opis" Validation.Error="textB_opis_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="300" FontSize="38">
                         <TextBox.Text>
                             <Binding Path="Opis" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Opis" Min="3" Max="1000"/>
+                                </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate  >
+                                <Grid>
+                                    <AdornedElementPlaceholder   x:Name="textBox"/>
+                                    <TextBlock TextWrapping="Wrap" Margin="0 290 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
                     </TextBox>
                 </Grid>
 
                 <!-- DATUM -->
-                <Grid Margin="0 30 0 0">
+                <Grid Margin="0 30 0 20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Datum otvaranja:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" Name="textB_datum" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25">
+                    <TextBox AcceptsReturn="True" Name="textB_datum" Validation.Error="textB_datum_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="38">
+                        <TextBox.Text>
+                            <Binding Path="DatumOtvaranja" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <validation:Datum_Provera ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate  >
+                                <Grid>
+                                    <AdornedElementPlaceholder   x:Name="textBox"/>
+                                    <TextBlock TextWrapping="Wrap" Margin="0 90 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
                     </TextBox>
                 </Grid>
 
@@ -76,7 +126,7 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Kapacitet:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" Name="textB_kapacitet" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25">
+                    <TextBox AcceptsReturn="True" Name="textB_kapacitet" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="38">
                         <TextBox.Text>
                             <Binding Path="Kapacitet" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                             </Binding>
@@ -85,7 +135,7 @@
                 </Grid>
 
                 <!-- IKONICA -->
-                <Grid Margin="0 30 0 0">
+                <Grid Margin="0 30 0 20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
@@ -96,11 +146,22 @@
                             <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox AcceptsReturn="True" Name="textB_ikonica" TextWrapping="Wrap" BorderThickness="5"  FontSize="38">
+                        <TextBox AcceptsReturn="True" Name="textB_ikonica" Validation.Error="textB_ikonica_Error" TextWrapping="Wrap" BorderThickness="5"  FontSize="38">
                             <TextBox.Text>
                                 <Binding Path="Ikonica" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                                    <Binding.ValidationRules>
+                                        <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Ikonica" Min="0" Max="30"/>
+                                    </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>
+                            <Validation.ErrorTemplate>
+                                <ControlTemplate  >
+                                    <Grid>
+                                        <AdornedElementPlaceholder   x:Name="textBox"/>
+                                        <TextBlock TextWrapping="Wrap" Margin="0 60 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Validation.ErrorTemplate>
                         </TextBox>
                         <Button Grid.Column="1" Name="loadIcon"  Click="loadIcon_Click">
                             <StackPanel Orientation="Horizontal">
@@ -113,12 +174,16 @@
 
                 <!-- ALKOHOL -->
                 <Grid Margin="0 30 0 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Alkohol:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <ComboBox Grid.Column="1" Name="combo_alkohol">
+                    <ComboBox Grid.Column="1" Name="combo_alkohol" SelectionChanged="combo_alkohol_SelectionChanged">
                         <ComboBoxItem>
                             <TextBlock FontSize="38">Ne služi</TextBlock>
                         </ComboBoxItem>
@@ -129,17 +194,23 @@
                             <TextBlock FontSize="38">Služi i kasno noću</TextBlock>
                         </ComboBoxItem>
                     </ComboBox>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Name="alkoholError_tb" Text="Morate izabrati opciju za cenu." Foreground="Red" FontSize="38" Visibility="Hidden">
+                    </TextBlock>
                 </Grid>
 
 
                 <!-- PUSENJE -->
                 <Grid Margin="0 30 0 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Pušenje:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <ComboBox Grid.Column="1" Name="combo_pusenje">
+                    <ComboBox Grid.Column="1" Name="combo_pusenje" SelectionChanged="combo_pusenje_SelectionChanged">
                         <ComboBoxItem>
                             <TextBlock FontSize="38">Dozvoljeno</TextBlock>
                         </ComboBoxItem>
@@ -147,16 +218,22 @@
                             <TextBlock FontSize="38">Zabranjeno</TextBlock>
                         </ComboBoxItem>
                     </ComboBox>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Name="pusenjeError_tb" Text="Morate izabrati opciju za cenu." Foreground="Red" FontSize="38" Visibility="Hidden">
+                    </TextBlock>
                 </Grid>
 
                 <!-- CENE -->
                 <Grid Margin="0 30 0 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Cene:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <ComboBox Grid.Column="1" Name="combo_cene">
+                    <TextBlock Text="Cene:" FontSize="38" Grid.Column="0" Grid.Row="0" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <ComboBox Grid.Column="1" Grid.Row="0" Name="combo_cene" SelectionChanged="combo_cene_SelectionChanged">
                         <ComboBoxItem >
                             <TextBlock FontSize="38">Niske</TextBlock>
                         </ComboBoxItem>
@@ -170,16 +247,22 @@
                             <TextBlock FontSize="38">Izuzetno visoke</TextBlock>
                         </ComboBoxItem>
                     </ComboBox>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Name="ceneError_tb" Text="Morate izabrati opciju za cenu." Foreground="Red" FontSize="38" Visibility="Hidden">
+                    </TextBlock>
                 </Grid>
 
                 <!-- REZERVACIJE -->
                 <Grid Margin="0 30 0 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Rezervacije:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <ComboBox Grid.Column="1" Name="combo_rezervacije">
+                    <ComboBox Grid.Column="1" Name="combo_rezervacije" SelectionChanged="combo_rezervacije_SelectionChanged">
                         <ComboBoxItem>
                             <TextBlock FontSize="38">Da</TextBlock>
                         </ComboBoxItem>
@@ -187,16 +270,22 @@
                             <TextBlock FontSize="38">Ne</TextBlock>
                         </ComboBoxItem>
                     </ComboBox>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Name="rezervacijeError_tb" Text="Morate izabrati opciju za cenu." Foreground="Red" FontSize="38" Visibility="Hidden">
+                    </TextBlock>
                 </Grid>
 
                 <!-- HENDIKEP -->
                 <Grid Margin="0 30 0 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Hendikepirani:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <ComboBox Grid.Column="1" Name="combo_hendikepirani">
+                    <TextBlock Text="Hendikepirani:" Grid.Row="0" Grid.Column="0" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    <ComboBox Grid.Column="1"  Grid.Row="0" Name="combo_hendikepirani" SelectionChanged="combo_hendikepirani_SelectionChanged">
                         <ComboBoxItem>
                             <TextBlock FontSize="38">Da</TextBlock>
                         </ComboBoxItem>
@@ -204,6 +293,8 @@
                             <TextBlock FontSize="38">Ne</TextBlock>
                         </ComboBoxItem>
                     </ComboBox>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Name="hendikepiraniError_tb" Text="Morate naznaciti dostupnost hendikepiranima." Foreground="Red" FontSize="38" Visibility="Hidden">
+                    </TextBlock>
                 </Grid>
 
                 <!-- ETIKETE -->
@@ -231,11 +322,11 @@
 
                 <!-- IZABRANE ETIKETE -->
                 <Grid Margin="0 1 0 10">
-                        <Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <wpfTool:CheckComboBox FontSize="38"  Grid.Column="1" Name="comboBoxTags"
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <wpfTool:CheckComboBox FontSize="38"  Grid.Column="1" Name="comboBoxTags"
                                    ItemsSource="{Binding lokal.Etikete}"
                                    DisplayMemberPath="Id"
                                    SelectedItemsOverride="{Binding IzabraneEtikete}"
@@ -245,6 +336,10 @@
 
                 <!-- TIPOVI -->
                 <Grid Margin="0 30 0 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
@@ -255,10 +350,12 @@
                             <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <ComboBox Name="combo_tipovi" Loaded="combo_tipovi_Loaded" FontSize = "38" ></ComboBox>
+                        <ComboBox Name="combo_tipovi" SelectionChanged="combo_tipovi_SelectionChanged" Loaded="combo_tipovi_Loaded" FontSize = "38" ></ComboBox>
                         <Button Grid.Column="1" Name="noviTip" Click="noviTip_Click"  Content="Dodaj" FontSize="38">
                         </Button>
                     </Grid>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Name="tipoviError_tb" Text="Morate odabrati tip." Foreground="Red" FontSize="38" Visibility="Hidden">
+                    </TextBlock>
                 </Grid>
 
                 <!-- DUGMICI -->
@@ -270,7 +367,7 @@
                     <Button Content="Dodaj" Name="dodajLokal" Click="dodajLokal_Click" FontSize="38" Width="400"></Button>
                     <Button Content="Odustani" Click="odustaniBtn_Click" FontSize="38" Width="400" Grid.Column="1"></Button>
                 </Grid>
-                
+
             </StackPanel>
         </ScrollViewer>
     </Grid>

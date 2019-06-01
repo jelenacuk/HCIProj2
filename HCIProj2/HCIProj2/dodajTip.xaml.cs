@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Win32;
-using HCIProj2;
 
 namespace HCIProj2
 {
@@ -29,22 +28,41 @@ namespace HCIProj2
             set { tip = value; }
         }
 
+        private bool id_Eror;
+        private bool opis_Error;
+        private bool ikonica_Error;
+        private bool naziv_Error;
+
         public dodajTip()
         {
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             tip = new Tip();
             DataContext = tip;
+            id_Eror = false;
+            opis_Error = false;
+            naziv_Error = false;
+            ikonica_Error = false;
         }
 
         private void dodajTipBtn_Click(object sender, RoutedEventArgs e)
         {
+            id_Eror = false; naziv_Error = false; opis_Error = false; ikonica_Error = false;
             textB_id.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             textB_naziv.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            textB_ikonica.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             textB_opis.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            Podaci.dodajTip(tip);
-            Close();
+            textB_ikonica.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
+            if (id_Eror == false && opis_Error == false && naziv_Error == false && ikonica_Error == false)
+            {
+                textB_id.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                textB_naziv.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                textB_ikonica.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                textB_opis.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                Podaci.dodajTip(tip);
+                Close();
+            }
+
         }
 
         private void Button_Click_UcitajIkonicu(object sender, RoutedEventArgs e)
@@ -61,6 +79,39 @@ namespace HCIProj2
         private void odustaniBtn_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void textB_id_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (textB_id.Text.Length > 0)
+                dodajTipBtn.IsEnabled = true;
+            else
+                dodajTipBtn.IsEnabled = false;
+        }
+
+        private void textB_id_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                id_Eror = true;
+        }
+
+
+        private void textB_naziv_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                naziv_Error = true;
+        }
+
+        private void textB_opis_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                opis_Error = true;
+        }
+
+        private void textB_ikonica_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                ikonica_Error = true;
         }
     }
 }

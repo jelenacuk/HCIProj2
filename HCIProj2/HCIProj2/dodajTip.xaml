@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCIProj2"
+        xmlns:validation="clr-namespace:HCIProj2"
         mc:Ignorable="d"
         Title="dodajTip" Height="700" Width="1100">
     <Grid>
@@ -11,46 +12,88 @@
 
             <StackPanel>
                 <TextBlock Text="Novi tip" FontSize="38" HorizontalAlignment="Center"></TextBlock>
-                <Grid Margin="0 30 0 0">
+
+                <!--ID-->
+                <Grid Margin="0 30 0 20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="ID:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" Name="textB_id" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25">
+                    <TextBox AcceptsReturn="True" Name="textB_id" TextChanged="textB_id_TextChanged" Validation.Error="textB_id_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="38">
                         <TextBox.Text>
                             <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Id" Min="3" Max="10"/>
+                                    <validation:ID_Provera ValidationStep="RawProposedValue" klasa="tip"/>
+                                </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate  >
+                                <Grid>
+                                    <AdornedElementPlaceholder   x:Name="textBox"/>
+                                    <TextBlock TextWrapping="Wrap" Margin="0 90 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
                     </TextBox>
                 </Grid>
-                <Grid Margin="0 30 0 0">
+
+                <!--NAZIV-->
+                <Grid Margin="0 30 0 20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Ime:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" Name="textB_naziv" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25">
+                    <TextBox AcceptsReturn="True" Name="textB_naziv"  Validation.Error="textB_naziv_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="38">
                         <TextBox.Text>
                             <Binding Path="Naziv" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Naziv" Min="3" Max="30"/>
+                                </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate  >
+                                <Grid>
+                                    <AdornedElementPlaceholder   x:Name="textBox"/>
+                                    <TextBlock TextWrapping="Wrap" Margin="0 90 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
                     </TextBox>
                 </Grid>
-                <Grid Margin="0 30 0 0">
+
+                <!--OPIS-->
+                <Grid Margin="0 30 0 20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Opis:"  FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" Name ="textB_opis" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25">
+                    <TextBox AcceptsReturn="True" Name ="textB_opis"  Validation.Error="textB_opis_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="38">
                         <TextBox.Text>
                             <Binding Path="Opis" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Opis" Min="3" Max="1000"/>
+                                </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate  >
+                                <Grid>
+                                    <AdornedElementPlaceholder   x:Name="textBox"/>
+                                    <TextBlock TextWrapping="Wrap" Margin="0 90 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
                     </TextBox>
                 </Grid>
-                <Grid Margin="0 30 0 0">
+
+                <!--IKONICA-->
+                <Grid Margin="0 30 0 20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
@@ -61,11 +104,22 @@
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox AcceptsReturn="True" Name="textB_ikonica" TextWrapping="Wrap" BorderThickness="5" Height="100" FontSize="38">
+                        <TextBox AcceptsReturn="True" Name="textB_ikonica"  Validation.Error="textB_ikonica_Error" TextWrapping="Wrap" BorderThickness="5" Height="100" FontSize="38">
                             <TextBox.Text>
                                 <Binding Path="Ikonica" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                                    <Binding.ValidationRules>
+                                        <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Ikonica" Min="4" Max="30"/>
+                                    </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>
+                            <Validation.ErrorTemplate>
+                                <ControlTemplate  >
+                                    <Grid>
+                                        <AdornedElementPlaceholder   x:Name="textBox"/>
+                                        <TextBlock TextWrapping="Wrap" Margin="0 90 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Validation.ErrorTemplate>
                         </TextBox>
                         <Button Grid.Column="1" Name="loadIcon" Margin="2" Padding="15,0" Click="Button_Click_UcitajIkonicu">
                             <StackPanel Orientation="Horizontal">
@@ -75,7 +129,9 @@
                         </Button>
                     </Grid>
                 </Grid>
-                <Grid Margin="0 30 0 10">
+
+                <!--DUGMICI-->
+                <Grid Margin="0 30 0 20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="*"/>

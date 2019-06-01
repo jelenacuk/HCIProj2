@@ -8,7 +8,7 @@ using System.ComponentModel;
 using System.IO;
 
 
-namespace HCIProj2.Model
+namespace HCIProj2
 {
     public class Lokal
     {
@@ -163,13 +163,31 @@ namespace HCIProj2.Model
                 if (value != ikonica)
                 {
                     ikonica = value;
-                    string newPath = Directory.GetCurrentDirectory() + "\\" + @ikonica.Split('\\').Last();
-                    if (!File.Exists(newPath) && newPath != null && !string.IsNullOrEmpty(newPath) && !string.IsNullOrWhiteSpace(newPath))
-                    {
-                        File.Copy(@ikonica, @newPath, true);
-                    }
-                    ikonica = newPath;
                     OnPropertyChanged("Ikonica");
+                }
+            }
+        }
+
+        private int x;
+        public int X {
+            get { return x; }
+            set {
+                if (value != x)
+                {
+                    x = value;
+                    OnPropertyChanged("X");
+                }
+            }
+        }
+
+        private int y;
+        public int Y {
+            get { return y; }
+            set {
+                if (value != y)
+                {
+                    y = value;
+                    OnPropertyChanged("Y");
                 }
             }
         }

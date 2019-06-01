@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 
-namespace HCIProj2.Model
+namespace HCIProj2
 {
     public class Podaci : INotifyPropertyChanged
     {

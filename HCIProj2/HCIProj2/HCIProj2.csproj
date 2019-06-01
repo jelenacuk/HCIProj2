@@ -193,5 +193,10 @@
   <ItemGroup>
     <Resource Include="Images\search.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="System.Windows.Controls.Input.Toolkit.dll" />
+    <Content Include="System.Windows.Controls.Layout.Toolkit.dll" />
+    <Content Include="WPFToolkit.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

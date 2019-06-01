@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace HCIProj2.Model
+namespace HCIProj2
 {
     public class Etiketa
     {

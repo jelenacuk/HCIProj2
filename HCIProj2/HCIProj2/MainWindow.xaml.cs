@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.ComponentModel;
+using System.Collections.ObjectModel;
+using System.IO;
 namespace HCIProj2
 {
     /// <summary>
@@ -23,7 +25,49 @@ namespace HCIProj2
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
+            Lokal l = new Lokal();
+            l.Id = "001";
+            l.X = -1;
+            l.Y = -1;
+            l.Naziv = "Fensi kafanica";
+            l.Ikonica = "C:\\Users\\Mile\\Desktop\\HCIPROJEKAT\\HCIProj2\\HCIProj2\\HCIProj2\\Images\\java.png";
+            lokali = new ObservableCollection<Lokal>();
+            Lokal l2 = new Lokal();
+            l2.Id = "001";
+            l2.Naziv = "Kafana";
+            l2.Ikonica = "C:\\Users\\Mile\\Desktop\\HCIPROJEKAT\\HCIProj2\\HCIProj2\\HCIProj2\\Images\\java.png";
+            l2.X = -1;
+            l2.Y = -1;
+            lokali.Add(l);
+            lokali.Add(l2);
+            lokaliNaMapi = new ObservableCollection<Lokal>();
         }
+        private ObservableCollection<Lokal> lokali;
+        public ObservableCollection<Lokal> Lokali {
+            get { return lokali; }
+            set {
+                if (value != lokali)
+                {
+                    lokali = value;
+                    OnPropertyChanged("Lokali");
+                }
+            }
+        }
+
+        private ObservableCollection<Lokal> lokaliNaMapi;
+        public ObservableCollection<Lokal> LokaliNaMapi {
+            get { return lokaliNaMapi; }
+            set {
+                if (value != lokaliNaMapi)
+                {
+                    lokali = value;
+                    OnPropertyChanged("LokaliNaMapi");
+                }
+            }
+        }
+        private Lokal selektovanLokal;
+
 
         private void Mapa_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -35,30 +79,7 @@ namespace HCIProj2
 
         }
 
-        private void Mapa_MouseMove(object sender, MouseEventArgs e)
-        {
 
-        }
-
-        private void Mapa_DragEnter(object sender, DragEventArgs e)
-        {
-
-        }
-
-        private void Mapa_Drop(object sender, DragEventArgs e)
-        {
-
-        }
-
-        private void ListView_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void ListView_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -91,6 +112,184 @@ namespace HCIProj2
         {
             dodajEtiketu dodajEtiketu = new dodajEtiketu();
             dodajEtiketu.Show();
+        }
+
+
+        Point startPoint = new Point();
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+        private void Mapa_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point mousePosition = e.GetPosition(Mapa);
+            Vector diff = startPoint - mousePosition;
+
+            if (e.LeftButton == MouseButtonState.Pressed &&
+                (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
+                Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
+            {
+                Lokal lokal = Lokal_Click((int)mousePosition.X, (int)mousePosition.Y);
+
+                if (lokal != null)
+                {
+                    DataObject dragData = new DataObject("myFormat", lokal);
+                    DragDrop.DoDragDrop(Mapa, dragData, DragDropEffects.Move);
+                }
+            }
+        }
+
+        private void Mapa_DragEnter(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent("myFormat") || sender == e.Source)
+            {
+                e.Effects = DragDropEffects.None;
+            }
+        }
+
+        private void Mapa_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent("myFormat"))
+            {
+                Point dropPosition = e.GetPosition(Mapa);
+                Lokal lokalPin = e.Data.GetData("myFormat") as Lokal;
+
+
+                if (lokalPin != null)
+                {
+                    lokalPin.X = (int)dropPosition.X - 8;
+                    lokalPin.Y = (int)dropPosition.Y - 8;
+                }
+                // if it is close to the edge, move it a little bit
+                else if ((int)dropPosition.Y > -30 && (int)dropPosition.Y < 10)
+                {
+                    lokalPin.X = (int)dropPosition.X - 16;
+                    lokalPin.Y = (int)dropPosition.Y + 8;
+                }
+                else if ((int)dropPosition.X > -30 && (int)dropPosition.X < 10)
+                {
+                    lokalPin.X = (int)dropPosition.X + 8;
+                    lokalPin.Y = (int)dropPosition.Y - 16;
+                }
+                else
+                {
+                    lokalPin.X = (int)dropPosition.X - 16;
+                    lokalPin.Y = (int)dropPosition.Y - 16;
+                }
+                lokali.Remove(lokalPin);
+                LokaliNaMapi.Add(lokalPin);
+                LokaliPins_Draw();
+
+            }
+        }
+        private Lokal Lokal_Click(int x, int y)
+        {
+            foreach (Lokal lokal in lokali)
+            {
+                if (lokal.X != -1 && lokal.Y != -1)
+                {
+                    if (Math.Sqrt(Math.Pow((x - lokal.X - 16), 2) + Math.Pow((y - lokal.Y - 16), 2)) < 20)
+                    {
+                        return lokal;
+                    }
+                }
+            }
+            return null;
+        }
+
+        private void LokaliPins_Draw()
+        {
+            Mapa.Children.RemoveRange(1, lokaliNaMapi.Count - 1);
+            foreach (Lokal lokal in lokaliNaMapi)
+            {
+                if (lokal.X != -1 && lokal.Y != -1)
+                {
+                    Image lokalIkonica = new Image();
+                    lokalIkonica.Width = 32;
+                    lokalIkonica.Height = 32;
+                    lokalIkonica.ToolTip = lokal.Id + " " + lokal.Naziv;
+
+                    if (File.Exists(lokal.Ikonica))
+                    {
+                        lokalIkonica.Source = new BitmapImage(new Uri(lokal.Ikonica, UriKind.RelativeOrAbsolute));
+                    }
+                    else
+                    {
+                        MessageBox.Show("Izabrana je nepostojeca ikonica");
+                        break;
+                    }
+
+                    Mapa.Children.Add(lokalIkonica);
+
+                    Canvas.SetLeft(lokalIkonica, lokal.X);
+                    Canvas.SetTop(lokalIkonica, lokal.Y);
+
+                }
+            }
+
+            // To scroll down in list, for easier drag and dropping recent item
+            if (ListaLokala != null && ListaLokala.Items.Count != 0)
+            {
+                ListaLokala.ScrollIntoView(ListaLokala.Items.GetItemAt(ListaLokala.Items.Count - 1));
+            }
+        }
+
+
+        private void ListView_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            startPoint = e.GetPosition(null);
+        }
+
+        private void ListView_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point mousePos = e.GetPosition(null);
+            Vector diff = startPoint - mousePos;
+
+            if (e.LeftButton == MouseButtonState.Pressed &&
+                (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
+                Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
+            {
+                // Get the dragged ListViewItem
+                ListView listView = sender as ListView;
+                ListViewItem listViewItem =
+                    FindAncestor<ListViewItem>((DependencyObject)e.OriginalSource);
+
+                // Find the data behind the ListViewItem
+                try
+                {
+                    Lokal lokal = (Lokal)listView.ItemContainerGenerator.
+                                        ItemFromContainer(listViewItem);
+
+                    // Initialize the drag & drop operation
+                    DataObject dragData = new DataObject("myFormat", lokal);
+                    DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Move);
+                }
+                catch
+                {
+
+                }
+
+
+            }
+        }
+        private static T FindAncestor<T>(DependencyObject current) where T : DependencyObject
+        {
+            do
+            {
+                if (current is T)
+                {
+                    return (T)current;
+                }
+                current = VisualTreeHelper.GetParent(current);
+            }
+            while (current != null);
+            return null;
         }
     }
 }

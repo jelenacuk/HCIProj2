@@ -35,56 +35,17 @@
                 <StackPanel Orientation="Horizontal">
                     <!--<Button Click="Button_Click" x:Name="prikaziBt" Content="Sakrij lokale" Height="50"  HorizontalAlignment="Left" FontSize="25"></Button>-->
                 </StackPanel>
-                <ListView Margin="0 40 0 0" x:Name="ListaLokala" Grid.Column="0" Grid.Row="0"  PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown" MouseMove="ListView_MouseMove">
+                <ListView  ItemsSource="{Binding Lokali}"  Margin="0 40 0 0" x:Name="ListaLokala" Grid.Column="0" Grid.Row="0"  PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown" MouseMove="ListView_MouseMove">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <WrapPanel>
-                                <Image Source="/Images/java.png"/>
-                                <TextBlock Text=", " />
-                                <TextBlock Text="LOKAL NAZIV" />
-                                <TextBlock Text=" (" />
-                                <TextBlock Text="LOKAL PREZIME" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
-                                <TextBlock Text=")" />
+                                <Image Source="Images/java.png" Width="45"/>
+                                <TextBlock Text="{Binding Id}" FontSize="25" VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding Naziv}" FontSize="25" VerticalAlignment="Center" />
                             </WrapPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                    <ListViewItem>
-                        <WrapPanel>
-                            <Image Source="Images/java.png" Width="45"/>
-                            <TextBlock Text="ID ," FontSize="25" VerticalAlignment="Center" />
-                            <TextBlock Text="Naziv lokala" FontSize="25" VerticalAlignment="Center" />
-                        </WrapPanel>
-                    </ListViewItem>
-                    <ListViewItem>
-                        <WrapPanel>
-                            <Image Source="Images/java.png" Width="45"/>
-                            <TextBlock Text="ID ," FontSize="25" VerticalAlignment="Center" />
-                            <TextBlock Text="Naziv lokala" FontSize="25" VerticalAlignment="Center" />
-                        </WrapPanel>
-                    </ListViewItem>
-                    <ListViewItem>
-                        <WrapPanel>
-                            <Image Source="Images/java.png" Width="45"/>
-                            <TextBlock Text="ID ," FontSize="25" VerticalAlignment="Center" />
-                            <TextBlock Text="Naziv lokala" FontSize="25" VerticalAlignment="Center" />
-                        </WrapPanel>
-                    </ListViewItem>
-                    <ListViewItem>
-                        <WrapPanel>
-                            <Image Source="Images/java.png" Width="45"/>
-                            <TextBlock Text="ID ," FontSize="25" VerticalAlignment="Center" />
-                            <TextBlock Text="Naziv lokala" FontSize="25" VerticalAlignment="Center" />
-                        </WrapPanel>
-                    </ListViewItem>
-                    <ListViewItem>
-                        <WrapPanel>
-                            <Image Source="Images/java.png" Width="45"/>
-                            <TextBlock Text="ID ," FontSize="25" VerticalAlignment="Center" />
-                            <TextBlock Text="Naziv lokala" FontSize="25" VerticalAlignment="Center" />
-                        </WrapPanel>
-                    </ListViewItem>
                 </ListView>
-                
             </StackPanel>
         </Canvas>
     </DockPanel>

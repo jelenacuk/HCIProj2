@@ -46,7 +46,7 @@ namespace HCIProj2
             l2.PrimaRezervacije = "NE";
             lokali.Add(l);
             lokali.Add(l2);
-            lokaliNaMapi = new ObservableCollection<Lokal>();
+            lokaliNaMapi = Podaci.getInstance().LokaliNaMapi;
         }
         private ObservableCollection<Lokal> lokali;
         public ObservableCollection<Lokal> Lokali {
@@ -90,7 +90,21 @@ namespace HCIProj2
 
         private void Mapa_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
+            Point mousePosition = e.GetPosition(Mapa);
+            selektovanLokal = Lokal_Click((int)mousePosition.X, (int)mousePosition.Y);
 
+            if (selektovanLokal != null)
+            {
+                var Map = sender as Canvas;
+                Map.ContextMenu.IsOpen = true;
+                Map.ContextMenu.Visibility = Visibility.Visible;
+
+            }
+            else
+            {
+                var Map = sender as Canvas;
+                Map.ContextMenu.Visibility = Visibility.Hidden;
+            }
         }
 
 
@@ -235,7 +249,7 @@ namespace HCIProj2
 
         private void LokaliPins_Draw()
         {
-            Mapa.Children.RemoveRange(1, lokaliNaMapi.Count - 1);
+            Mapa.Children.RemoveRange(1, lokaliNaMapi.Count +1);
             foreach (Lokal lokal in lokaliNaMapi)
             {
                 if (lokal.X != -1 && lokal.Y != -1)
@@ -320,6 +334,33 @@ namespace HCIProj2
             }
             while (current != null);
             return null;
+        }
+
+        private void Azuriraj_Click(object sender, RoutedEventArgs e)
+        {
+            if (selektovanLokal != null)
+            {
+                Detaljnije detaljnije = new Detaljnije(selektovanLokal);
+                detaljnije.Show();
+            }
+        }
+        private void Ukloni_Click(object sender, RoutedEventArgs e)
+        {
+            if (selektovanLokal != null)
+            {
+                LokaliNaMapi.Remove(selektovanLokal);
+                Lokali.Add(selektovanLokal);
+                LokaliPins_Draw();
+            }
+        }
+
+        private void Obrisi_Click(object sender, RoutedEventArgs e)
+        {
+            if (selektovanLokal != null)
+            {
+                LokaliNaMapi.Remove(selektovanLokal);
+                LokaliPins_Draw();
+            }
         }
     }
 }

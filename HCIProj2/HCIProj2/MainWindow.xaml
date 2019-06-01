@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCIProj2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="MainWindow" Height="700" Width="1000">
         <DockPanel>
         <Menu DockPanel.Dock="Top" >
             <MenuItem Click="Button_Click" Header="_Sakrij Lokale" FontSize="34" BorderThickness="1" BorderBrush="Black">
@@ -31,6 +31,25 @@
             <Canvas.Background>
                 <ImageBrush ImageSource="Images/mapaNS.jpg" AlignmentX="Right" AlignmentY="Top" Stretch="Uniform"></ImageBrush>
             </Canvas.Background>
+            <Canvas.ContextMenu>
+                <ContextMenu FontSize="25" Name="contextMenu">
+                    <MenuItem Header="Ažuriraj lokal" Click="Azuriraj_Click">
+                        <MenuItem.Icon>
+                            <Image Source="Images/java.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Ukloni sa mape" Click="Ukloni_Click">
+                        <MenuItem.Icon>
+                            <Image Source="Images/java.png" Height="25" Width="25" HorizontalAlignment="Left"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Obriši lokal" Click="Obrisi_Click">
+                        <MenuItem.Icon>
+                            <Image Source="Images/java.png" Height="25" Width="25" HorizontalAlignment="Left"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </Canvas.ContextMenu>
             <StackPanel >
                 <StackPanel Orientation="Horizontal">
                     <!--<Button Click="Button_Click" x:Name="prikaziBt" Content="Sakrij lokale" Height="50"  HorizontalAlignment="Left" FontSize="25"></Button>-->

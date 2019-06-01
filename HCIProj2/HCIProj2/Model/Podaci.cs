@@ -26,6 +26,17 @@ namespace HCIProj2
                 }
             }
         }
+        private ObservableCollection<Lokal> lokaliNaMapi;
+        public ObservableCollection<Lokal> LokaliNaMapi {
+            get { return lokaliNaMapi; }
+            set {
+                if (value != lokaliNaMapi)
+                {
+                    lokali = value;
+                    OnPropertyChanged("LokaliNaMapi");
+                }
+            }
+        }
         private ObservableCollection<Tip> tipovi;
         public ObservableCollection<Tip> Tipovi
         {
@@ -85,6 +96,7 @@ namespace HCIProj2
             lokali = new ObservableCollection<Lokal>();
             tipovi = new ObservableCollection<Tip>();
             etikete = new ObservableCollection<Etiketa>();
+            lokaliNaMapi = new ObservableCollection<Lokal>();
         }
 
         public static Podaci getInstance()

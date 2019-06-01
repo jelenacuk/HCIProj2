@@ -48,8 +48,8 @@ namespace HCIProj2
             }
         }
 
-        private DateTime datumOtvaranja;
-        public DateTime DatumOtvaranja {
+        private String datumOtvaranja;
+        public String DatumOtvaranja {
             get { return datumOtvaranja; }
             set {
                 if (value != datumOtvaranja)
@@ -197,7 +197,7 @@ namespace HCIProj2
             Etikete = new ObservableCollection<Etiketa>();
         }
 
-        public Lokal(string id, string naziv, string opis, DateTime datumOtvaranja, string dozvoljenoPusenje, int kapacitet, string primaRezervacije, string dostupanHendikepiranim, string sluziAlkohol, string cenovnaKategorija, ObservableCollection<Etiketa> etikete, Tip tip, string ikonica)
+        public Lokal(string id, string naziv, string opis, String datumOtvaranja, string dozvoljenoPusenje, int kapacitet, string primaRezervacije, string dostupanHendikepiranim, string sluziAlkohol, string cenovnaKategorija, ObservableCollection<Etiketa> etikete, Tip tip, string ikonica)
         {
             Id = id;
             Naziv = naziv;

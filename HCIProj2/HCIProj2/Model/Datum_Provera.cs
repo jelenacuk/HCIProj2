@@ -16,24 +16,26 @@ namespace HCIProj2
             try
             {
                 var datum = value as string;
-                string format = "dd.MM.yyyy HH:mm";
+               
+                string format = "MM/dd/yyyy HH:mm";
                 try
                 {
+                    
                     DateTime.ParseExact(datum, format, System.Globalization.CultureInfo.InvariantCulture);
                     return new ValidationResult(true, "");
                 }
                 catch
                 {
-                    return new ValidationResult(false, "Format datuma: dd.MM.yyyy. HH:mm");
+                    return new ValidationResult(false, "Format datuma: MM/dd/yyyy HH:mm");
                 }
 
 
             }
             catch
             {
-                return new ValidationResult(false, "Neočekivana greška.");
+                return new ValidationResult(false, "Format datuma: MM/dd/yyyy HH:mm");
             }
-            return null;
+          
         }
     }
 }

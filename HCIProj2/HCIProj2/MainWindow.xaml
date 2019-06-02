@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HCIProj2"
         xmlns:commands="clr-namespace:HCIProj2.Shortcuts"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1000">
+        Title="MainWindow" Height="700" Width="1000" Closed="Window_Closed">
 
     <Window.CommandBindings>
         <CommandBinding Command="commands:Precice.IzlistajSakrijLokale" Executed="Button_Click"/>

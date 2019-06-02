@@ -26,26 +26,26 @@ namespace HCIProj2
         {
             InitializeComponent();
             this.DataContext = this;
-            Lokal l = new Lokal();
-            l.Id = "001";
-            l.X = -1;
-            l.Y = -1;
-            l.Naziv = "Fensi kafanica";
-            l.Ikonica = "Images\\java.png";
-            l.DostupanHendikepiranim = "DA";
-            l.DozvoljenoPusenje = "Zabranjeno";
-            l.SluziAlkohol = "Služi do 23h";
-            lokali = Podaci.getInstance().Lokali;
-            Lokal l2 = new Lokal();
-            l2.Id = "001";
-            l2.Naziv = "Kafana";
-            l2.Ikonica = "Images\\java.png";
-            l2.X = -1;
-            l2.Y = -1;
-            l.PrimaRezervacije = "DA";
-            l2.PrimaRezervacije = "NE";
-            lokali.Add(l);
-            lokali.Add(l2);
+            //Lokal l = new Lokal();
+            //l.Id = "001";
+            //l.X = -1;
+            //l.Y = -1;
+            //l.Naziv = "Fensi kafanica";
+            //l.Ikonica = "Images\\java.png";
+            //l.DostupanHendikepiranim = "DA";
+            //l.DozvoljenoPusenje = "Zabranjeno";
+            //l.SluziAlkohol = "Služi do 23h";
+            //lokali = Podaci.getInstance().Lokali;
+            //Lokal l2 = new Lokal();
+            //l2.Id = "001";
+            //l2.Naziv = "Kafana";
+            //l2.Ikonica = "Images\\java.png";
+            //l2.X = -1;
+            //l2.Y = -1;
+            //l.PrimaRezervacije = "DA";
+            //l2.PrimaRezervacije = "NE";
+            //lokali.Add(l);
+            //lokali.Add(l2);
             lokaliNaMapi = Podaci.getInstance().LokaliNaMapi;
         }
         private ObservableCollection<Lokal> lokali;
@@ -361,6 +361,11 @@ namespace HCIProj2
                 LokaliNaMapi.Remove(selektovanLokal);
                 LokaliPins_Draw();
             }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Podaci.SacuvajPodatke();
         }
     }
 }

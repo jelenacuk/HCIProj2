@@ -200,7 +200,7 @@
                             <TextBlock FontSize="38">Služi i kasno noću</TextBlock>
                         </ComboBoxItem>
                     </ComboBox>
-                    <TextBlock Grid.Column="1" Grid.Row="1" Name="alkoholError_tb" Text="Morate izabrati opciju za cenu." Foreground="Red" FontSize="38" Visibility="Hidden">
+                    <TextBlock Grid.Column="1" Grid.Row="1" Name="alkoholError_tb" Text="Morate izabrati opciju za alkohol." Foreground="Red" FontSize="38" Visibility="Hidden">
                     </TextBlock>
                 </Grid>
 

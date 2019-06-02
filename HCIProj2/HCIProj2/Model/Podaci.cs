@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace HCIProj2
 {
@@ -104,8 +106,42 @@ namespace HCIProj2
             if (instance == null)
             {
                 instance = new Podaci();
+                String fileName = "./podaci.xml";
+                if (File.Exists(fileName) == false)
+                {
+                    FileStream fs = File.Create(fileName);
+                    return instance;
+                }
+                using (var stream = new FileStream(fileName, FileMode.OpenOrCreate))
+                {
+                    XmlSerializer XML = new XmlSerializer(typeof(Podaci));
+                    try
+                    {
+                        var podaci = (Podaci)XML.Deserialize(stream);
+                        if (podaci != null)
+                        {
+                            instance = podaci;
+                            return instance;
+                        }  
+                    }
+                    catch
+                    {
+                        return new Podaci();
+                    }
+                    
+                }
             }
             return instance;
+        }
+
+        public static void SacuvajPodatke()
+        {
+            String fileName = "./podaci.xml";
+            using (var stream = new FileStream(fileName, FileMode.Create))
+            {
+                XmlSerializer XML = new XmlSerializer(typeof(Podaci));
+                XML.Serialize(stream, Podaci.getInstance());
+            }
         }
 
 

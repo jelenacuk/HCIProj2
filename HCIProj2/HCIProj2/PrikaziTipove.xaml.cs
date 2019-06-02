@@ -82,18 +82,9 @@ namespace HCIProj2
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
-            Tip t1 = new Tip("1", "Fakultet", "Opis fakulteta", "Ikonica");
-            Tip t2 = new Tip("2", "Kafic", "Opis kafica", "Ikonica");
-            Tip t3 = new Tip("3", "Biblioteka", "Opis biblioteke", "Ikonica");
-
             SelektovanTip = null;
             DataContext = this;
             Tipovi = Podaci.getInstance().Tipovi;
-
-            Tipovi.Add(t1);
-            Tipovi.Add(t2);
-            Tipovi.Add(t3);
-
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

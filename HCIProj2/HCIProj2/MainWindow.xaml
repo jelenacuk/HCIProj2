@@ -29,10 +29,10 @@
                 <MenuItem Command="commands:Precice.DodajTipCmd" FontSize="34" Header="_Dodaj Tip" InputGestureText="Ctrl+E"/>
             </MenuItem>
             <Separator/>
-            <MenuItem Header="_Prikazi" FontSize="34" BorderThickness="1" BorderBrush="Black">
-                <MenuItem Command="commands:Precice.PrikaziLokaleCmd" Header="_Prikazi Lokale" FontSize="34" Click="prikaziLokale" InputGestureText="Alt+Q"/>
-                <MenuItem Command="commands:Precice.PrikaziEtiketeCmd" Header="_Priakzi Etikete" FontSize="34" Click="prikaziEtikete" InputGestureText="Alt+W"/>
-                <MenuItem Command="commands:Precice.PrikaziTipoveCmd" Header="_Prikazi Tipove" FontSize="34" Click="prikaziTipove" InputGestureText="Alt+E"/>
+            <MenuItem Header="_Prikaži" FontSize="34" BorderThickness="1" BorderBrush="Black">
+                <MenuItem Command="commands:Precice.PrikaziLokaleCmd" Header="_Prikaži Lokale" FontSize="34" InputGestureText="Alt+Q"/>
+                <MenuItem Command="commands:Precice.PrikaziEtiketeCmd" Header="_Prikaži Etikete" FontSize="34" InputGestureText="Alt+W"/>
+                <MenuItem Command="commands:Precice.PrikaziTipoveCmd" Header="_Prikaži Tipove" FontSize="34" InputGestureText="Alt+E"/>
             </MenuItem>
             <Separator/>
             <MenuItem Header="_Pretraga" FontSize="34" BorderThickness="1" BorderBrush="Black">

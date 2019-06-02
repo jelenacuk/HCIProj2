@@ -6,15 +6,23 @@
         xmlns:local="clr-namespace:HCIProj2"
         xmlns:commands="clr-namespace:HCIProj2.Shortcuts"
         mc:Ignorable="d"
-        Title="PrikaziEtikete" Height="450" Width="800">
+        Title="PrikaziEtikete" Height="700" Width="1000">
 
+    <Window.Resources>
+        <Style x:Key="{x:Type ToolTip}" TargetType="{x:Type ToolTip}">
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+    </Window.Resources>
+    
     <Window.CommandBindings>
         <CommandBinding Command="commands:Precice.ZatvoriProzorCmd" Executed="zatvoriProzor"/>
+        <CommandBinding Command="commands:Precice.EtiketaEnterCmd" Executed="buttonPretraziClick"/>
+        <CommandBinding Command="commands:Precice.PonistiPretraguCmd" Executed="buttonPonistiClick"/>
     </Window.CommandBindings>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60" />
+            <RowDefinition Height="80" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -26,26 +34,26 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="130" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="150" />
-                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="200" />
             </Grid.ColumnDefinitions>
 
             <Label x:Name="labelIdEtikete" Content="ID:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontSize="38" Grid.Row="0" Grid.Column="0"/>
-            <TextBox Name="textBoxIdEtikete" MaxLength="50" ToolTip="Unesite ID tipa" FontSize="30" Margin="0,4,0,0" Grid.Row="0" Grid.Column="1"/>
-            <Button Name="buttonPretragaEtikete" ToolTip="Pretraga Tipova" VerticalAlignment="Center" Margin="0,4,0,0"  Height="50" Grid.Row="0" Grid.Column="2" Click="buttonPretraziClick">
+            <TextBox Name="textBoxIdEtikete" MaxLength="50" ToolTip="Unesite ID tipa" FontSize="30" Margin="0,4,0,0" Grid.Row="0" Grid.Column="1" BorderThickness="5"/>
+            <Button Name="buttonPretragaEtikete" VerticalAlignment="Center" Margin="0,4,0,0"  Height="50" Grid.Row="0" Grid.Column="2" Command="commands:Precice.EtiketaEnterCmd" Width="150" ToolTip="Pretraži sve etikete - CTRL+ENTER">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="PRETRAŽI" VerticalAlignment="Center" HorizontalAlignment="Right" Height="30" FontSize="26"/>
+                    <TextBlock Text="Pretraži" VerticalAlignment="Center" HorizontalAlignment="Right" Height="30" FontSize="26"/>
                 </StackPanel>
             </Button>
-            <Button Name="buttonPonistiPretragu" ToolTip="Pretraga Etiketa" VerticalAlignment="Center" Margin="0,4,0,0"  Height="50" Grid.Row="0" Grid.Column="3" Click="buttonPonistiClick">
+            <Button Name="buttonPonistiPretragu" VerticalAlignment="Center" Margin="0,4,0,0"  Height="50" Grid.Row="0" Grid.Column="3" Command="commands:Precice.PonistiPretraguCmd" Width="150" ToolTip="Ponisti pretragu - ALT+ENTER">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="PONIŠTI" VerticalAlignment="Center" HorizontalAlignment="Right" Height="30" FontSize="26"/>
+                    <TextBlock Text="Poništi" VerticalAlignment="Center" HorizontalAlignment="Right" Height="30" FontSize="26"/>
                 </StackPanel>
             </Button>
 
         </Grid>
 
-        <DataGrid Name="typesGrid"  AutoGenerateColumns="False"  Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7" SelectedItem="{Binding Path=SelektovanaEtiketa, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Etikete}" >
+        <DataGrid Name="typesGrid"  FontSize="30" AutoGenerateColumns="False"  Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7" SelectedItem="{Binding Path=SelektovanaEtiketa, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Etikete}" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" MinWidth="100" Width="*" FontSize="30" Binding="{Binding Id}"/>
                 <DataGridTemplateColumn Header="Boja etikete">

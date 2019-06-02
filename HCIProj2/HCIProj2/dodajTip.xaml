@@ -8,9 +8,16 @@
         xmlns:commands="clr-namespace:HCIProj2.Shortcuts"
         mc:Ignorable="d"
         Title="dodajTip" Height="700" Width="1100">
+
+    <Window.Resources>
+        <Style x:Key="{x:Type ToolTip}" TargetType="{x:Type ToolTip}">
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+    </Window.Resources>
     
     <Window.CommandBindings>
         <CommandBinding Command="commands:Precice.ZatvoriProzorCmd" Executed="zatvoriProzor"/>
+        <CommandBinding Command="commands:Precice.EtiketaEnterCmd" Executed="dodajTipBtn_Click"/>
     </Window.CommandBindings>
     
     <Grid>
@@ -142,8 +149,8 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Dodaj" Name="dodajTipBtn" Click="dodajTipBtn_Click" FontSize="38" Width="400"></Button>
-                    <Button Content="Odustani" Name="odustaniBtn" Click="odustaniBtn_Click" FontSize="38" Width="400" Grid.Column="1"></Button>
+                    <Button Content="Dodaj" Name="dodajTipBtn" Command="commands:Precice.EtiketaEnterCmd" FontSize="38" Width="400" ToolTip="Dodaj novi tip - CTRL+ENTER"></Button>
+                    <Button Content="Odustani" Name="odustaniBtn" Click="odustaniBtn_Click" FontSize="38" Width="400" Grid.Column="1" ToolTip="Odustani od dodavanja - ESC"></Button>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

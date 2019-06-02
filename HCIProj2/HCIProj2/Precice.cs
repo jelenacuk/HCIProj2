@@ -85,7 +85,27 @@ namespace HCIProj2.Shortcuts
             typeof(RoutedCommand),
             new InputGestureCollection()
             {
-                new KeyGesture(Key.U, ModifierKeys.Control)
+                new KeyGesture(Key.Escape)
+            }
+            );
+
+        public static readonly RoutedUICommand EtiketaEnterCmd = new RoutedUICommand(
+            "dodaj etiketu",
+            "EtiketaEnterCmd",
+            typeof(RoutedCommand),
+            new InputGestureCollection()
+            {
+                new KeyGesture(Key.Enter,ModifierKeys.Control)
+            }
+            );
+
+        public static readonly RoutedUICommand PonistiPretraguCmd = new RoutedUICommand(
+            "ponisti pretragu",
+            "PonistiPretraguCmd",
+            typeof(RoutedCommand),
+            new InputGestureCollection()
+            {
+                new KeyGesture(Key.Enter,ModifierKeys.Alt)
             }
             );
     }

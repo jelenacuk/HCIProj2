@@ -8,48 +8,56 @@
         mc:Ignorable="d"
         Title="PrikaziTipove" Height="700" Width="1000">
 
+    <Window.Resources>
+        <Style x:Key="{x:Type ToolTip}" TargetType="{x:Type ToolTip}">
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+    </Window.Resources>
+
     <Window.CommandBindings>
         <CommandBinding Command="commands:Precice.ZatvoriProzorCmd" Executed="zatvoriProzor"/>
+        <CommandBinding Command="commands:Precice.EtiketaEnterCmd" Executed="buttonPretraziClick"/>
+        <CommandBinding Command="commands:Precice.PonistiPretraguCmd" Executed="buttonPonistiClick"/>
     </Window.CommandBindings>
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="120" />
+            <RowDefinition Height="160" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="60" />
-                <RowDefinition Height="60" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="80" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="130" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="200" />
             </Grid.ColumnDefinitions>
             
             <Label x:Name="labelIdTipa" Content="ID:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontSize="38" Grid.Row="0" Grid.Column="0"/>
-            <TextBox Name="textBoxIdTipa" MaxLength="50" ToolTip="Unesite ID tipa" FontSize="30" Margin="0,4,0,0" Grid.Row="0" Grid.Column="1"/>
-            <Button Name="buttonPretragaTipova" ToolTip="Pretraga Tipova" VerticalAlignment="Center" Margin="0,4,0,0"  Height="50" Grid.Row="0" Grid.Column="2" Click="buttonPretraziClick">
+            <TextBox Name="textBoxIdTipa" MaxLength="50" ToolTip="Unesite ID tipa" FontSize="30" Margin="0,4,0,0" Grid.Row="0" Grid.Column="1" BorderThickness="5" Height="60"/>
+            <Button Name="buttonPretragaTipova" VerticalAlignment="Center" Margin="0,4,0,0"  Height="50" Grid.Row="0" Grid.Column="2" Command="commands:Precice.EtiketaEnterCmd" Width="150" ToolTip="Pretraži sve tipove - CTRL+ENTER">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Pretraži" VerticalAlignment="Center" HorizontalAlignment="Right" Height="30" FontSize="26"/>
                 </StackPanel>
             </Button>
 
             <Label x:Name="LabelNazivTipa" Content="Naziv:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontSize="38" Grid.Row="1" Grid.Column="0"/>
-            <TextBox Name="textBoxNazivTipa" MaxLength="50" ToolTip="Unesite ID tipa" FontSize="30" Margin="0,4,0,0" Grid.Row="1" Grid.Column="1"/>
-            <Button Name="buttonPonisti" ToolTip="Ponisti Pretragu" VerticalAlignment="Center" Margin="0,4,0,0"  Height="50" Grid.Row="1" Grid.Column="2" Click="buttonPonistiClick">
+            <TextBox Name="textBoxNazivTipa" MaxLength="50" ToolTip="Unesite ID tipa" FontSize="30" Margin="0,4,0,0" Grid.Row="1" Grid.Column="1" BorderThickness="5" Height="60"/>
+            <Button Name="buttonPonisti" VerticalAlignment="Center" Margin="0,4,0,0"  Height="50" Grid.Row="1" Grid.Column="2" Command="commands:Precice.PonistiPretraguCmd" Width="150" ToolTip="Poništi pretragu - ALT+ENTER">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Ponisti" VerticalAlignment="Center" HorizontalAlignment="Right" Height="30" FontSize="26"/>
+                    <TextBlock Text="Poništi" VerticalAlignment="Center" HorizontalAlignment="Right" Height="30" FontSize="26"/>
                 </StackPanel>
             </Button>
         </Grid>
 
 
 
-        <DataGrid Name="typesGrid"  AutoGenerateColumns="False"  Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7" SelectedItem="{Binding Path=SelektovanTip, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Tipovi}">
+        <DataGrid Name="typesGrid" FontSize="30" AutoGenerateColumns="False"  Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7" SelectedItem="{Binding Path=SelektovanTip, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Tipovi}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" MinWidth="100" Width="*" FontSize="30" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Ime Tipa" MinWidth="100" Width="*" FontSize="30" Binding="{Binding Naziv}"/>

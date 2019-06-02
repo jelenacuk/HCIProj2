@@ -43,22 +43,9 @@ namespace HCIProj2
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
-            Etiketa e1 = new Etiketa("1", "Kuca", "red");
-            Etiketa e2 = new Etiketa("2", "Farma", "blue");
-            Etiketa e3 = new Etiketa("3", "Vikendica", "green");
-            Etiketa e4 = new Etiketa("4", "Kafic", "purple");
-            Etiketa e5 = new Etiketa("5", "Biblioteka", "orange");
-
             SelektovanaEtiketa = null;
             DataContext = this;
             Etikete = Podaci.getInstance().Etikete;
-
-            Etikete.Add(e1);
-            Etikete.Add(e2);
-            Etikete.Add(e3);
-            Etikete.Add(e4);
-            Etikete.Add(e5);
-
         }
 
         private void buttonPretraziClick(object sender, RoutedEventArgs e)

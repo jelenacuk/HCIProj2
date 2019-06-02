@@ -10,8 +10,16 @@
         mc:Ignorable="d"
         Title="dodajEtiketu" Height="700" Width="1100">
 
+    <Window.Resources>
+        <Style x:Key="{x:Type ToolTip}" TargetType="{x:Type ToolTip}">
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+    </Window.Resources>
+
+
     <Window.CommandBindings>
         <CommandBinding Command="commands:Precice.ZatvoriProzorCmd" Executed="zatvoriProzor"/>
+        <CommandBinding Command="commands:Precice.EtiketaEnterCmd" Executed="Button_Click_dodajEtiketu"/>
     </Window.CommandBindings>
     
     <Grid>
@@ -113,8 +121,8 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Dodaj" Name="Didaj_Btn" Click="Button_Click_dodajEtiketu" FontSize="38" Width="400"></Button>
-                    <Button Content="Odustani" Click="Button_Click_Odustani" FontSize="38" Width="400" Grid.Column="1"></Button>
+                    <Button Content="Dodaj" Name="Didaj_Btn" Command="commands:Precice.EtiketaEnterCmd" FontSize="38" Width="400" ToolTip="Dodaj novu etiketu - CTRL+ENTER" ></Button>
+                    <Button Content="Odustani" Click="Button_Click_Odustani" FontSize="38" Width="400" Grid.Column="1" ToolTip="Odustani od dodavanja - ESC"></Button>
                 </Grid>
 
             </StackPanel>

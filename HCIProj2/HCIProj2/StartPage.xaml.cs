@@ -23,5 +23,33 @@ namespace HCIProj2
         {
             InitializeComponent();
         }
+
+        private void NoviSad_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow("novisad");
+            mw.Show();
+            Close();
+        }
+
+        private void Beograd_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow("beograd");
+            mw.Show();
+            Close();
+        }
+
+        private void Nis_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow("nis");
+            mw.Show();
+            Close();
+        }
+
+        private void Zrenjanin_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow("zrenjanin");
+            mw.Show();
+            Close();
+        }
     }
 }

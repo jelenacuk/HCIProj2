@@ -14,7 +14,7 @@ namespace HCIProj2
     {
 
         private static Podaci instance = null;
-
+        private string grad;
         private ObservableCollection<Lokal> lokali;
         public ObservableCollection<Lokal> Lokali
         {
@@ -101,12 +101,46 @@ namespace HCIProj2
             lokaliNaMapi = new ObservableCollection<Lokal>();
         }
 
-        public static Podaci getInstance()
+        public static Podaci getInstance(string grad)
         {
+            if (instance != null)
+            {
+                if (instance.grad != grad)
+                {
+                    instance = new Podaci();
+                    instance.grad = grad;
+                    String fileName = "./" + grad + ".xml";
+                    if (File.Exists(fileName) == false)
+                    {
+                        FileStream fs = File.Create(fileName);
+                        return instance;
+                    }
+                    using (var stream = new FileStream(fileName, FileMode.OpenOrCreate))
+                    {
+                        XmlSerializer XML = new XmlSerializer(typeof(Podaci));
+                        try
+                        {
+                            var podaci = (Podaci)XML.Deserialize(stream);
+                            if (podaci != null)
+                            {
+                                instance = podaci;
+                                return instance;
+                            }
+                        }
+                        catch
+                        {
+                            return new Podaci();
+                        }
+
+                    }
+                }
+                
+            }
             if (instance == null)
             {
                 instance = new Podaci();
-                String fileName = "./podaci.xml";
+                instance.grad = grad;
+                String fileName = "./" + grad + ".xml";
                 if (File.Exists(fileName) == false)
                 {
                     FileStream fs = File.Create(fileName);
@@ -122,28 +156,62 @@ namespace HCIProj2
                         {
                             instance = podaci;
                             return instance;
-                        }  
+                        }
                     }
                     catch
                     {
                         return new Podaci();
                     }
-                    
+
                 }
             }
             return instance;
+
         }
 
-        public static void SacuvajPodatke()
+        public static Podaci getInstance()
         {
-            String fileName = "./podaci.xml";
+            if (instance == null)
+            {
+                instance = new Podaci();
+                String fileName = "./"  + ".xml";
+                if (File.Exists(fileName) == false)
+                {
+                    FileStream fs = File.Create(fileName);
+                    return instance;
+                }
+                using (var stream = new FileStream(fileName, FileMode.OpenOrCreate))
+                {
+                    XmlSerializer XML = new XmlSerializer(typeof(Podaci));
+                    try
+                    {
+                        var podaci = (Podaci)XML.Deserialize(stream);
+                        if (podaci != null)
+                        {
+                            instance = podaci;
+                            return instance;
+                        }
+                    }
+                    catch
+                    {
+                        return new Podaci();
+                    }
+
+                }
+            }
+            return instance;
+
+        }
+
+        public static void SacuvajPodatke(string grad)
+        {
+            String fileName = "./" + grad + ".xml";
             using (var stream = new FileStream(fileName, FileMode.Create))
             {
                 XmlSerializer XML = new XmlSerializer(typeof(Podaci));
-                XML.Serialize(stream, Podaci.getInstance());
+                XML.Serialize(stream, instance);
             }
         }
-
 
         #region PropertyChangedNotifier
         public event PropertyChangedEventHandler PropertyChanged;

@@ -23,6 +23,9 @@ namespace HCIProj2
     public partial class MainWindow : Window
     {
         public static MainWindow instance;
+        private string grad;
+        private bool nazad;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -31,6 +34,33 @@ namespace HCIProj2
             Lokali = Podaci.getInstance().Lokali;
             LokaliNaMapi = Podaci.getInstance().LokaliNaMapi;
             LokaliPins_Draw();
+        }
+
+        public MainWindow(string grad)
+        {
+            InitializeComponent();
+            instance = this;
+            this.DataContext = this;
+            this.grad = grad;
+            nazad = false;
+            MapaPath = Directory.GetCurrentDirectory() + "\\Images\\" + grad+".png";
+            Lokali = Podaci.getInstance(this.grad).Lokali;
+            LokaliNaMapi = Podaci.getInstance(this.grad).LokaliNaMapi;
+            LokaliPins_Draw();
+            Nazad.IsEnabled = true;
+        }
+
+        
+        private string mapaPath;
+        public string MapaPath {
+            get { return mapaPath; }
+            set {
+                if (value != mapaPath)
+                {
+                    mapaPath = value;
+                    OnPropertyChanged("MapaPath");
+                }
+            }
         }
         private ObservableCollection<Lokal> lokali;
         private Lokal lokalSelektovanNaListi;
@@ -392,7 +422,19 @@ namespace HCIProj2
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            Podaci.SacuvajPodatke();
+            if (!nazad)
+            {
+                Podaci.SacuvajPodatke(this.grad);
+            }
+        }
+
+        private void Nazad_Click(object sender, RoutedEventArgs e)
+        {
+            nazad = true;
+            StartPage sp = new StartPage();
+            Podaci.SacuvajPodatke(this.grad);
+            sp.Show();
+            this.Close();
         }
     }
 }

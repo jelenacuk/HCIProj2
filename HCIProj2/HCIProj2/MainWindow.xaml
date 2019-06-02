@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HCIProj2"
         xmlns:commands="clr-namespace:HCIProj2.Shortcuts"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1000" Closed="Window_Closed">
+        Title="MainWindow" Height="650" Width="1040" Closed="Window_Closed">
 
     <Window.CommandBindings>
         <CommandBinding Command="commands:Precice.IzlistajSakrijLokale" Executed="Button_Click"/>
@@ -38,10 +38,13 @@
             <MenuItem Header="_Pretraga" FontSize="34" BorderThickness="1" BorderBrush="Black">
                 <MenuItem Header="_Pretrazi Lokale" FontSize="34" />
             </MenuItem>
+            <Separator></Separator>
+            <MenuItem IsEnabled="False" Name="Nazad" Click="Nazad_Click" Header="_Nazad" FontSize="34" BorderThickness="1" BorderBrush="Black">
+            </MenuItem>
         </Menu>
         <Canvas Name="Mapa" AllowDrop="True" Mouse.PreviewMouseDown="Mapa_PreviewMouseDown" MouseRightButtonDown="Mapa_MouseRightButtonDown" MouseMove="Mapa_MouseMove" DragEnter="Mapa_DragEnter" Drop="Mapa_Drop">
             <Canvas.Background>
-                <ImageBrush ImageSource="Images/mapaNS.jpg" AlignmentX="Right" AlignmentY="Top" Stretch="Uniform"></ImageBrush>
+                <ImageBrush ImageSource="{Binding MapaPath}" AlignmentX="Right" AlignmentY="Top" Stretch="Uniform"></ImageBrush>
             </Canvas.Background>
             <Canvas.ContextMenu>
                 <ContextMenu FontSize="25" Name="contextMenu">

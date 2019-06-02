@@ -22,33 +22,18 @@ namespace HCIProj2
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow instance;
         public MainWindow()
         {
             InitializeComponent();
+            instance = this;
             this.DataContext = this;
-            //Lokal l = new Lokal();
-            //l.Id = "001";
-            //l.X = -1;
-            //l.Y = -1;
-            //l.Naziv = "Fensi kafanica";
-            //l.Ikonica = "Images\\java.png";
-            //l.DostupanHendikepiranim = "DA";
-            //l.DozvoljenoPusenje = "Zabranjeno";
-            //l.SluziAlkohol = "Služi do 23h";
-            //lokali = Podaci.getInstance().Lokali;
-            //Lokal l2 = new Lokal();
-            //l2.Id = "001";
-            //l2.Naziv = "Kafana";
-            //l2.Ikonica = "Images\\java.png";
-            //l2.X = -1;
-            //l2.Y = -1;
-            //l.PrimaRezervacije = "DA";
-            //l2.PrimaRezervacije = "NE";
-            //lokali.Add(l);
-            //lokali.Add(l2);
-            lokaliNaMapi = Podaci.getInstance().LokaliNaMapi;
+            Lokali = Podaci.getInstance().Lokali;
+            LokaliNaMapi = Podaci.getInstance().LokaliNaMapi;
+            LokaliPins_Draw();
         }
         private ObservableCollection<Lokal> lokali;
+        private Lokal lokalSelektovanNaListi;
         public ObservableCollection<Lokal> Lokali {
             get { return lokali; }
             set {
@@ -66,7 +51,7 @@ namespace HCIProj2
             set {
                 if (value != lokaliNaMapi)
                 {
-                    lokali = value;
+                    lokaliNaMapi = value;
                     OnPropertyChanged("LokaliNaMapi");
                 }
             }
@@ -247,7 +232,7 @@ namespace HCIProj2
             return null;
         }
 
-        private void LokaliPins_Draw()
+        public void LokaliPins_Draw()
         {
             Mapa.Children.RemoveRange(1, lokaliNaMapi.Count +1);
             foreach (Lokal lokal in lokaliNaMapi)
@@ -258,7 +243,6 @@ namespace HCIProj2
                     lokalIkonica.Width = 32;
                     lokalIkonica.Height = 32;
                     lokalIkonica.ToolTip = lokal.Id + " " + lokal.Naziv;
-
                     if (File.Exists(lokal.Ikonica))
                     {
                         lokalIkonica.Source = new BitmapImage(new Uri(lokal.Ikonica, UriKind.RelativeOrAbsolute));
@@ -360,6 +344,49 @@ namespace HCIProj2
             {
                 LokaliNaMapi.Remove(selektovanLokal);
                 LokaliPins_Draw();
+            }
+        }
+        private void Obrisi_Click_List(object sender, RoutedEventArgs e)
+        {
+            if (lokalSelektovanNaListi != null)
+            {
+                Lokali.Remove(lokalSelektovanNaListi);
+            }
+        }
+        private void Azuriraj_Click_List(object sender, RoutedEventArgs e)
+        {
+            if (lokalSelektovanNaListi != null)
+            {
+                Detaljnije detaljnije = new Detaljnije(lokalSelektovanNaListi);
+                detaljnije.Show();
+            }
+        }
+
+        private void ListaLokala_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Point mousePos = e.GetPosition(null);
+            // Get the dragged ListViewItem
+            ListView listView = sender as ListView;
+            ListViewItem listViewItem =
+                FindAncestor<ListViewItem>((DependencyObject)e.OriginalSource);
+
+            // Find the data behind the ListViewItem
+            try
+            {
+                Lokal lokal = (Lokal)listView.ItemContainerGenerator.
+                                    ItemFromContainer(listViewItem);
+                if (lokal != null)
+                {
+                    lokalSelektovanNaListi = lokal;
+                }
+                else
+                {
+                }
+
+            }
+            catch
+            {
+
             }
         }
 

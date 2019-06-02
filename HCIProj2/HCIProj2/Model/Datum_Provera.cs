@@ -17,7 +17,7 @@ namespace HCIProj2
             {
                 var datum = value as string;
                
-                string format = "MM/dd/yyyy HH:mm";
+                string format = "dd/MM/yyyy";
                 try
                 {
                     
@@ -26,14 +26,14 @@ namespace HCIProj2
                 }
                 catch
                 {
-                    return new ValidationResult(false, "Format datuma: MM/dd/yyyy HH:mm");
+                    return new ValidationResult(false, "Format datuma: dd/MM/yyyy");
                 }
 
 
             }
             catch
             {
-                return new ValidationResult(false, "Format datuma: MM/dd/yyyy HH:mm");
+                return new ValidationResult(false, "Format datuma: dd/MM/yyyy");
             }
           
         }

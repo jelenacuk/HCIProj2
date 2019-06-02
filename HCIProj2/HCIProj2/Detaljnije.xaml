@@ -4,121 +4,321 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCIProj2"
+        xmlns:validation="clr-namespace:HCIProj2"
+        xmlns:commands="clr-namespace:HCIProj2.Shortcuts"
+        xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
         mc:Ignorable="d"
         Title="Detaljnije" Height="700" Width="1100">
     <ScrollViewer>
         <StackPanel>
             <TextBlock Text="Pregled Lokala" FontSize="38" HorizontalAlignment="Center" ></TextBlock>
-            <Grid Margin="0 30 0 0">
+            <Grid Margin="0 30 0 20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Naziv lokala" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <TextBox  AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5"  FontSize="25" Text="{Binding Lokal.Naziv}"></TextBox>
+                <TextBlock Text="ID:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <TextBox AcceptsReturn="True" Name="textB_id" TextChanged="TextB_id_TextChanged" Validation.Error="TextB_id_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="38">
+                    <TextBox.Text>
+                        <Binding Path="Lokal.Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Id" Min="3" Max="10"/>
+                                <validation:ID_Provera ValidationStep="RawProposedValue" klasa="lokal"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate  >
+                            <Grid>
+                                <AdornedElementPlaceholder   x:Name="textBox"/>
+                                <TextBlock TextWrapping="Wrap" Margin="0 90 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
             </Grid>
-            <Grid Margin="0 30 0 0">
+            <!-- NAZIV -->
+            <Grid Margin="0 30 0 20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Naziv:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <TextBox AcceptsReturn="True" Name="textB_naziv" Validation.Error="TextB_naziv_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="38">
+                    <TextBox.Text>
+                        <Binding Path="Lokal.Naziv" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Naziv" Min="3" Max="50"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate  >
+                            <Grid>
+                                <AdornedElementPlaceholder   x:Name="textBox"/>
+                                <TextBlock TextWrapping="Wrap" Margin="0 90 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
+            </Grid>
+            <!-- OPIS -->
+            <Grid Margin="0 30 0 20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Opis:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="25" Text="{Binding Lokal.Opis}"></TextBox>
+                <TextBox AcceptsReturn="True" Name="textB_opis" Validation.Error="TextB_opis_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="300" FontSize="38">
+                    <TextBox.Text>
+                        <Binding Path="Lokal.Opis" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Opis" Min="3" Max="500"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate  >
+                            <Grid>
+                                <AdornedElementPlaceholder   x:Name="textBox"/>
+                                <TextBlock TextWrapping="Wrap" Margin="0 290 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
             </Grid>
+            <!-- DATUM -->
+            <Grid Margin="0 30 0 20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Datum otvaranja:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <TextBox AcceptsReturn="True" Name="textB_datum" Validation.Error="TextB_datum_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="38">
+                    <TextBox.Text>
+                        <Binding Path="Lokal.DatumOtvaranja" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <validation:Datum_Provera ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate  >
+                            <Grid>
+                                <AdornedElementPlaceholder   x:Name="textBox"/>
+                                <TextBlock TextWrapping="Wrap" Margin="0 90 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
+            </Grid>
+
+            <!-- KAPACITET -->
             <Grid Margin="0 30 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Datum otvaranja:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <TextBox Grid.Column="1" BorderThickness="5"  FontSize="25" Text="{Binding Lokal.DatumOtvaranja}"></TextBox>
+                <TextBlock Text="Kapacitet:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <TextBox AcceptsReturn="True" Name="textB_kapacitet" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="38">
+                    <TextBox.Text>
+                        <Binding Path="Lokal.Kapacitet" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
             </Grid>
-            <Grid Margin="0 30 0 0">
+
+            <!-- IKONICA -->
+            <Grid Margin="0 30 0 20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Kapacitet" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5"  FontSize="25" Text="{Binding Lokal.Kapacitet}"></TextBox>
+                <TextBlock Text="Ikonica:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <Grid Margin="0 0 0 0" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox AcceptsReturn="True" Name="textB_ikonica" Validation.Error="TextB_ikonica_Error" TextWrapping="Wrap" BorderThickness="5"  FontSize="38">
+                        <TextBox.Text>
+                            <Binding Path="Lokal.Ikonica" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Ikonica" Min="0" Max="100"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate  >
+                                <Grid>
+                                    <AdornedElementPlaceholder   x:Name="textBox"/>
+                                    <TextBlock TextWrapping="Wrap" Margin="0 60 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
+                    </TextBox>
+                    <Button Grid.Column="1" Name="loadIcon"  Click="LoadIcon_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Images/search.png" Height="40" Width="40" HorizontalAlignment="Left"/>
+                            <TextBlock Text="Izaberi" FontSize="38" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
             </Grid>
+            <!-- ALKOHOL -->
             <Grid Margin="0 30 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Prima rezervacije:" FontSize="38" FontWeight="Bold"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <ComboBox SelectionChanged="Rezervacije_SelectionChanged" Name="Rezervacije" Grid.Column="1" BorderThickness="5" SelectedIndex="{Binding SelectedRez}" >
-                    <TextBlock Text="Da" FontSize="38"></TextBlock>
-                    <TextBlock Text="Ne" FontSize="38"></TextBlock>
+                <TextBlock Text="Alkohol:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <ComboBox Grid.Column="1" Name="combo_alkohol" SelectionChanged="Alkohol_SelectionChanged" SelectedIndex="{Binding SelectedAlk}">
+                    <TextBlock FontSize="38">Ne služi</TextBlock>
+                    <TextBlock FontSize="38">Služi do 23h</TextBlock>
+                    <TextBlock FontSize="38">Služi i kasno noću</TextBlock>
                 </ComboBox>
+                <TextBlock Grid.Column="1" Grid.Row="1" Name="alkoholError_tb" Text="Morate izabrati opciju za alkohol." Foreground="Red" FontSize="38" Visibility="Hidden">
+                </TextBlock>
             </Grid>
+            <!-- PUSENJE -->
             <Grid Margin="0 30 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Dostupan hendikepiranim:" FontSize="38" FontWeight="Bold"  VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <ComboBox SelectionChanged="Hendikepirani_SelectionChanged" Name="Hendikepirani" Grid.Column="1" BorderThickness="5" SelectedIndex="{Binding SelectedHen}">
-                    <TextBlock Text="Da" FontSize="38"></TextBlock>
-                    <TextBlock Text="Ne" FontSize="38"></TextBlock>
-                </ComboBox>
-            </Grid>
-            <Grid Margin="0 30 0 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Pušenje:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <ComboBox SelectionChanged="Pušenje_SelectionChanged" Name="Pušenje" Grid.Column="1" BorderThickness="5"  SelectedIndex="{Binding SelectedPus}">
-                    <TextBlock Text="Dozvoljeno" FontSize="38"></TextBlock>
-                    <TextBlock Text="Zabranjeno" FontSize="38"></TextBlock>
+                <ComboBox Grid.Column="1" Name="combo_pusenje" SelectionChanged="Pušenje_SelectionChanged" SelectedIndex="{Binding SelectedPus}">
+                    <TextBlock FontSize="38">Dozvoljeno</TextBlock>
+                    <TextBlock FontSize="38">Zabranjeno</TextBlock>
                 </ComboBox>
+                <TextBlock Grid.Column="1" Grid.Row="1" Name="pusenjeError_tb" Text="Morate izabrati opciju za pusenje." Foreground="Red" FontSize="38" Visibility="Hidden">
+                </TextBlock>
             </Grid>
+
+            <!-- CENE -->
             <Grid Margin="0 30 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Služi alkohol:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <ComboBox SelectionChanged="Alkohol_SelectionChanged" Name="Alkohol" Grid.Column="1" BorderThickness="5" SelectedIndex="{Binding SelectedAlk}">
-                    <TextBlock Text="Ne služi" FontSize="38"></TextBlock>
-                    <TextBlock Text="Služi do 23h" FontSize="38"></TextBlock>
-                    <TextBlock Text="Služi i kasno noću" FontSize="38"></TextBlock>
+                <TextBlock Text="Cene:" FontSize="38" Grid.Column="0" Grid.Row="0" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <ComboBox Grid.Column="1" Grid.Row="0" Name="combo_cene" SelectionChanged="Cena_SelectionChanged" SelectedIndex="{Binding SelectedCena}">
+                    <TextBlock FontSize="38">Niske</TextBlock>
+                    <TextBlock FontSize="38">Srednje</TextBlock>
+                    <TextBlock FontSize="38">Visoke</TextBlock>
+                    <TextBlock FontSize="38">Izuzetno visoke</TextBlock>
                 </ComboBox>
+                <TextBlock Grid.Column="1" Grid.Row="1" Name="ceneError_tb" Text="Morate izabrati opciju za cenu." Foreground="Red" FontSize="38" Visibility="Hidden">
+                </TextBlock>
             </Grid>
+            <!-- REZERVACIJE -->
             <Grid Margin="0 30 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Cena:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <ComboBox SelectionChanged="Cena_SelectionChanged" Name="Cena" Grid.Column="1" BorderThickness="5" SelectedIndex="{Binding SelectedCena}">
-                    <TextBlock Text="Niska" FontSize="38"></TextBlock>
-                    <TextBlock Text="Srednja" FontSize="38"></TextBlock>
-                    <TextBlock Text="Visoka" FontSize="38"></TextBlock>
-                    <TextBlock Text="Izuzetno visoka" FontSize="38"></TextBlock>
+                <TextBlock Text="Rezervacije:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <ComboBox Grid.Column="1" Name="combo_rezervacije" SelectionChanged="Rezervacije_SelectionChanged" SelectedIndex="{Binding SelectedRez}">
+                    <TextBlock FontSize="38">Da</TextBlock>
+                    <TextBlock FontSize="38">Ne</TextBlock>
                 </ComboBox>
+                <TextBlock Grid.Column="1" Grid.Row="1" Name="rezervacijeError_tb" Text="Morate izabrati opciju za rezervacije." Foreground="Red" FontSize="38" Visibility="Hidden">
+                </TextBlock>
             </Grid>
+
+            <!-- HENDIKEP -->
             <Grid Margin="0 30 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Hendikepirani:" Grid.Row="0" Grid.Column="0" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <ComboBox Grid.Column="1"  Grid.Row="0" Name="combo_hendikepirani" SelectionChanged="Hendikepirani_SelectionChanged" SelectedIndex="{Binding SelectedHen}">
+                    <TextBlock FontSize="38">Da</TextBlock>
+                    <TextBlock FontSize="38">Ne</TextBlock>
+                </ComboBox>
+                <TextBlock Grid.Column="1" Grid.Row="1" Name="hendikepiraniError_tb" Text="Morate naznaciti dostupnost hendikepiranima." Foreground="Red" FontSize="38" Visibility="Hidden">
+                </TextBlock>
+            </Grid>
+
+            <!-- ETIKETE -->
+            <Grid Margin="0 30 0 10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Etikete:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <ScrollViewer  Grid.Column="1" Height="120">
-                    <ListBox BorderThickness="5">
-                        
-                    </ListBox>
-                </ScrollViewer>
+                <Grid Margin="0 30 0 10" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <toolkit:AutoCompleteBox Name="autoCompleteBoxTags" FontSize="38" PreviewKeyDown="AutoCompleteBoxTags_PreviewKeyDown" IsDropDownOpen="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Lokali, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id">
+                        <toolkit:AutoCompleteBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Id}" FontSize="38"></TextBlock>
+                            </DataTemplate>
+                        </toolkit:AutoCompleteBox.ItemTemplate>
+                    </toolkit:AutoCompleteBox >
+                    <Button Name="dodajEtiketuBtn" Click="DodajEtiketuBtn_Click" Content="Dodaj" FontSize="38" Grid.Column="1"></Button>
+                </Grid>
             </Grid>
+            <!-- IZABRANE ETIKETE -->
+            <Grid Margin="0 1 0 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <wpfTool:CheckComboBox FontSize="38"  Grid.Column="1" Name="comboBoxTags"
+                                   ItemsSource="{Binding lokal.Etikete}"
+                                   DisplayMemberPath="Id"
+                                   SelectedItemsOverride="{Binding IzabraneEtikete}"
+                                   MaxDropDownHeight="100"
+                                   Margin="3,0,3,0" Grid.ColumnSpan="3" />
+            </Grid>
+            <!-- TIPOVI -->
             <Grid Margin="0 30 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Tip:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <ComboBox Name="Tip" Grid.Column="1" BorderThickness="5">
-                </ComboBox>
+                <Grid Margin="0 0 0 0" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Name="combo_tipovi" SelectionChanged="Combo_tipovi_SelectionChanged" Loaded="Combo_tipovi_Loaded" SelectedValue="{Binding Lokal.Tip}" FontSize = "38" ></ComboBox>
+                    <Button Grid.Column="1" Name="noviTip" Click="NoviTip_Click"  Content="Dodaj" FontSize="38">
+                    </Button>
+                </Grid>
+                <TextBlock Grid.Column="1" Grid.Row="1" Name="tipoviError_tb" Text="Morate odabrati tip." Foreground="Red" FontSize="38" Visibility="Hidden">
+                </TextBlock>
             </Grid>
             <Grid Margin="0 30 0 0">
                 <Grid.ColumnDefinitions>
@@ -126,9 +326,9 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Margin="5 5 5 5" FontSize="38" Height="60" Content="Brisanje"></Button>
-                <Button Margin="5 5 5 5" FontSize="38" Height="60" Grid.Column="1" Content="Izlaz"></Button>
-                <Button Click="Sacuvaj_Click" Margin="5 5 5 5" FontSize="38" Height="60" Grid.Column="2" Content="Sacuvaj"></Button>
+                <Button Name="Brisanje" Margin="5 5 5 5" Click="Brisanje_Click" FontSize="38" Height="60" Content="Brisanje"></Button>
+                <Button Name="Izlaz" Margin="5 5 5 5" Click="Izlaz_Click" FontSize="38" Height="60" Grid.Column="1" Content="Izlaz"></Button>
+                <Button Name="Sacuvaj" Click="Sacuvaj_Click" Margin="5 5 5 5" FontSize="38" Height="60" Grid.Column="2" Content="Sacuvaj"></Button>
             </Grid>
         </StackPanel>
     </ScrollViewer>

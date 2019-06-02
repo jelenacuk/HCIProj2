@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using Microsoft.Win32;
+
 
 namespace HCIProj2
 {
@@ -37,6 +39,13 @@ namespace HCIProj2
         private string alkohol;
         private string cena;
 
+
+        private bool id_Eror;
+        private bool opis_Error;
+        private bool ikonica_Error;
+        private bool naziv_Error;
+        private bool datum_Error;
+
         private int selectedRez;
         public int SelectedRez {
             get { return selectedRez; }
@@ -59,6 +68,19 @@ namespace HCIProj2
                 }
             }
         }
+
+        private ObservableCollection<Etiketa> izabraneEtikete;
+        public ObservableCollection<Etiketa> IzabraneEtikete {
+            get { return izabraneEtikete; }
+            set {
+                if (value != izabraneEtikete)
+                {
+                    izabraneEtikete = value;
+                    OnPropertyChanged("IzabraneEtikete");
+                }
+            }
+        }
+
         private int selectedHen;
         public int SelectedHen {
             get { return selectedHen; }
@@ -96,12 +118,12 @@ namespace HCIProj2
         public Lokal LokalOrig {
             get { return lokalOrig; }
             set {
-                    if (value != lokalOrig)
-                    {
+                if (value != lokalOrig)
+                {
                     lokalOrig = value;
-                        OnPropertyChanged("LokalOrig");
-                    }
+                    OnPropertyChanged("LokalOrig");
                 }
+            }
         }
 
         private Lokal lokal;
@@ -126,6 +148,12 @@ namespace HCIProj2
             LokalOrig = l;
             lokal = new Lokal(lokalOrig);
             SelectedCena = -1;
+            izabraneEtikete = l.Etikete;
+            id_Eror = false;
+            opis_Error = false;
+            naziv_Error = false;
+            ikonica_Error = false;
+            datum_Error = false;
             if (lokal.PrimaRezervacije == "DA")
             {
                 SelectedRez = 0;
@@ -138,7 +166,7 @@ namespace HCIProj2
             {
                 SelectedHen = 0;
             }
-            else if(lokal.DostupanHendikepiranim == "NE")
+            else if (lokal.DostupanHendikepiranim == "NE")
             {
                 SelectedHen = 1;
             }
@@ -206,6 +234,7 @@ namespace HCIProj2
             ComboBox cb = (ComboBox)sender;
             TextBlock tb = (TextBlock)cb.SelectedValue;
             PrimaRezervacije = tb.Text;
+            rezervacijeError_tb.Visibility = Visibility.Hidden;
         }
 
         private void Hendikepirani_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -213,6 +242,7 @@ namespace HCIProj2
             ComboBox cb = (ComboBox)sender;
             TextBlock tb = (TextBlock)cb.SelectedValue;
             hendikepirani = tb.Text;
+            hendikepiraniError_tb.Visibility = Visibility.Hidden;
         }
 
         private void Pušenje_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -220,6 +250,7 @@ namespace HCIProj2
             ComboBox cb = (ComboBox)sender;
             TextBlock tb = (TextBlock)cb.SelectedValue;
             pusenje = tb.Text;
+            pusenjeError_tb.Visibility = Visibility.Hidden;
         }
 
         private void Alkohol_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -227,6 +258,8 @@ namespace HCIProj2
             ComboBox cb = (ComboBox)sender;
             TextBlock tb = (TextBlock)cb.SelectedValue;
             alkohol = tb.Text;
+            alkoholError_tb.Visibility = Visibility.Hidden;
+
         }
 
         private void Cena_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -234,18 +267,165 @@ namespace HCIProj2
             ComboBox cb = (ComboBox)sender;
             TextBlock tb = (TextBlock)cb.SelectedValue;
             cena = tb.Text;
+            rezervacijeError_tb.Visibility = Visibility.Hidden;
         }
 
         private void Sacuvaj_Click(object sender, RoutedEventArgs e)
         {
-            LokalOrig.CenovnaKategorija = cena;
-            LokalOrig.DostupanHendikepiranim = hendikepirani;
-            LokalOrig.DozvoljenoPusenje = pusenje;
-            LokalOrig.Opis = lokal.Opis;
-            LokalOrig.Naziv = lokal.Naziv;
-            LokalOrig.Kapacitet = lokal.Kapacitet;
-            LokalOrig.DatumOtvaranja = lokal.DatumOtvaranja;
-            LokalOrig.Id = lokal.Id;
+            if (id_Eror == false && opis_Error == false && naziv_Error == false && ikonica_Error == false && datum_Error == false)
+            {
+                LokalOrig.CenovnaKategorija = cena;
+                LokalOrig.DostupanHendikepiranim = hendikepirani;
+                LokalOrig.DozvoljenoPusenje = pusenje;
+                LokalOrig.Opis = lokal.Opis;
+                LokalOrig.Naziv = lokal.Naziv;
+                LokalOrig.Kapacitet = lokal.Kapacitet;
+                LokalOrig.DatumOtvaranja = lokal.DatumOtvaranja;
+                LokalOrig.Id = lokal.Id;
+            }
+            if (combo_cene.SelectedItem == null)
+            {
+                ceneError_tb.Visibility = Visibility.Visible;
+            }
+            if ((combo_rezervacije.SelectedItem == null))
+            {
+                rezervacijeError_tb.Visibility = Visibility.Visible;
+            }
+            if ((combo_pusenje.SelectedItem == null))
+            {
+                pusenjeError_tb.Visibility = Visibility.Visible;
+            }
+            if ((combo_hendikepirani.SelectedItem == null))
+            {
+                hendikepiraniError_tb.Visibility = Visibility.Visible;
+            }
+            if ((combo_alkohol.SelectedItem == null))
+            {
+                alkoholError_tb.Visibility = Visibility.Visible;
+            }
+            if ((combo_tipovi.SelectedItem == null))
+            {
+                tipoviError_tb.Visibility = Visibility.Visible;
+            }
+
+        }
+
+        private void TextB_id_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (textB_id.Text.Length > 0)
+                Sacuvaj.IsEnabled = true;
+            else
+                Sacuvaj.IsEnabled = false;
+        }
+
+        private void TextB_id_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                id_Eror = true;
+        }
+
+        private void TextB_naziv_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                naziv_Error = true;
+        }
+
+        private void TextB_opis_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                opis_Error = true;
+        }
+
+        private void TextB_datum_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                datum_Error = true;
+        }
+
+        private void TextB_ikonica_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                ikonica_Error = true;
+        }
+
+        private void LoadIcon_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Image files (*.png;*.jpg,*.ico)|*.ico;*.png;*.jpg";
+            if (dialog.ShowDialog() == true)
+            {
+                textB_ikonica.Text = dialog.FileName;
+            }
+        }
+
+        private void AutoCompleteBoxTags_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                DodajEtiketuBtn_Click(null, null);
+            }
+        }
+
+        private void DodajEtiketuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Etiketa etiketa = Podaci.getEtiketa(autoCompleteBoxTags.Text);
+            if (etiketa != null)
+            {
+                bool found = false;
+                foreach (var et in lokal.Etikete)
+                {
+                    if (etiketa.Id.Equals(et.Id))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    lokal.Etikete.Add(etiketa);
+                    IzabraneEtikete.Add(etiketa);
+                }
+                autoCompleteBoxTags.SelectedItem = null;
+                autoCompleteBoxTags.Text = string.Empty;
+            }
+            else
+            {
+                dodajEtiketu navaEtiketa = new dodajEtiketu();
+                navaEtiketa.Show();
+            }
+        }
+
+        private void Combo_tipovi_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            tipoviError_tb.Visibility = Visibility.Hidden;
+        }
+
+        private void Combo_tipovi_Loaded(object sender, RoutedEventArgs e)
+        {
+            var combo = sender as ComboBox;
+            combo.ItemsSource = Podaci.getInstance().Tipovi;
+            combo.DisplayMemberPath = "Naziv";
+        }
+
+        private void NoviTip_Click(object sender, RoutedEventArgs e)
+        {
+            dodajTip noviTip = new dodajTip();
+            noviTip.Show();
+        }
+
+
+        private void Brisanje_Click(object sender, RoutedEventArgs e)
+        {
+            Podaci.getInstance().Lokali.Remove(LokalOrig);
+            Podaci.getInstance().LokaliNaMapi.Remove(LokalOrig);
+            MainWindow.instance.LokaliPins_Draw();
+            Close();
+
+        }
+
+        private void Izlaz_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

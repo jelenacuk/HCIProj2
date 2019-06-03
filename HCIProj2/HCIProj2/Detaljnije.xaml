@@ -10,6 +10,9 @@
         xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
         mc:Ignorable="d"
         Title="Detaljnije" Height="700" Width="1100">
+    <Window.CommandBindings>
+        <CommandBinding Command="commands:Precice.PomocCmd" Executed="Help_Executed"/>
+    </Window.CommandBindings>
     <ScrollViewer>
         <StackPanel>
             <TextBlock Text="Pregled Lokala" FontSize="38" HorizontalAlignment="Center" ></TextBlock>

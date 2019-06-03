@@ -51,5 +51,11 @@ namespace HCIProj2
             mw.Show();
             Close();
         }
+
+        private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            PrikaziPomoc pomoc = new PrikaziPomoc("index", this);
+            pomoc.Show();
+        }
     }
 }

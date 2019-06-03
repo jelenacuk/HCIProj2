@@ -108,5 +108,14 @@ namespace HCIProj2.Shortcuts
                 new KeyGesture(Key.Enter,ModifierKeys.Alt)
             }
             );
+        public static readonly RoutedUICommand PomocCmd = new RoutedUICommand(
+            "pomoc",
+            "pomocCmd",
+            typeof(RoutedCommand),
+            new InputGestureCollection()
+            {
+                new KeyGesture(Key.F1,ModifierKeys.Control)
+            }
+            );
     }
 }

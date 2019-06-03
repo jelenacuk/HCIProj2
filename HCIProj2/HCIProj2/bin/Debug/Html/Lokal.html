@@ -1,0 +1,91 @@
+<!doctype html>
+
+<html>
+
+<head>
+	<title></title>
+	<link rel = "stylesheet" type = "text/css" href = "stylesheet.css" >
+</head>
+
+<body>
+	<div id = "nav">
+		<ul>
+                <li> <a href = "./index.html" > Glavni Prozor </a> </li>
+                <li> <a href = "./Lokal.html" >Lokali </a> </li>
+                <li> <a href = "./Tip.html">Tipovi</a> </li>
+                <li> <a href = "./Etiketa.html" >Etikete </a> </li>
+                <li> <a href = "./Precice.html" >Precice </a> </li>
+		</ul>
+	</div>
+
+	<div id="mainWindow">
+        <h1 class = "naslov">Lokali</h1>
+		<p>
+			<br>
+            Korisnik moze dodavati azurirati ili brisati lokale.
+            <table border="1">
+                <tr>
+                    <th>Id</th>
+                    <td> Jedinstvene ljudski citljive oznake oznake na nivou aplikacije  </td>
+                </tr>
+                <tr>
+                    <th>Naziv</th>
+                    <td>Obavezno, proizvoljan naziv</td>
+                </tr>
+                <tr>
+                    <th>Opis</th>
+                    <td>Detaljniji opis lokala.</td>
+                </tr>
+                <tr>
+                        <th>Tip</th>
+                        <td>Obavezno, lokal mora imati tacno jedan tip.</td>
+                    </tr>
+                <tr>
+                    <th>Etikete</th>
+                     <td>Lokal moze imati jednu, nijednu ili vise etiketa. U polje se unosi id etikete, nakon klika na 'Dodaj' ukoliko postoji takva etiketa onda se
+                          dodaje u listu etiketa lokala, ukoliko ne postoji otvara se dijalog za dodavanje nove etikete.
+                     </td>
+                </tr>
+                <tr>
+                    <th>Datum otvaranja</th>
+                    <td>Format: dd/MM/yyyy</td>
+                </tr>
+                <tr>
+                        <th>Ikonica</th>
+                        <td>Graficki prikaz lokala, koji se koristi pri prikazu lokala na mapi. Ukoliko se ne doda, preuzima se ikonica od odabranog tipa za lokala.</td>
+                    </tr>
+                <tr>
+                    <th>Kapacitet</th>
+                    <td>Koliko najvise ljudi lokal moze da primi. Mora biti pozitivan broj veci od nule.</td>
+                </tr>
+                <tr>
+                    <th>Alkohol</th>
+                    <td>Ne sluzi/ Sluzi do 23h/ Sluzi i kasno nocu.</td>
+                </tr>
+                <tr>
+                    <th>Pusenje</th>
+                    <td>Zabranjeno/ Dozvoljeno</td>
+                </tr>
+                <tr>
+                    <th>Rezervacije</th>
+                    <td>Mogucnost rezervisanja mesta u lokalu: Da/Ne</td>
+                </tr>
+                <tr>
+                    <th>Cene</th>
+                    <td>Niske/ Srednje/ Visoke/I zuzetno visoke</td>
+                </tr>
+                <tr>
+                    <th>Hendikepirani</th>
+                    <td>Dostupnost lokala za osobe za hendikepom: Da/ Ne</td>
+                </tr>
+               
+            </table>
+			
+			
+		</p>
+
+	</div>
+</body>
+
+
+</html>

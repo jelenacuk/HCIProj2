@@ -1,0 +1,62 @@
+body{
+    font-size: 38px;
+}
+
+p{
+    text-align: justify;
+}
+#mainWindow{
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 5%;
+}
+td{
+    padding: 2%;
+}
+
+li{
+    font-size: 38px;
+}
+
+.naslov{
+    text-align: center;
+    font-size: 60px;
+}
+
+a{
+    font-size: 40px;
+}
+
+#nav {
+ 
+background-color: blue;
+height: 60px;
+font-size: 45px;
+font-weight:bold;
+font:Tahoma;  
+}
+#nav ul { 
+padding: 0;
+margin: 0;
+list-style-type: none;
+text-align: center;
+}
+ 
+#nav li { 
+display: inline;
+padding:15px;
+vertical-align:middle;
+}
+ 
+#nav a {  
+text-decoration:none;
+padding: 8px 8px 8px 8px;
+color: white;
+vertical-align:middle
+}
+ 
+#nav a:hover {
+color: black;
+background-color:white;
+ 
+}

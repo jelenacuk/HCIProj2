@@ -97,6 +97,7 @@
     <Compile Include="Model\ID_Provera.cs" />
     <Compile Include="Model\Lokal.cs" />
     <Compile Include="Model\Podaci.cs" />
+    <Compile Include="Model\Pomoc.cs" />
     <Compile Include="Model\Tip.cs" />
     <Compile Include="Precice.cs" />
     <Compile Include="PrikaziEtikete.xaml.cs">
@@ -104,6 +105,9 @@
     </Compile>
     <Compile Include="PrikaziLokale.xaml.cs">
       <DependentUpon>PrikaziLokale.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrikaziPomoc.xaml.cs">
+      <DependentUpon>PrikaziPomoc.xaml</DependentUpon>
     </Compile>
     <Compile Include="PrikaziTipove.xaml.cs">
       <DependentUpon>PrikaziTipove.xaml</DependentUpon>
@@ -147,6 +151,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PrikaziLokale.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PrikaziPomoc.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -16,6 +16,7 @@
         <CommandBinding Command="commands:Precice.PrikaziLokaleCmd" Executed="prikaziLokale"/>
         <CommandBinding Command="commands:Precice.PrikaziEtiketeCmd" Executed="prikaziEtikete"/>
         <CommandBinding Command="commands:Precice.PrikaziTipoveCmd" Executed="prikaziTipove"/>
+        <CommandBinding Command="commands:Precice.PomocCmd" Executed="Help_Executed"/>
     </Window.CommandBindings>
 
     <DockPanel>

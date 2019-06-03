@@ -18,6 +18,7 @@
     <Window.CommandBindings>
         <CommandBinding Command="commands:Precice.ZatvoriProzorCmd" Executed="zatvoriProzor"/>
         <CommandBinding Command="commands:Precice.EtiketaEnterCmd" Executed="dodajTipBtn_Click"/>
+        <CommandBinding Command="commands:Precice.PomocCmd" Executed="Help_Executed"/>
     </Window.CommandBindings>
     
     <Grid>

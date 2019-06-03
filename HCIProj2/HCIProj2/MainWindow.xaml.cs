@@ -436,5 +436,12 @@ namespace HCIProj2
             sp.Show();
             this.Close();
         }
+
+        private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            PrikaziPomoc pomoc = new PrikaziPomoc("index", this);
+            pomoc.Show();
+        }
     }
+
 }

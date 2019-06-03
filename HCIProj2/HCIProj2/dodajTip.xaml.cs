@@ -118,5 +118,11 @@ namespace HCIProj2
         {
             this.Close();
         }
+
+        private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            PrikaziPomoc pomoc = new PrikaziPomoc("Tip", this);
+            pomoc.Show();
+        }
     }
 }

@@ -20,6 +20,7 @@
     <Window.CommandBindings>
         <CommandBinding Command="commands:Precice.ZatvoriProzorCmd" Executed="zatvoriProzor"/>
         <CommandBinding Command="commands:Precice.EtiketaEnterCmd" Executed="dodajLokal_Click"/>
+        <CommandBinding Command="commands:Precice.PomocCmd" Executed="Help_Executed"/>
     </Window.CommandBindings>
 
     <Grid>

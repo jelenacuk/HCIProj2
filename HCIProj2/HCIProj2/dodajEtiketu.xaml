@@ -98,7 +98,7 @@
                             <TextBlock FontSize="38" Width="700" Background="Yellow" Foreground="Yellow" Text="Yellow"></TextBlock>
                         </ComboBoxItem>
                         <ComboBoxItem>
-                            <TextBlock FontSize="38" Width="700" Background="Pink" Foreground="Pink" Text="Pink"></TextBlock>
+                            <TextBlock FontSize="38" Width="700" Background="Purple" Foreground="Purple" Text="Purple"></TextBlock>
                         </ComboBoxItem>
                         <ComboBoxItem>
                             <TextBlock FontSize="38" Width="700" Background="Orange" Foreground="Orange" Text="Orange"></TextBlock>

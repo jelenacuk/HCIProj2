@@ -569,7 +569,7 @@ namespace HCIProj2
             {
                 return Brushes.Green;
             }
-            return Brushes.Pink;
+            return Brushes.Purple;
         }
     }
 

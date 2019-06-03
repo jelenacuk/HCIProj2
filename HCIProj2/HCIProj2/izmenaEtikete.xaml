@@ -39,7 +39,6 @@
                             <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
                                     <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Id" Min="3" Max="45"/>
-                                    <validation:ID_Provera ValidationStep="RawProposedValue" klasa="etiketa"/>
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text >

@@ -54,7 +54,7 @@
 
         </Grid>
 
-        <DataGrid Name="typesGrid"  FontSize="30" AutoGenerateColumns="False"  Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7" SelectedItem="{Binding Path=SelektovanaEtiketa, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Etikete}" >
+        <DataGrid Name="EtiketeGrid"  FontSize="30" AutoGenerateColumns="False"  Margin="5" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Grid.RowSpan="7" SelectedItem="{Binding Path=SelektovanaEtiketa, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Etikete}" MouseDoubleClick="TypesGrid_MouseDoubleClick" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" MinWidth="100" Width="*" FontSize="30" Binding="{Binding Id}"/>
                 <DataGridTemplateColumn Header="Boja etikete">

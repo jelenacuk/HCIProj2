@@ -32,7 +32,7 @@ namespace HCIProj2
             set {
                 if (value != lokaliNaMapi)
                 {
-                    lokali = value;
+                    lokaliNaMapi = value;
                     OnPropertyChanged("LokaliNaMapi");
                 }
             }
@@ -72,7 +72,7 @@ namespace HCIProj2
 
         public static Etiketa getEtiketa(String id)
         {
-            foreach (Etiketa etiketa in Podaci.getInstance().Etikete)
+            foreach (Etiketa etiketa in instance.Etikete)
             {
                 if (etiketa.Id == id)
                 {

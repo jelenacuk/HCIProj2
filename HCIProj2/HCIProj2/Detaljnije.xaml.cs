@@ -160,8 +160,13 @@ namespace HCIProj2
             this.DataContext = this;
             LokalOrig = l;
             lokal = new Lokal(lokalOrig);
+            autoCompleteBoxTags.DataContext = Podaci.JustGiveMeInstance();
             SelectedCena = -1;
-            izabraneEtikete = l.Etikete;
+            izabraneEtikete = new ObservableCollection<Etiketa>();
+            foreach (var etiketa in l.Etikete)
+            {
+                izabraneEtikete.Add(etiketa);
+            }
             id_Eror = false;
             opis_Error = false;
             naziv_Error = false;
@@ -298,6 +303,9 @@ namespace HCIProj2
                 LokalOrig.Kapacitet = k;
                 LokalOrig.DatumOtvaranja = lokal.DatumOtvaranja;
                 LokalOrig.Id = lokal.Id;
+                Lokal.Etikete = IzabraneEtikete;
+                LokalOrig.Etikete = IzabraneEtikete;
+                
                 Close();
             }
 
@@ -409,7 +417,7 @@ namespace HCIProj2
             if (etiketa != null)
             {
                 bool found = false;
-                foreach (var et in lokal.Etikete)
+                foreach (var et in IzabraneEtikete)
                 {
                     if (etiketa.Id.Equals(et.Id))
                     {
@@ -419,8 +427,8 @@ namespace HCIProj2
                 }
                 if (!found)
                 {
-                    lokal.Etikete.Add(etiketa);
                     IzabraneEtikete.Add(etiketa);
+                    MessageBox.Show(IzabraneEtikete.Count + "");
                 }
                 autoCompleteBoxTags.SelectedItem = null;
                 autoCompleteBoxTags.Text = string.Empty;
@@ -475,7 +483,7 @@ namespace HCIProj2
             if (etiketa != null)
             {
                 bool found = false;
-                foreach (var et in lokal.Etikete)
+                foreach (var et in IzabraneEtikete)
                 {
                     if (etiketa.Id.Equals(et.Id))
                     {
@@ -485,7 +493,6 @@ namespace HCIProj2
                 }
                 if (!found)
                 {
-                    lokal.Etikete.Add(etiketa);
                     IzabraneEtikete.Add(etiketa);
                 }
                 autoCompleteBoxTags.SelectedItem = null;

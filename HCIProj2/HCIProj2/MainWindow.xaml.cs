@@ -26,15 +26,6 @@ namespace HCIProj2
         private string grad;
         private bool nazad;
 
-        public MainWindow()
-        {
-            InitializeComponent();
-            instance = this;
-            this.DataContext = this;
-            Lokali = Podaci.getInstance().Lokali;
-            LokaliNaMapi = Podaci.getInstance().LokaliNaMapi;
-            LokaliPins_Draw();
-        }
 
         public MainWindow(string grad)
         {
@@ -43,14 +34,14 @@ namespace HCIProj2
             this.DataContext = this;
             this.grad = grad;
             nazad = false;
-            MapaPath = Directory.GetCurrentDirectory() + "\\Images\\" + grad+".png";
+            MapaPath = Directory.GetCurrentDirectory() + "\\Images\\" + grad + ".png";
             Lokali = Podaci.getInstance(this.grad).Lokali;
-            LokaliNaMapi = Podaci.getInstance(this.grad).LokaliNaMapi;
+            LokaliNaMapi = Podaci.JustGiveMeInstance().LokaliNaMapi;
             LokaliPins_Draw();
             Nazad.IsEnabled = true;
         }
 
-        
+
         private string mapaPath;
         public string MapaPath {
             get { return mapaPath; }

@@ -1,4 +1,4 @@
-﻿<Window x:Class="HCIProj2.dodajTip"
+﻿<Window x:Class="HCIProj2.izmenaTipa"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -14,11 +14,10 @@
             <Setter Property="FontSize" Value="30"/>
         </Style>
     </Window.Resources>
-    
+
     <Window.CommandBindings>
         <CommandBinding Command="commands:Precice.ZatvoriProzorCmd" Executed="zatvoriProzor"/>
-        <CommandBinding Command="commands:Precice.EtiketaEnterCmd" Executed="dodajTipBtn_Click"/>
-        <CommandBinding Command="commands:Precice.PomocCmd" Executed="Help_Executed"/>
+        <CommandBinding Command="commands:Precice.EtiketaEnterCmd" Executed="Sacuvaj_Click"/>
     </Window.CommandBindings>
 
     <Grid>
@@ -39,7 +38,6 @@
                             <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
                                     <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Id" Min="3" Max="15"/>
-                                    <validation:ID_Provera ValidationStep="RawProposedValue" klasa="tip"/>
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -47,7 +45,7 @@
                             <ControlTemplate  >
                                 <Grid>
                                     <AdornedElementPlaceholder   x:Name="textBox"/>
-                                    <TextBlock TextWrapping="Wrap" Margin="0 60 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                    <TextBlock Name="IzmenaTipaID" TextWrapping="Wrap" Margin="0 60 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
                                 </Grid>
                             </ControlTemplate>
                         </Validation.ErrorTemplate>
@@ -150,8 +148,9 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Dodaj" Name="dodajTipBtn" Command="commands:Precice.EtiketaEnterCmd" FontSize="38" Width="400" ToolTip="Dodaj novi tip - CTRL+ENTER"></Button>
-                    <Button Content="Odustani" Name="odustaniBtn" Click="odustaniBtn_Click" FontSize="38" Width="400" Grid.Column="1" ToolTip="Odustani od dodavanja - ESC"></Button>
+                    <Button Name="Brisanje" Margin="5 5 5 5" Click="Brisanje_Click" FontSize="38" Height="60" Content="Brisanje"></Button>
+                    <Button Name="Izlaz" Margin="5 5 5 5" Click="Izlaz_Click" FontSize="38" Height="60" Grid.Column="1" Content="Izlaz"></Button>
+                    <Button Name="Sacuvaj" Click="Sacuvaj_Click" Margin="5 5 5 5" FontSize="38" Height="60" Grid.Column="2" Content="Sacuvaj"></Button>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

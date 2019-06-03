@@ -278,6 +278,8 @@ namespace HCIProj2
 
                     Canvas.SetLeft(lokalIkonica, lokal.X);
                     Canvas.SetTop(lokalIkonica, lokal.Y);
+                    //Canvas.SetRight(lokalIkonica, lokal.X);
+                    //Canvas.SetBottom(lokalIkonica, lokal.Y);
 
                 }
             }

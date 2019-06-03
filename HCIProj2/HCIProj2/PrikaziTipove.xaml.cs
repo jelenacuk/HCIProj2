@@ -113,5 +113,26 @@ namespace HCIProj2
             izmenaTipa iz = new izmenaTipa(t);
             iz.Show();
         }
+
+        //azuriraj
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Tip t = typesGrid.SelectedItem as Tip;
+            izmenaTipa iz = new izmenaTipa(t);
+            iz.Show();
+        }
+
+        private void Obrisi_Click(object sender, RoutedEventArgs e)
+        {
+            Tip t = typesGrid.SelectedItem as Tip;
+            for (int i = 0; i < Podaci.JustGiveMeInstance().Tipovi.Count; i++)
+            {
+                if(Podaci.JustGiveMeInstance().Tipovi[i].Id == t.Id && Podaci.JustGiveMeInstance().Tipovi[i].Naziv == t.Naziv)
+                {
+                    Podaci.JustGiveMeInstance().Tipovi.RemoveAt(i);
+                    break;
+                }
+            }
+        }
     }
 }

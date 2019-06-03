@@ -96,5 +96,25 @@ namespace HCIProj2
             izmenaEtikete iz = new izmenaEtikete(t);
             iz.Show();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Etiketa t = EtiketeGrid.SelectedItem as Etiketa;
+            izmenaEtikete iz = new izmenaEtikete(t);
+            iz.Show();
+        }
+
+        private void Obrisi_Click(object sender, RoutedEventArgs e)
+        {
+            Etiketa t = EtiketeGrid.SelectedItem as Etiketa;
+            for (int i = 0; i < Podaci.JustGiveMeInstance().Etikete.Count; i++)
+            {
+                if (Podaci.JustGiveMeInstance().Etikete[i].Id == t.Id)
+                {
+                    Podaci.JustGiveMeInstance().Etikete.RemoveAt(i);
+                    break;
+                }
+            }
+        }
     }
 }

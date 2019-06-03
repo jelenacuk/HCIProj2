@@ -66,6 +66,20 @@
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Opis Etikete"  MinWidth="100" Width="*" FontSize="30" Binding="{Binding Opis}"/>
             </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu FontSize="30" Name="contextMenu">
+                    <MenuItem Header="Ažuriraj etiketu" Click="MenuItem_Click" >
+                        <MenuItem.Icon>
+                            <Image Source="Images/java.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Obriši etiketu" Name="Obrisi" Click="Obrisi_Click">
+                        <MenuItem.Icon>
+                            <Image Source="Images/java.png" Height="25" Width="25" HorizontalAlignment="Left"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
     </Grid>
 </Window>

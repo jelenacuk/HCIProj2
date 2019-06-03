@@ -42,9 +42,10 @@
             <MenuItem IsEnabled="False" Name="Nazad" Click="Nazad_Click" Header="_Nazad" FontSize="34" BorderThickness="1" BorderBrush="Black">
             </MenuItem>
         </Menu>
-        <Canvas Name="Mapa" AllowDrop="True" Mouse.PreviewMouseDown="Mapa_PreviewMouseDown" MouseRightButtonDown="Mapa_MouseRightButtonDown" MouseMove="Mapa_MouseMove" DragEnter="Mapa_DragEnter" Drop="Mapa_Drop">
+        <Viewbox Stretch="Fill">
+            <Canvas Width="1100" Height="605" Name="Mapa" AllowDrop="True" Mouse.PreviewMouseDown="Mapa_PreviewMouseDown" MouseRightButtonDown="Mapa_MouseRightButtonDown" MouseMove="Mapa_MouseMove" DragEnter="Mapa_DragEnter" Drop="Mapa_Drop">
             <Canvas.Background>
-                <ImageBrush ImageSource="{Binding MapaPath}" AlignmentX="Right" AlignmentY="Top" Stretch="Uniform"></ImageBrush>
+                <ImageBrush ImageSource="{Binding MapaPath}" AlignmentX="Left" AlignmentY="Top" Stretch="Uniform"></ImageBrush>
             </Canvas.Background>
             <Canvas.ContextMenu>
                 <ContextMenu FontSize="25" Name="contextMenu">
@@ -96,5 +97,7 @@
                 </ListView>
             </StackPanel>
         </Canvas>
+        </Viewbox>
+
     </DockPanel>
 </Window>

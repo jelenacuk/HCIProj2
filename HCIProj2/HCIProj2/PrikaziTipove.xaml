@@ -65,6 +65,20 @@
                 <DataGridTextColumn Header="Opis Tima"  MinWidth="100" Width="*" FontSize="30" Binding="{Binding Opis}"/>
                 <DataGridTextColumn Header="Ikonica"   MinWidth="100" Width="*" FontSize="30" Binding="{Binding Ikonica}"/>
             </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu FontSize="25" Name="contextMenu">
+                    <MenuItem Header="Ažuriraj tip" Click="MenuItem_Click" >
+                        <MenuItem.Icon>
+                            <Image Source="Images/java.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Obriši tip" Name="Obrisi" Click="Obrisi_Click">
+                        <MenuItem.Icon>
+                            <Image Source="Images/java.png" Height="25" Width="25" HorizontalAlignment="Left"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
     </Grid>
 </Window>

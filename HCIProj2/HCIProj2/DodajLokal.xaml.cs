@@ -17,14 +17,19 @@ using System.ComponentModel;
 
 namespace HCIProj2
 {
-    public partial class DodajLokal : Window
+    public partial class DodajLokal : Window, INotifyPropertyChanged
     {
 
         private Lokal lokal;
-        public Lokal Lokal
-        {
+        public Lokal Lokal {
             get { return lokal; }
-            set { lokal = value; }
+            set {
+                if (value != lokal)
+                {
+                    lokal = value;
+                    OnPropertyChanged("Lokal");
+                }
+            }
         }
 
         private ObservableCollection<Etiketa> izabraneEtikete;
@@ -45,8 +50,9 @@ namespace HCIProj2
         private bool ikonica_Error;
         private bool naziv_Error;
         private bool datum_Error;
+        private bool kapacitet_Error;
 
-        
+
 
         public DodajLokal()
         {
@@ -54,7 +60,7 @@ namespace HCIProj2
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             lokal = new Lokal();
 
-            autoCompleteBoxTags.DataContext = Podaci.getInstance();
+            autoCompleteBoxTags.DataContext = Podaci.JustGiveMeInstance();
             DataContext = lokal;
 
             izabraneEtikete = new ObservableCollection<Etiketa>();
@@ -64,6 +70,7 @@ namespace HCIProj2
             naziv_Error = false;
             ikonica_Error = false;
             datum_Error = false;
+            kapacitet_Error = false;
 
         }
 
@@ -76,7 +83,7 @@ namespace HCIProj2
             textB_ikonica.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             textB_datum.GetBindingExpression(TextBox.TextProperty).UpdateSource();
 
-            if (id_Eror == false && opis_Error == false && naziv_Error == false && ikonica_Error == false && datum_Error == false)
+            if (kapacitet_Error == false && id_Eror == false && opis_Error == false && naziv_Error == false && ikonica_Error == false && datum_Error == false && proveraComboBox() == true)
             {
                 lokal.Tip = (combo_tipovi.SelectedItem) as Tip;
                 textB_id.GetBindingExpression(TextBox.TextProperty).UpdateSource();
@@ -94,36 +101,55 @@ namespace HCIProj2
                 lokal.DostupanHendikepiranim = ((combo_hendikepirani.SelectedItem as ComboBoxItem).Content as TextBlock).Text;
                 lokal.PrimaRezervacije = ((combo_rezervacije.SelectedItem as ComboBoxItem).Content as TextBlock).Text;
                 lokal.SluziAlkohol = ((combo_alkohol.SelectedItem as ComboBoxItem).Content as TextBlock).Text;
-                Podaci.dodajLokal(lokal);
+                Podaci.JustGiveMeInstance().Lokali.Add(lokal);
                 Close();
+            }
+        }
+        private bool proveraComboBox()
+        {
+            bool returnValue = true;
+            if (textB_kapacitet.Equals(""))
+            {
+                kapacitetError_tb.Visibility = Visibility.Visible;
+                returnValue = false;
             }
             if (combo_cene.SelectedItem == null)
             {
                 ceneError_tb.Visibility = Visibility.Visible;
+                returnValue = false;
             }
             if ((combo_rezervacije.SelectedItem == null))
             {
                 rezervacijeError_tb.Visibility = Visibility.Visible;
+                returnValue = false;
+
             }
             if ((combo_pusenje.SelectedItem == null))
             {
                 pusenjeError_tb.Visibility = Visibility.Visible;
+                returnValue = false;
+
             }
             if ((combo_hendikepirani.SelectedItem == null))
             {
                 hendikepiraniError_tb.Visibility = Visibility.Visible;
+                returnValue = false;
+
             }
             if ((combo_alkohol.SelectedItem == null))
             {
                 alkoholError_tb.Visibility = Visibility.Visible;
+                returnValue = false;
+
             }
             if ((combo_tipovi.SelectedItem == null))
             {
                 tipoviError_tb.Visibility = Visibility.Visible;
+                returnValue = false;
+
             }
-
+            return returnValue;
         }
-
         //=====================ETIKETE======================
         private void dodajEtiketuBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -280,6 +306,32 @@ namespace HCIProj2
         {
             PrikaziPomoc pomoc = new PrikaziPomoc("Lokal", this);
             pomoc.Show();
+        }
+        private void TextB_kapacitet_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var kapacitet = textB_kapacitet.Text;
+            int n = 0;
+            bool isNumeric = int.TryParse(kapacitet, out n);
+            if (!isNumeric)
+            {
+                kapacitetError_tb.Text = "Morate uneti broj.";
+                kapacitetError_tb.Visibility = Visibility.Visible;
+                kapacitet_Error = true;
+            }
+            else
+            {
+                if (n <= 0)
+                {
+                    kapacitetError_tb.Visibility = Visibility.Visible;
+                    kapacitetError_tb.Text = "Broj mora biti veci od nule.";
+                    kapacitet_Error = true;
+                }
+                else
+                {
+                    kapacitetError_tb.Visibility = Visibility.Hidden;
+                    kapacitet_Error = false;
+                }
+            }
         }
     }
 }

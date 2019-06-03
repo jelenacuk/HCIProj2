@@ -16,11 +16,9 @@ namespace HCIProj2
         private static Podaci instance = null;
         private string grad;
         private ObservableCollection<Lokal> lokali;
-        public ObservableCollection<Lokal> Lokali
-        {
+        public ObservableCollection<Lokal> Lokali {
             get { return lokali; }
-            set
-            {
+            set {
                 if (value != lokali)
                 {
                     lokali = value;
@@ -40,11 +38,9 @@ namespace HCIProj2
             }
         }
         private ObservableCollection<Tip> tipovi;
-        public ObservableCollection<Tip> Tipovi
-        {
+        public ObservableCollection<Tip> Tipovi {
             get { return tipovi; }
-            set
-            {
+            set {
                 if (value != tipovi)
                 {
                     tipovi = value;
@@ -53,11 +49,9 @@ namespace HCIProj2
             }
         }
         private ObservableCollection<Etiketa> etikete;
-        public ObservableCollection<Etiketa> Etikete
-        {
+        public ObservableCollection<Etiketa> Etikete {
             get { return etikete; }
-            set
-            {
+            set {
                 if (value != etikete)
                 {
                     etikete = value;
@@ -66,7 +60,7 @@ namespace HCIProj2
             }
         }
 
-        public static void dodajTip( Tip tip)
+        public static void dodajTip(Tip tip)
         {
             getInstance().tipovi.Add(tip);
         }
@@ -78,7 +72,7 @@ namespace HCIProj2
 
         public static Etiketa getEtiketa(String id)
         {
-            foreach(Etiketa etiketa in Podaci.getInstance().Etikete)
+            foreach (Etiketa etiketa in Podaci.getInstance().Etikete)
             {
                 if (etiketa.Id == id)
                 {
@@ -90,7 +84,7 @@ namespace HCIProj2
 
         public static void dodajLokal(Lokal lokal)
         {
-            getInstance().lokali.Add(lokal);
+            instance.Lokali.Add(lokal);
         }
 
         private Podaci()
@@ -134,7 +128,7 @@ namespace HCIProj2
 
                     }
                 }
-                
+
             }
             if (instance == null)
             {
@@ -174,7 +168,7 @@ namespace HCIProj2
             if (instance == null)
             {
                 instance = new Podaci();
-                String fileName = "./"  + ".xml";
+                String fileName = "./" + ".xml";
                 if (File.Exists(fileName) == false)
                 {
                     FileStream fs = File.Create(fileName);
@@ -211,6 +205,10 @@ namespace HCIProj2
                 XmlSerializer XML = new XmlSerializer(typeof(Podaci));
                 XML.Serialize(stream, instance);
             }
+        }
+        public static Podaci JustGiveMeInstance()
+        {
+            return instance;
         }
 
         #region PropertyChangedNotifier

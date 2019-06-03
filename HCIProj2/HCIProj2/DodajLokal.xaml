@@ -35,11 +35,11 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="ID:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" Name="textB_id" TextChanged="textB_id_TextChanged" Validation.Error="textB_id_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="38">
+                    <TextBox VerticalAlignment="Center" Name="textB_id" TextChanged="textB_id_TextChanged" Validation.Error="textB_id_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" FontSize="38">
                         <TextBox.Text>
                             <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
-                                    <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Id" Min="3" Max="10"/>
+                                    <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Id" Min="3" Max="15"/>
                                     <validation:ID_Provera ValidationStep="RawProposedValue" klasa="lokal"/>
                                 </Binding.ValidationRules>
                             </Binding>
@@ -48,7 +48,7 @@
                             <ControlTemplate  >
                                 <Grid>
                                     <AdornedElementPlaceholder   x:Name="textBox"/>
-                                    <TextBlock TextWrapping="Wrap" Margin="0 90 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                    <TextBlock TextWrapping="Wrap" Margin="0 60 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
                                 </Grid>
                             </ControlTemplate>
                         </Validation.ErrorTemplate>
@@ -62,11 +62,11 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Naziv:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" Name="textB_naziv" Validation.Error="textB_naziv_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="38">
+                    <TextBox AcceptsReturn="True" Name="textB_naziv" Validation.Error="textB_naziv_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5"  FontSize="38">
                         <TextBox.Text>
                             <Binding Path="Naziv" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
-                                    <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Naziv" Min="3" Max="30"/>
+                                    <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Naziv" Min="3" Max="45"/>
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -74,7 +74,7 @@
                             <ControlTemplate  >
                                 <Grid>
                                     <AdornedElementPlaceholder   x:Name="textBox"/>
-                                    <TextBlock TextWrapping="Wrap" Margin="0 90 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                    <TextBlock TextWrapping="Wrap" Margin="0 60 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
                                 </Grid>
                             </ControlTemplate>
                         </Validation.ErrorTemplate>
@@ -92,7 +92,7 @@
                         <TextBox.Text>
                             <Binding Path="Opis" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
-                                    <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Opis" Min="3" Max="1000"/>
+                                    <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Opis" Min="3" Max="600"/>
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -114,7 +114,7 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Datum otvaranja:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" Name="textB_datum" Validation.Error="textB_datum_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="38">
+                    <TextBox AcceptsReturn="True" Name="textB_datum" Validation.Error="textB_datum_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" FontSize="38">
                         <TextBox.Text>
                             <Binding Path="DatumOtvaranja" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>
@@ -126,7 +126,7 @@
                             <ControlTemplate  >
                                 <Grid>
                                     <AdornedElementPlaceholder   x:Name="textBox"/>
-                                    <TextBlock TextWrapping="Wrap" Margin="0 90 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                    <TextBlock TextWrapping="Wrap" Margin="0 60 0 0"  FontSize="38" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
                                 </Grid>
                             </ControlTemplate>
                         </Validation.ErrorTemplate>
@@ -135,17 +135,23 @@
 
                 <!-- KAPACITET -->
                 <Grid Margin="0 30 0 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Kapacitet:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" Name="textB_kapacitet" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" Height="100" FontSize="38">
+                    <TextBox TextChanged="TextB_kapacitet_TextChanged" Name="textB_kapacitet" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" FontSize="38">
                         <TextBox.Text>
                             <Binding Path="Kapacitet" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                             </Binding>
                         </TextBox.Text>
                     </TextBox>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Name="kapacitetError_tb" Text="Morate uneti broj." Foreground="Red" FontSize="38" Visibility="Hidden">
+                    </TextBlock>
                 </Grid>
 
                 <!-- IKONICA -->
@@ -164,7 +170,7 @@
                             <TextBox.Text>
                                 <Binding Path="Ikonica" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                                     <Binding.ValidationRules>
-                                        <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Ikonica" Min="0" Max="30"/>
+                                        <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Ikonica" Min="0" Max="250"/>
                                     </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>
@@ -232,7 +238,7 @@
                             <TextBlock FontSize="38">Zabranjeno</TextBlock>
                         </ComboBoxItem>
                     </ComboBox>
-                    <TextBlock Grid.Column="1" Grid.Row="1" Name="pusenjeError_tb" Text="Morate izabrati opciju za cenu." Foreground="Red" FontSize="38" Visibility="Hidden">
+                    <TextBlock Grid.Column="1" Grid.Row="1" Name="pusenjeError_tb" Text="Morate naznačiti mogućnost pušenja." Foreground="Red" FontSize="38" Visibility="Hidden">
                     </TextBlock>
                 </Grid>
 
@@ -284,7 +290,7 @@
                             <TextBlock FontSize="38">Ne</TextBlock>
                         </ComboBoxItem>
                     </ComboBox>
-                    <TextBlock Grid.Column="1" Grid.Row="1" Name="rezervacijeError_tb" Text="Morate izabrati opciju za cenu." Foreground="Red" FontSize="38" Visibility="Hidden">
+                    <TextBlock Grid.Column="1" Grid.Row="1" Name="rezervacijeError_tb" Text="Morate izabrati opciju za rezervacije." Foreground="Red" FontSize="38" Visibility="Hidden">
                     </TextBlock>
                 </Grid>
 
@@ -307,7 +313,7 @@
                             <TextBlock FontSize="38">Ne</TextBlock>
                         </ComboBoxItem>
                     </ComboBox>
-                    <TextBlock Grid.Column="1" Grid.Row="1" Name="hendikepiraniError_tb" Text="Morate naznaciti dostupnost hendikepiranima." Foreground="Red" FontSize="38" Visibility="Hidden">
+                    <TextBlock Grid.Column="1" Grid.Row="1" Name="hendikepiraniError_tb" Text="Morate naznačiti dostupnost hendikepiranim." Foreground="Red" FontSize="36" Visibility="Hidden">
                     </TextBlock>
                 </Grid>
 
@@ -323,7 +329,7 @@
                             <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <toolkit:AutoCompleteBox Name="autoCompleteBoxTags" FontSize="38" PreviewKeyDown="autoCompleteBoxTag_PreviewKeyDown" IsDropDownOpen="True" FilterMode="StartsWith" ItemsSource="{Binding Path=Lokali, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id">
+                        <toolkit:AutoCompleteBox Name="autoCompleteBoxTags" FontSize="38" PreviewKeyDown="autoCompleteBoxTag_PreviewKeyDown" IsDropDownOpen="True" FilterMode="Contains" ItemsSource="{Binding Path=Etikete, UpdateSourceTrigger=PropertyChanged}" ValueMemberPath="Id">
                             <toolkit:AutoCompleteBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Id}" FontSize="38"></TextBlock>

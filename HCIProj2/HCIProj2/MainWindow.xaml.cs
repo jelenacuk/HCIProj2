@@ -253,6 +253,8 @@ namespace HCIProj2
             return null;
         }
 
+        
+
         public void LokaliPins_Draw()
         {
             Mapa.Children.RemoveRange(1, lokaliNaMapi.Count +1);
@@ -263,7 +265,93 @@ namespace HCIProj2
                     Image lokalIkonica = new Image();
                     lokalIkonica.Width = 32;
                     lokalIkonica.Height = 32;
-                    lokalIkonica.ToolTip = lokal.Id + " " + lokal.Naziv;
+                    StackPanel stackPanel = new StackPanel();
+
+                    StackPanel idPanel = new StackPanel();
+                    idPanel.Orientation = Orientation.Horizontal;
+                    TextBlock Id = new TextBlock();
+                    Id.Text = "Id:";
+                    Id.MinWidth = 120;
+                    Id.FontSize = 25;
+                    Id.Foreground = Brushes.Black;
+                    idPanel.Children.Add(Id);
+                    TextBlock vrednostId = new TextBlock();
+                    vrednostId.FontSize = 25;
+                    vrednostId.Text = lokal.Id;
+                    vrednostId.Foreground = Brushes.Black;
+                    idPanel.Children.Add(vrednostId);
+                    stackPanel.Children.Add(idPanel);
+
+                    StackPanel nazivPanel = new StackPanel();
+                    nazivPanel.Orientation = Orientation.Horizontal;
+                    TextBlock naziv = new TextBlock();
+                    naziv.Text = "Naziv:";
+                    naziv.MinWidth = 120;
+                    naziv.FontSize = 25;
+                    naziv.Foreground = Brushes.Black;
+                    nazivPanel.Children.Add(naziv);
+                    TextBlock vrednostNaziv = new TextBlock();
+                    vrednostNaziv.FontSize = 25;
+                    vrednostNaziv.Text = lokal.Naziv;
+                    vrednostNaziv.Foreground = Brushes.Black;
+                    nazivPanel.Children.Add(vrednostNaziv);
+                    stackPanel.Children.Add(nazivPanel);
+
+                    StackPanel kapacitetPanel = new StackPanel();
+                    kapacitetPanel.Orientation = Orientation.Horizontal;
+                    TextBlock kapacitet = new TextBlock();
+                    kapacitet.Text = "Kapacitet:";
+                    kapacitet.MinWidth = 120;
+                    kapacitet.FontSize = 25;
+                    kapacitet.Foreground = Brushes.Black;
+                    kapacitetPanel.Children.Add(kapacitet);
+                    TextBlock vrednostKapacitet = new TextBlock();
+                    vrednostKapacitet.FontSize = 25;
+                    vrednostKapacitet.Text = (lokal.Kapacitet).ToString();
+                    vrednostKapacitet.Foreground = Brushes.Black;
+                    kapacitetPanel.Children.Add(vrednostKapacitet);
+                    stackPanel.Children.Add(kapacitetPanel);
+
+                    StackPanel tip = new StackPanel();
+                    tip.Orientation = Orientation.Horizontal;
+                    TextBlock tipId = new TextBlock();
+                    tipId.Text = "Tip:";
+                    tipId.MinWidth = 120;
+                    tipId.FontSize = 25;
+                    tipId.Foreground = Brushes.Black;
+                    tip.Children.Add(tipId);
+                    TextBlock nazivTipa = new TextBlock();
+                    nazivTipa.FontSize = 25;
+                    nazivTipa.Text = lokal.Tip.Naziv;
+                    nazivTipa.Foreground = Brushes.Black;
+                    tip.Children.Add(nazivTipa);
+                    stackPanel.Children.Add(tip);
+                    foreach (Etiketa etiketa in lokal.Etikete)
+                    {
+                        StackPanel etikete = new StackPanel();
+                        etikete.Orientation = Orientation.Horizontal;
+                        TextBlock etiketaId = new TextBlock();
+                        etiketaId.Text = lokal.Id;
+                        etiketaId.MinWidth = 60;
+                        etiketaId.FontSize = 25;
+                        etiketaId.Foreground = Brushes.Black;
+                        etikete.Children.Add(etiketaId);
+                        TextBlock bojaEtikete = new TextBlock();
+                        bojaEtikete.Width = 150;
+                        bojaEtikete.Height = 35;
+                        bojaEtikete.Background = getColor(etiketa.Boja);
+
+                        etikete.Children.Add(bojaEtikete);
+                        stackPanel.Children.Add(etikete);
+                    }
+
+
+                    
+                    TextBlock opisLokala = new TextBlock();
+                    opisLokala.Text = lokal.Opis;
+                    stackPanel.Children.Add(opisLokala);
+
+                    lokalIkonica.ToolTip = stackPanel;
                     if (File.Exists(lokal.Ikonica))
                     {
                         lokalIkonica.Source = new BitmapImage(new Uri(lokal.Ikonica, UriKind.RelativeOrAbsolute));
@@ -453,6 +541,35 @@ namespace HCIProj2
             }
             
 
+        }
+
+        private Brush getColor(String color)
+        {
+            if (color.Equals("Blue"))
+            {
+                return Brushes.Blue;
+            }
+            else if (color.Equals("Yellow"))
+            {
+                return Brushes.Yellow;
+            }
+            else if (color.Equals("Red"))
+            {
+                return Brushes.Red;
+            }
+            else if (color.Equals("Orange"))
+            {
+                return Brushes.Orange;
+            }
+            else if (color.Equals("Brown"))
+            {
+                return Brushes.Brown;
+            }
+            else if (color.Equals("Green"))
+            {
+                return Brushes.Green;
+            }
+            return Brushes.Pink;
         }
     }
 

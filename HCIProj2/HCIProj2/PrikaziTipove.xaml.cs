@@ -107,5 +107,11 @@ namespace HCIProj2
             pomoc.Show();
         }
 
+        private void TypesGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Tip t = typesGrid.SelectedItem as Tip;
+            izmenaTipa iz = new izmenaTipa(t);
+            iz.Show();
+        }
     }
 }

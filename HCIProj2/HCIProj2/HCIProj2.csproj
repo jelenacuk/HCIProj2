@@ -91,6 +91,12 @@
     <Compile Include="dodajTip.xaml.cs">
       <DependentUpon>dodajTip.xaml</DependentUpon>
     </Compile>
+    <Compile Include="izmenaEtikete.xaml.cs">
+      <DependentUpon>izmenaEtikete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="izmenaTipa.xaml.cs">
+      <DependentUpon>izmenaTipa.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Datum_Provera.cs" />
     <Compile Include="Model\Duzina_Provera.cs" />
     <Compile Include="Model\Etiketa.cs" />
@@ -128,6 +134,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="dodajTip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="izmenaEtikete.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="izmenaTipa.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

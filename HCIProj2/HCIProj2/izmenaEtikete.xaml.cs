@@ -44,7 +44,6 @@ namespace HCIProj2
             OrigEtiketa = e;
             etiketa = new Etiketa(e);
             DataContext = etiketa;
-            DataContext = etiketa;
         }
 
 
@@ -89,7 +88,13 @@ namespace HCIProj2
                 textB_opis.GetBindingExpression(TextBox.TextProperty).UpdateSource();
                 var item = (combo_color.SelectedItem as ComboBoxItem).Content as TextBlock;
                 etiketa.Boja = item.Text;
-                origEtiketa = etiketa;
+                for(int i = 0; i< Podaci.JustGiveMeInstance().Etikete.Count;i++)
+                {
+                    if (Podaci.JustGiveMeInstance().Etikete[i].Id == origEtiketa.Id)
+                    {
+                        Podaci.JustGiveMeInstance().Etikete[i] = etiketa;
+                    }
+                }
                 Close();
             }
         }

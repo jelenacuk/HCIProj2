@@ -90,6 +90,11 @@ namespace HCIProj2
             pomoc.Show();
         }
 
-
+        private void TypesGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Etiketa t = EtiketeGrid.SelectedItem as Etiketa;
+            izmenaEtikete iz = new izmenaEtikete(t);
+            iz.Show();
+        }
     }
 }

@@ -43,60 +43,64 @@
             </MenuItem>
         </Menu>
         <Viewbox Stretch="Fill">
-            <Canvas Width="1100" Height="605" Name="Mapa" AllowDrop="True" Mouse.PreviewMouseDown="Mapa_PreviewMouseDown" MouseRightButtonDown="Mapa_MouseRightButtonDown" MouseMove="Mapa_MouseMove" DragEnter="Mapa_DragEnter" Drop="Mapa_Drop">
-            <Canvas.Background>
-                <ImageBrush ImageSource="{Binding MapaPath}" AlignmentX="Left" AlignmentY="Top" Stretch="Uniform"></ImageBrush>
-            </Canvas.Background>
-            <Canvas.ContextMenu>
-                <ContextMenu FontSize="25" Name="contextMenu">
-                    <MenuItem Header="Ažuriraj lokal" Click="Azuriraj_Click">
-                        <MenuItem.Icon>
-                            <Image Source="Images/java.png" Height="15" Width="15" HorizontalAlignment="Left"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Ukloni sa mape" Click="Ukloni_Click">
-                        <MenuItem.Icon>
-                            <Image Source="Images/java.png" Height="25" Width="25" HorizontalAlignment="Left"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Obriši lokal" Click="Obrisi_Click">
-                        <MenuItem.Icon>
-                            <Image Source="Images/java.png" Height="25" Width="25" HorizontalAlignment="Left"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </ContextMenu>
-            </Canvas.ContextMenu>
-            <StackPanel >
-                <StackPanel Orientation="Horizontal">
-                    <!--<Button Click="Button_Click" x:Name="prikaziBt" Content="Sakrij lokale" Height="50"  HorizontalAlignment="Left" FontSize="25"></Button>-->
-                </StackPanel>
-                <ListView  ItemsSource="{Binding Lokali}"  Margin="0 40 0 0" x:Name="ListaLokala" Grid.Column="0" Grid.Row="0"  PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown" MouseMove="ListView_MouseMove" MouseRightButtonUp="ListaLokala_MouseRightButtonDown">
-                    <ListView.ContextMenu>
-                        <ContextMenu FontSize="25">
-                            <MenuItem Header="Ažuriraj lokal" Click="Azuriraj_Click_List">
+        <ScrollViewer Width="1000" Height="550" HorizontalScrollBarVisibility="Visible">
+            <Viewbox Stretch="UniformToFill" ScrollViewer.PanningMode="Both" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                <Canvas ScrollViewer.PanningMode="Both" ScrollViewer.HorizontalScrollBarVisibility="Visible" Width="1270" Height="700" Name="Mapa" AllowDrop="True" Mouse.PreviewMouseDown="Mapa_PreviewMouseDown" MouseRightButtonDown="Mapa_MouseRightButtonDown" MouseMove="Mapa_MouseMove" DragEnter="Mapa_DragEnter" Drop="Mapa_Drop">
+                    <Canvas.Background>
+                        <ImageBrush ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="Both" ImageSource="{Binding MapaPath}" AlignmentX="Left" AlignmentY="Top" Stretch="Uniform"></ImageBrush>
+                    </Canvas.Background>
+                    <Canvas.ContextMenu>
+                        <ContextMenu FontSize="25" Name="contextMenu">
+                            <MenuItem Header="Ažuriraj lokal" Click="Azuriraj_Click">
                                 <MenuItem.Icon>
                                     <Image Source="Images/java.png" Height="15" Width="15" HorizontalAlignment="Left"/>
                                 </MenuItem.Icon>
                             </MenuItem>
-                            <MenuItem Header="Obriši lokal" Click="Obrisi_Click_List">
+                            <MenuItem Header="Ukloni sa mape" Click="Ukloni_Click">
+                                <MenuItem.Icon>
+                                    <Image Source="Images/java.png" Height="25" Width="25" HorizontalAlignment="Left"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Obriši lokal" Click="Obrisi_Click">
                                 <MenuItem.Icon>
                                     <Image Source="Images/java.png" Height="25" Width="25" HorizontalAlignment="Left"/>
                                 </MenuItem.Icon>
                             </MenuItem>
                         </ContextMenu>
-                    </ListView.ContextMenu>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <WrapPanel>
-                                <Image Source="Images/java.png" Width="45"/>
-                                <TextBlock Text="{Binding Id}" FontSize="25" VerticalAlignment="Center" />
-                                <TextBlock Text="{Binding Naziv}" FontSize="25" VerticalAlignment="Center" />
-                            </WrapPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel>
-        </Canvas>
+                    </Canvas.ContextMenu>
+                    <StackPanel >
+                        <StackPanel Orientation="Horizontal">
+                            <!--<Button Click="Button_Click" x:Name="prikaziBt" Content="Sakrij lokale" Height="50"  HorizontalAlignment="Left" FontSize="25"></Button>-->
+                        </StackPanel>
+                        <ListView  ItemsSource="{Binding Lokali}"  Margin="0 40 0 0" x:Name="ListaLokala" Grid.Column="0" Grid.Row="0"  PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown" MouseMove="ListView_MouseMove" MouseRightButtonUp="ListaLokala_MouseRightButtonDown">
+                            <ListView.ContextMenu>
+                                <ContextMenu FontSize="25">
+                                    <MenuItem Header="Ažuriraj lokal" Click="Azuriraj_Click_List">
+                                        <MenuItem.Icon>
+                                            <Image Source="Images/java.png" Height="15" Width="15" HorizontalAlignment="Left"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header="Obriši lokal" Click="Obrisi_Click_List">
+                                        <MenuItem.Icon>
+                                            <Image Source="Images/java.png" Height="25" Width="25" HorizontalAlignment="Left"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <WrapPanel>
+                                        <Image Source="Images/java.png" Width="45"/>
+                                        <TextBlock Text="{Binding Id}" FontSize="25" VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding Naziv}" FontSize="25" VerticalAlignment="Center" />
+                                    </WrapPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </Canvas>
+            </Viewbox>
+        </ScrollViewer>
         </Viewbox>
 
     </DockPanel>

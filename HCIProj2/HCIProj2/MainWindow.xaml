@@ -36,8 +36,7 @@
                 <MenuItem Command="commands:Precice.PrikaziTipoveCmd" Header="_Prikaži Tipove" FontSize="34" InputGestureText="Alt+E"/>
             </MenuItem>
             <Separator/>
-            <MenuItem Header="_Pretraga" FontSize="34" BorderThickness="1" BorderBrush="Black">
-                <MenuItem Header="_Pretrazi Lokale" FontSize="34" />
+            <MenuItem Name="PNM" Header="_Pretraga"  FontSize="34" BorderThickness="1" BorderBrush="Black" Click="PretragaNaMapi_Click" ToolTip="Pretraga na mapi - CTRL+P">
             </MenuItem>
             <Separator></Separator>
             <MenuItem IsEnabled="False" Name="Nazad" Click="Nazad_Click" Header="_Nazad" FontSize="34" BorderThickness="1" BorderBrush="Black">

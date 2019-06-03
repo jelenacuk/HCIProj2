@@ -192,9 +192,24 @@ namespace HCIProj2
             }
         }
 
+        private bool visible;
+        public bool Visible
+        {
+            get { return visible; }
+            set
+            {
+                if (value != visible)
+                {
+                    visible = value;
+                    OnPropertyChanged("Visible");
+                }
+            }
+        }
+
         public Lokal()
         {
             Etikete = new ObservableCollection<Etiketa>();
+            Visible = true;
         }
 
         public Lokal(string id, string naziv, string opis, String datumOtvaranja, string dozvoljenoPusenje, int kapacitet, string primaRezervacije, string dostupanHendikepiranim, string sluziAlkohol, string cenovnaKategorija, ObservableCollection<Etiketa> etikete, Tip tip, string ikonica)
@@ -212,6 +227,7 @@ namespace HCIProj2
             Etikete = etikete;
             Tip = tip;
             Ikonica = ikonica;
+            Visible = true;
         }
         public Lokal(Lokal l)
         {
@@ -228,6 +244,7 @@ namespace HCIProj2
             Etikete = l.Etikete;
             Tip = l.Tip;
             Ikonica = l.Ikonica;
+            Visible = true;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

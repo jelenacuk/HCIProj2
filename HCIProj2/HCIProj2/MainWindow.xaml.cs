@@ -258,7 +258,7 @@ namespace HCIProj2
             Mapa.Children.RemoveRange(1, lokaliNaMapi.Count +1);
             foreach (Lokal lokal in lokaliNaMapi)
             {
-                if (lokal.X != -1 && lokal.Y != -1)
+                if (lokal.X != -1 && lokal.Y != -1 && lokal.Visible == true)
                 {
                     Image lokalIkonica = new Image();
                     lokalIkonica.Width = 32;
@@ -432,6 +432,25 @@ namespace HCIProj2
         {
             PrikaziPomoc pomoc = new PrikaziPomoc("index", this);
             pomoc.Show();
+        }
+
+        private void PretragaNaMapi_Click(object sender, RoutedEventArgs e)
+        {
+            if(this.PNM.Header.Equals("Pretraga")) {
+                this.PNM.Header = "Poništi";
+                PretragaNaMapi pretragaNaMapi = new PretragaNaMapi();
+                pretragaNaMapi.Show();
+            } else
+            {
+                this.PNM.Header = "Pretraga";
+                foreach (var lokal in LokaliNaMapi)
+                {
+                    lokal.Visible = true;
+                }
+                MainWindow.instance.LokaliPins_Draw();
+            }
+            
+
         }
     }
 

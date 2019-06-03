@@ -197,6 +197,20 @@ namespace HCIProj2
 
         }
 
+        private ObservableCollection<Lokal> neDodatiLokali;
+        public ObservableCollection<Lokal> NeDodatiLokali
+        {
+            get { return neDodatiLokali; }
+            set
+            {
+                if (value != neDodatiLokali)
+                {
+                    neDodatiLokali = value;
+                    OnPropertyChanged("LokaliNaMapi");
+                }
+            }
+        }
+
         public static void SacuvajPodatke(string grad)
         {
             String fileName = "./" + grad + ".xml";

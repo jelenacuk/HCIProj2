@@ -97,6 +97,7 @@ namespace HCIProj2
                 {
                     lokal.Ikonica = lokal.Tip.Ikonica;
                 }
+                lokal.DozvoljenoPusenje = ((combo_pusenje.SelectedItem as ComboBoxItem).Content as TextBlock).Text;
                 lokal.CenovnaKategorija = ((combo_cene.SelectedItem as ComboBoxItem).Content as TextBlock).Text;
                 lokal.DostupanHendikepiranim = ((combo_hendikepirani.SelectedItem as ComboBoxItem).Content as TextBlock).Text;
                 lokal.PrimaRezervacije = ((combo_rezervacije.SelectedItem as ComboBoxItem).Content as TextBlock).Text;

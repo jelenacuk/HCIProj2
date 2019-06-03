@@ -13,51 +13,51 @@
             <Setter Property="FontSize" Value="30"/>
         </Style>
     </Window.Resources>
-    
+
     <Window.CommandBindings>
         <CommandBinding Command="commands:Precice.ZatvoriProzorCmd" Executed="zatvoriProzor"/>
         <CommandBinding Command="commands:Precice.EtiketaEnterCmd" Executed="buttonPretraziClick"/>
         <CommandBinding Command="commands:Precice.PonistiPretraguCmd" Executed="buttonPonistiClick"/>
         <CommandBinding Command="commands:Precice.PomocCmd" Executed="Help_Executed"/>
     </Window.CommandBindings>
-    
+
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel>
                 <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="160" />
-                <RowDefinition Height="720" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="160" />
+                        <RowDefinition Height="720" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" Margin="0,0,0.2,200.6" Grid.RowSpan="3">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="80" />
-                    <RowDefinition Height="80" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="130" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="250" />
-                </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="0" Margin="0,0,0.2,200.6" Grid.RowSpan="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80" />
+                            <RowDefinition Height="80" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="250" />
+                        </Grid.ColumnDefinitions>
 
-                <Label x:Name="labelIdLokala" Content="ID:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontSize="38" Grid.Row="0" Grid.Column="0"/>
+                        <Label x:Name="labelIdLokala" Content="ID:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontSize="38" Grid.Row="0" Grid.Column="0"/>
                         <TextBox Name="textBoxIdLokala" MaxLength="50" ToolTip="Unesite ID tipa" FontSize="30" Margin="0,4,0,0" Grid.Row="0" Grid.Column="1" BorderThickness="5" Height="60"/>
                         <Button Name="buttonPretragaLokala" VerticalAlignment="Center" Margin="0,4,0,0"  Height="50" Grid.Row="0" Grid.Column="2" Command="commands:Precice.EtiketaEnterCmd" Width="200" ToolTip="Pretraži sve lokale - CTRL+ENTER">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Pretraži" VerticalAlignment="Center" HorizontalAlignment="Right" Height="30" FontSize="26"/>
-                    </StackPanel>
-                </Button>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Pretraži" VerticalAlignment="Center" HorizontalAlignment="Right" Height="30" FontSize="26"/>
+                            </StackPanel>
+                        </Button>
 
-                <Label x:Name="LabelNazivLokala" Content="Naziv:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontSize="38" Grid.Row="1" Grid.Column="0"/>
+                        <Label x:Name="LabelNazivLokala" Content="Naziv:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" FontSize="38" Grid.Row="1" Grid.Column="0"/>
                         <TextBox Name="textBoxNazivLokala" MaxLength="50" ToolTip="Unesite ID tipa" FontSize="30" Margin="0,4,0,0" Grid.Row="1" Grid.Column="1" BorderThickness="5" Height="60"/>
                         <Button Name="buttonPonistiLokale" VerticalAlignment="Center" Margin="0,4,0,0"  Height="50" Grid.Row="1" Grid.Column="2" Command="commands:Precice.PonistiPretraguCmd" Width="200" ToolTip="Poništi pretragu - ALT+ENTER">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Poništi" VerticalAlignment="Center" HorizontalAlignment="Right" Height="30" FontSize="26"/>
-                    </StackPanel>
-                </Button>
-            </Grid>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Poništi" VerticalAlignment="Center" HorizontalAlignment="Right" Height="30" FontSize="26"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
 
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
@@ -168,14 +168,14 @@
 
 
 
-                    <DataGrid Name="typesGrid" FontSize="30" AutoGenerateColumns="False"  Margin="5,5.4,5.2,5.4" IsReadOnly="True" Grid.Row="2" SelectedItem="{Binding Path=SelektovaniLokal, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Lokali}">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" MinWidth="100" Width="*" FontSize="30" Binding="{Binding Id}"/>
-                    <DataGridTextColumn Header="Ime Lokala" MinWidth="100" Width="*" FontSize="30" Binding="{Binding Naziv}"/>
-                    <DataGridTextColumn Header="Tip Lokala"  MinWidth="100" Width="*" FontSize="30" Binding="{Binding Tip.Naziv}"/>
-                    <DataGridTextColumn Header="Na Mapi"   MinWidth="100" Width="*" FontSize="30" />
-                </DataGrid.Columns>
-            </DataGrid>
+                    <DataGrid Name="typesGrid" FontSize="30" AutoGenerateColumns="False"  Margin="5,5.4,5.2,5.4" IsReadOnly="True" Grid.Row="2" SelectedItem="{Binding Path=SelektovaniLokal, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Path=Lokali}" MouseLeftButtonDown="tableRightClick">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" MinWidth="100" Width="*" FontSize="30" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Ime Lokala" MinWidth="100" Width="*" FontSize="30" Binding="{Binding Naziv}"/>
+                            <DataGridTextColumn Header="Tip Lokala"  MinWidth="100" Width="*" FontSize="30" Binding="{Binding Tip.Naziv}"/>
+                            <DataGridTextColumn Header="Na Mapi"   MinWidth="100" Width="*" FontSize="30" />
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

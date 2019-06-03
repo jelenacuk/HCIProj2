@@ -86,6 +86,7 @@ namespace HCIProj2
         {
             var pronadjene1 = new ObservableCollection<Lokal>();
             var pronadjene2 = new ObservableCollection<Lokal>();
+            Lokali = Podaci.getInstance().Lokali;
             pronadjene2 = Lokali;
             if (!string.IsNullOrWhiteSpace(textBoxIdLokala.Text))
             {
@@ -142,11 +143,11 @@ namespace HCIProj2
                     pronadjene2 = new ObservableCollection<Lokal>(pronadjene1);
                     pronadjene1.Clear();
                 }
-                if(!string.IsNullOrWhiteSpace(textBoxNazivLokala.Text))
+                if (!string.IsNullOrWhiteSpace(textBoxNazivLokala.Text))
                 {
                     foreach (var data in pronadjene2)
                     {
-                        if(data.Naziv.Contains(textBoxNazivLokala.Text))
+                        if (data.Naziv.Contains(textBoxNazivLokala.Text))
                         {
                             pronadjene1.Add(new Lokal(data));
                         }
@@ -180,7 +181,7 @@ namespace HCIProj2
                 }
                 if (!string.IsNullOrWhiteSpace(comboBoxPusenje.Text))
                 {
-                    
+
                     foreach (var data in pronadjene2)
                     {
                         if (data.DozvoljenoPusenje.Contains(comboBoxPusenje.Text))
@@ -215,14 +216,14 @@ namespace HCIProj2
                     pronadjene2 = new ObservableCollection<Lokal>(pronadjene1);
                     pronadjene1.Clear();
                 }
-                if(!string.IsNullOrWhiteSpace(comboBoxEtikete.Text))
+                if (!string.IsNullOrWhiteSpace(comboBoxEtikete.Text))
                 {
-                    
+
                     foreach (var data in pronadjene2)
                     {
-                        foreach(var data2 in data.Etikete)
+                        foreach (var data2 in data.Etikete)
                         {
-                            if(data2.Id.Equals(comboBoxEtikete.Text))
+                            if (data2.Id.Equals(comboBoxEtikete.Text))
                             {
                                 pronadjene1.Add(new Lokal(data));
                             }
@@ -232,11 +233,11 @@ namespace HCIProj2
                     pronadjene2 = new ObservableCollection<Lokal>(pronadjene1);
                     pronadjene1.Clear();
                 }
-                if(!string.IsNullOrWhiteSpace(comboBoxTip.Text))
+                if (!string.IsNullOrWhiteSpace(comboBoxTip.Text))
                 {
                     foreach (var data in pronadjene2)
                     {
-                        if(data.Tip.Naziv.Contains(comboBoxTip.Text))
+                        if (data.Tip.Naziv.Contains(comboBoxTip.Text))
                         {
                             pronadjene1.Add(new Lokal(data));
                         }
@@ -262,6 +263,12 @@ namespace HCIProj2
             comboBoxTip.Text = "";
             Lokali = Podaci.getInstance().Lokali;
 
+        }
+
+        private void tableRightClick(object sender, RoutedEventArgs e)
+        {
+            Detaljnije detaljnijiPrikazLokala = new Detaljnije(this.SelektovaniLokal);
+            detaljnijiPrikazLokala.Show();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

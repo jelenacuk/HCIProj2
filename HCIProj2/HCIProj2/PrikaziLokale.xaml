@@ -141,16 +141,16 @@
                         <Label x:Name="LabelCene" Content="Cena:" HorizontalAlignment="Left" Margin="10,4,20,0" VerticalAlignment="Top" FontSize="38" Grid.Row="6" Grid.Column="0" Height="60"/>
                         <ComboBox Name="comboBoxCene" Grid.Row="6" Grid.Column="1" HorizontalContentAlignment="Center" IsEditable="False" Height="60">
                             <ComboBoxItem>
-                                <TextBlock Text="Niska" FontSize="38"></TextBlock>
+                                <TextBlock Text="Niske" FontSize="38"></TextBlock>
                             </ComboBoxItem>
                             <ComboBoxItem>
-                                <TextBlock Text="Srednja" FontSize="38"></TextBlock>
+                                <TextBlock Text="Srednje" FontSize="38"></TextBlock>
                             </ComboBoxItem>
                             <ComboBoxItem>
-                                <TextBlock Text="Visoka" FontSize="38"></TextBlock>
+                                <TextBlock Text="Visoke" FontSize="38"></TextBlock>
                             </ComboBoxItem>
                             <ComboBoxItem>
-                                <TextBlock Text="Izuzetno visoka" FontSize="38"></TextBlock>
+                                <TextBlock Text="Izuzetno visoke" FontSize="38"></TextBlock>
                             </ComboBoxItem>
                             <ComboBoxItem>
                                 <TextBlock Text="" FontSize="38"></TextBlock>
@@ -173,7 +173,7 @@
                             <DataGridTextColumn Header="ID" MinWidth="100" Width="*" FontSize="30" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Ime Lokala" MinWidth="100" Width="*" FontSize="30" Binding="{Binding Naziv}"/>
                             <DataGridTextColumn Header="Tip Lokala"  MinWidth="100" Width="*" FontSize="30" Binding="{Binding Tip.Naziv}"/>
-                            <DataGridTextColumn Header="Na Mapi"   MinWidth="100" Width="*" FontSize="30" />
+                            <DataGridTextColumn Header="Na Mapi"   MinWidth="100" Width="*" FontSize="30" Binding="{Binding NaMapi}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

@@ -11,6 +11,8 @@
         mc:Ignorable="d"
         Title="Detaljnije" Height="700" Width="1100">
     <Window.CommandBindings>
+        <CommandBinding Command="commands:Precice.ZatvoriProzorCmd" Executed="Izlaz_Click"/>
+        <CommandBinding Command="commands:Precice.EtiketaEnterCmd" Executed="Sacuvaj_Click"/>
         <CommandBinding Command="commands:Precice.PomocCmd" Executed="Help_Executed"/>
     </Window.CommandBindings>
     <ScrollViewer>
@@ -97,7 +99,11 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Datum otvaranja:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Text="Datum otvaranja:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock.ToolTip>
+                        <TextBox FontSize ="38" Text ="Format: dd/MM/yyyy "/>
+                    </TextBlock.ToolTip>
+                </TextBlock>
                 <TextBox AcceptsReturn="True" Name="textB_datum" Validation.Error="TextB_datum_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" FontSize="38">
                     <TextBox.Text>
                         <Binding Path="Lokal.DatumOtvaranja" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
@@ -277,7 +283,16 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Etikete:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Text="Etikete:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock.ToolTip>
+                        <StackPanel>
+                            <TextBox FontSize ="38" Text ="Ukoliko ne postoji etiketa sa tim nazivom, "/>
+                            <TextBox FontSize ="38" Text ="otvorice se dijalog za dodavanje,"/>
+                            <TextBox FontSize ="38" Text ="ako postoji dodace je u listu ispod."/>
+                        </StackPanel>
+                        
+                    </TextBlock.ToolTip>
+                </TextBlock>
                 <Grid Margin="0 30 0 10" Grid.Column="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>

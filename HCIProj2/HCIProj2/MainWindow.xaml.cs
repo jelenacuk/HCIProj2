@@ -117,7 +117,7 @@ namespace HCIProj2
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(this.ListaLokala.Visibility == Visibility.Hidden)
+            if (this.ListaLokala.Visibility == Visibility.Collapsed)
             {
                 this.ListaLokala.Visibility = Visibility.Visible;
                 Izlistaj.Header = "Sakrij Lokale";
@@ -125,7 +125,7 @@ namespace HCIProj2
             }
             else
             {
-                this.ListaLokala.Visibility = Visibility.Hidden;
+                this.ListaLokala.Visibility = Visibility.Collapsed;
                 Izlistaj.Header = "Izlistaj Lokale";
                 Izlistaj.ToolTip = "Prikazuje listu lokala koji nisu na mapi - CTRL+I";
             }
@@ -239,6 +239,7 @@ namespace HCIProj2
                 if (lokali.Remove(lokalPin))
                 {
                     LokaliNaMapi.Add(lokalPin);
+                    lokalPin.NaMapi = "DA";
                 }
                 LokaliPins_Draw();
 
@@ -263,14 +264,14 @@ namespace HCIProj2
 
         public void LokaliPins_Draw()
         {
-            Mapa.Children.RemoveRange(1, lokaliNaMapi.Count +1);
+            Mapa.Children.RemoveRange(0, lokaliNaMapi.Count +1);
             foreach (Lokal lokal in lokaliNaMapi)
             {
                 if (lokal.X != -1 && lokal.Y != -1 && lokal.Visible == true)
                 {
                     Image lokalIkonica = new Image();
-                    lokalIkonica.Width = 32;
-                    lokalIkonica.Height = 32;
+                    lokalIkonica.Width = 40;
+                    lokalIkonica.Height = 40;
                     StackPanel stackPanel = new StackPanel();
 
                     StackPanel idPanel = new StackPanel();
@@ -350,12 +351,6 @@ namespace HCIProj2
                         etikete.Children.Add(bojaEtikete);
                         stackPanel.Children.Add(etikete);
                     }
-
-
-                    
-                    TextBlock opisLokala = new TextBlock();
-                    opisLokala.Text = lokal.Opis;
-                    stackPanel.Children.Add(opisLokala);
 
                     lokalIkonica.ToolTip = stackPanel;
                     if (File.Exists(lokal.Ikonica))
@@ -447,7 +442,6 @@ namespace HCIProj2
         }
         private void Ukloni_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(selektovanLokal.Id);
             if (selektovanLokal != null)
             {
                 for(int i=0; i < Podaci.JustGiveMeInstance().LokaliNaMapi.Count; i++)
@@ -460,6 +454,7 @@ namespace HCIProj2
                 //LokaliNaMapi.Remove(selektovanLokal);
 
                 Lokali.Add(selektovanLokal);
+                selektovanLokal.NaMapi = "NE";
                 LokaliPins_Draw();
             }
         }

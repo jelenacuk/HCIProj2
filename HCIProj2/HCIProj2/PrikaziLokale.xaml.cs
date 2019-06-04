@@ -77,22 +77,46 @@ namespace HCIProj2
             selektovanaEtiketa = null;
             SelektovaniLokal = null;
             DataContext = this;
-            Lokali = Podaci.getInstance().Lokali;
+            ObservableCollection<Lokal> l1 = new ObservableCollection<Lokal>();
+            ObservableCollection<Lokal> l2 = new ObservableCollection<Lokal>();
+            l1 = Podaci.JustGiveMeInstance().Lokali;
+            l2 = Podaci.JustGiveMeInstance().LokaliNaMapi;
+            lokali = new ObservableCollection<Lokal>();
+            for(int i = 0; i < l1.Count; i++)
+            {
+                Lokali.Add(l1[i]);
+            }
+            for (int i = 0; i < l2.Count; i++)
+            {
+                Lokali.Add(l2[i]);
+            }
             Etikete = Podaci.getInstance().Etikete;
             Tipovi = Podaci.getInstance().Tipovi;
         }
 
         private void buttonPretraziClick(object sender, RoutedEventArgs e)
         {
+            ObservableCollection<Lokal> l1 = new ObservableCollection<Lokal>();
+            ObservableCollection<Lokal> l2 = new ObservableCollection<Lokal>();
+            l1 = Podaci.JustGiveMeInstance().Lokali;
+            l2 = Podaci.JustGiveMeInstance().LokaliNaMapi;
+            lokali = new ObservableCollection<Lokal>();
+            for (int i = 0; i < l1.Count; i++)
+            {
+                Lokali.Add(l1[i]);
+            }
+            for (int i = 0; i < l2.Count; i++)
+            {
+                Lokali.Add(l2[i]);
+            }
             var pronadjene1 = new ObservableCollection<Lokal>();
             var pronadjene2 = new ObservableCollection<Lokal>();
-            Lokali = Podaci.getInstance().Lokali;
             pronadjene2 = Lokali;
             if (!string.IsNullOrWhiteSpace(textBoxIdLokala.Text))
             {
 
 
-                foreach (var data in Podaci.getInstance().Lokali)
+                foreach (var data in Lokali)
                 {
                     if (data.Id.Contains(textBoxIdLokala.Text))
                     {
@@ -261,7 +285,19 @@ namespace HCIProj2
             comboBoxCene.Text = "";
             comboBoxEtikete.Text = "";
             comboBoxTip.Text = "";
-            Lokali = Podaci.getInstance().Lokali;
+            ObservableCollection<Lokal> l1 = new ObservableCollection<Lokal>();
+            ObservableCollection<Lokal> l2 = new ObservableCollection<Lokal>();
+            l1 = Podaci.JustGiveMeInstance().Lokali;
+            l2 = Podaci.JustGiveMeInstance().LokaliNaMapi;
+            Lokali = new ObservableCollection<Lokal>();
+            for (int i = 0; i < l1.Count; i++)
+            {
+                Lokali.Add(l1[i]);
+            }
+            for (int i = 0; i < l2.Count; i++)
+            {
+                Lokali.Add(l2[i]);
+            }
 
         }
 

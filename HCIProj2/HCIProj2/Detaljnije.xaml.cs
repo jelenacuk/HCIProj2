@@ -291,6 +291,12 @@ namespace HCIProj2
 
         private void Sacuvaj_Click(object sender, RoutedEventArgs e)
         {
+            id_Eror = false; naziv_Error = false; opis_Error = false; ikonica_Error = false; datum_Error = false;
+            textB_id.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textB_naziv.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textB_opis.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textB_ikonica.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textB_datum.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             if (kapacitet_Error == false && id_Eror == false && opis_Error == false && naziv_Error == false && ikonica_Error == false && datum_Error == false && proveraComboBox() == true)
             {
                 LokalOrig.CenovnaKategorija = cena;
@@ -305,7 +311,7 @@ namespace HCIProj2
                 LokalOrig.Id = lokal.Id;
                 Lokal.Etikete = IzabraneEtikete;
                 LokalOrig.Etikete = IzabraneEtikete;
-                
+                MainWindow.instance.LokaliPins_Draw();
                 Close();
             }
 

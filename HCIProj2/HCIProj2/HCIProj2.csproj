@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>google-maps-icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -124,9 +127,7 @@
     <Compile Include="StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tutorijal.xaml.cs">
-      <DependentUpon>Tutorijal.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Tutorijal.xaml.cs" />
     <Page Include="Detaljnije.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -191,8 +192,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Tutorijal.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -218,7 +219,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="tutorijal.flv" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -236,6 +236,9 @@
     <Resource Include="Images\mapRemove.jpg" />
     <Resource Include="Images\remove.png" />
     <Resource Include="Images\update.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="google-maps-icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

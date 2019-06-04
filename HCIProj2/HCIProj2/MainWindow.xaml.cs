@@ -588,8 +588,8 @@ namespace HCIProj2
 
         private void Tutorijal_Click(object sender, RoutedEventArgs e)
         {
-            Tutorijal tutorijal = new Tutorijal();
-            tutorijal.Show();
+            Tutorijal t = new Tutorijal();
+            t.Show();
         }
     }
 

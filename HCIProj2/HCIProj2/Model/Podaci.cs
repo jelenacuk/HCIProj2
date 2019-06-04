@@ -136,7 +136,6 @@ namespace HCIProj2
                     if (File.Exists(fileName) == false)
                     {
                         FileStream fs = File.Create(fileName);
-                        return instance;
                     }
                     using (var stream = new FileStream(fileName, FileMode.OpenOrCreate))
                     {
@@ -160,7 +159,6 @@ namespace HCIProj2
                     if (File.Exists(fileName) == false)
                     {
                         FileStream fs = File.Create(fileName);
-                        return instance;
                     }
                     using (var stream = new FileStream(fileName, FileMode.OpenOrCreate))
                     {
@@ -185,7 +183,6 @@ namespace HCIProj2
                     if (File.Exists(fileName) == false)
                     {
                         FileStream fs = File.Create(fileName);
-                        return instance;
                     }
                     using (var stream = new FileStream(fileName, FileMode.OpenOrCreate))
                     {
@@ -204,6 +201,7 @@ namespace HCIProj2
                         }
 
                     }
+
                 }
 
             }

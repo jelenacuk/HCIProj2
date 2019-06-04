@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HCIProj2"
         xmlns:commands="clr-namespace:HCIProj2.Shortcuts"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="1040" Closed="Window_Closed">
+        Title="MainWindow" Height="750" Width="1240" Closed="Window_Closed">
 
     <Window.Resources>
         <Style x:Key="{x:Type ToolTip}" TargetType="{x:Type ToolTip}">
@@ -52,7 +52,7 @@
             <Separator></Separator>
             <MenuItem  Name="Pomoc" Command="commands:Precice.NazadCmd" Header="_Pomoc" FontSize="34" BorderThickness="1" BorderBrush="Black">
                 <MenuItem Command="commands:Precice.PomocCmd" Header="_Online Pomoc" FontSize="34" InputGestureText="Ctrl+F1"/>
-                <MenuItem Click="Tutorijal_Click" Name="tutorijal" Header="_Tutorijal" FontSize="34" />
+                <MenuItem Click="Tutorijal_Click"  Name="tutorijal" Header="_Tutorijal" FontSize="34" />
             </MenuItem>
 
         </Menu>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<ArrayOfTip xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Tip>
+    <Id>001</Id>
+    <Naziv>Kafic</Naziv>
+    <Opis>Kafe lokal</Opis>
+    <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCI\HCI Projekat\HCIProj2\HCIProj2\HCIProj2\Images\java.png</Ikonica>
+  </Tip>
+  <Tip>
+    <Id>002</Id>
+    <Naziv>Restoran</Naziv>
+    <Opis>Restoran</Opis>
+    <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCIProj2\HCIProj2\HCIProj2\HCIProj2\Images\Icons\food-33-512.png</Ikonica>
+  </Tip>
+  <Tip>
+    <Id>003</Id>
+    <Naziv>Picerija</Naziv>
+    <Opis>Picerija</Opis>
+    <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCIProj2\HCIProj2\HCIProj2\HCIProj2\Images\Icons\download.png</Ikonica>
+  </Tip>
+  <Tip>
+    <Id>004</Id>
+    <Naziv>Bazen</Naziv>
+    <Opis>Bazen, pored kojeg se nalazi restoran.</Opis>
+    <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCIProj2\HCIProj2\HCIProj2\HCIProj2\Images\Icons\186192.png</Ikonica>
+  </Tip>
+  <Tip>
+    <Id>005</Id>
+    <Naziv>Diskoteka</Naziv>
+    <Opis>Mesto za djuskanje!</Opis>
+    <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCIProj2\HCIProj2\HCIProj2\HCIProj2\Images\Icons\download (2).png</Ikonica>
+  </Tip>
+  <Tip>
+    <Id>006</Id>
+    <Naziv>Hotel</Naziv>
+    <Opis>Prenociste.</Opis>
+    <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCIProj2\HCIProj2\HCIProj2\HCIProj2\Images\Icons\Hotel-Icon-1.png</Ikonica>
+  </Tip>
+</ArrayOfTip>

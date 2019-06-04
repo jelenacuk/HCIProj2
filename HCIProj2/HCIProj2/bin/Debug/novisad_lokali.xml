@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<ArrayOfLokal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Lokal>
+    <Id>001</Id>
+    <NaMapi>NE</NaMapi>
+    <Naziv>Tri Tacke</Naziv>
+    <Opis>Tri Tacke, kafic u NSu...</Opis>
+    <DatumOtvaranja>02/02/2012</DatumOtvaranja>
+    <DozvoljenoPusenje>Dozvoljeno</DozvoljenoPusenje>
+    <Kapacitet>60</Kapacitet>
+    <PrimaRezervacije>Ne</PrimaRezervacije>
+    <DostupanHendikepiranim>Da</DostupanHendikepiranim>
+    <SluziAlkohol>Služi do 23h</SluziAlkohol>
+    <CenovnaKategorija>Srednje</CenovnaKategorija>
+    <Etikete>
+      <Etiketa>
+        <Id>Muzika</Id>
+        <Opis>Ziva muzika</Opis>
+        <Boja>Blue</Boja>
+      </Etiketa>
+    </Etikete>
+    <Tip>
+      <Id>001</Id>
+      <Naziv>Kafic</Naziv>
+      <Opis>Kafe lokal</Opis>
+      <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCI\HCI Projekat\HCIProj2\HCIProj2\HCIProj2\Images\java.png</Ikonica>
+    </Tip>
+    <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCIProj2\HCIProj2\HCIProj2\HCIProj2\Images\Icons\download (1).png</Ikonica>
+    <X>0</X>
+    <Y>0</Y>
+    <Visible>true</Visible>
+  </Lokal>
+  <Lokal>
+    <Id>005</Id>
+    <NaMapi>NE</NaMapi>
+    <Naziv>Ladovina</Naziv>
+    <Opis>Kafic u Lazinom sokaku.</Opis>
+    <DatumOtvaranja>15/04/2019</DatumOtvaranja>
+    <DozvoljenoPusenje>Zabranjeno</DozvoljenoPusenje>
+    <Kapacitet>90</Kapacitet>
+    <PrimaRezervacije>Ne</PrimaRezervacije>
+    <DostupanHendikepiranim>Ne</DostupanHendikepiranim>
+    <SluziAlkohol>Služi i kasno noću</SluziAlkohol>
+    <CenovnaKategorija>Niske</CenovnaKategorija>
+    <Etikete>
+      <Etiketa>
+        <Id>Muzika</Id>
+        <Opis>Ziva muzika</Opis>
+        <Boja>Blue</Boja>
+      </Etiketa>
+    </Etikete>
+    <Tip>
+      <Id>001</Id>
+      <Naziv>Kafic</Naziv>
+      <Opis>Kafe lokal</Opis>
+      <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCI\HCI Projekat\HCIProj2\HCIProj2\HCIProj2\Images\java.png</Ikonica>
+    </Tip>
+    <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCIProj2\HCIProj2\HCIProj2\HCIProj2\Images\Icons\images.png</Ikonica>
+    <X>0</X>
+    <Y>0</Y>
+    <Visible>true</Visible>
+  </Lokal>
+  <Lokal>
+    <Id>006</Id>
+    <NaMapi>NE</NaMapi>
+    <Naziv>Centar</Naziv>
+    <Opis>Pet zvezdica.</Opis>
+    <DatumOtvaranja>12/02/2019</DatumOtvaranja>
+    <DozvoljenoPusenje>Dozvoljeno</DozvoljenoPusenje>
+    <Kapacitet>330</Kapacitet>
+    <PrimaRezervacije>Da</PrimaRezervacije>
+    <DostupanHendikepiranim>Da</DostupanHendikepiranim>
+    <SluziAlkohol>Služi do 23h</SluziAlkohol>
+    <CenovnaKategorija>Izuzetno visoke</CenovnaKategorija>
+    <Etikete>
+      <Etiketa>
+        <Id>Muzika</Id>
+        <Opis>Ziva muzika</Opis>
+        <Boja>Blue</Boja>
+      </Etiketa>
+      <Etiketa>
+        <Id>Hrana</Id>
+        <Opis>Lokal sluzi hranu</Opis>
+        <Boja>Yellow</Boja>
+      </Etiketa>
+    </Etikete>
+    <Tip>
+      <Id>006</Id>
+      <Naziv>Hotel</Naziv>
+      <Opis>Prenociste.</Opis>
+      <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCIProj2\HCIProj2\HCIProj2\HCIProj2\Images\Icons\Hotel-Icon-1.png</Ikonica>
+    </Tip>
+    <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCIProj2\HCIProj2\HCIProj2\HCIProj2\Images\Icons\Hotel-Icon-1.png</Ikonica>
+    <X>0</X>
+    <Y>0</Y>
+    <Visible>true</Visible>
+  </Lokal>
+  <Lokal>
+    <Id>007</Id>
+    <NaMapi>NE</NaMapi>
+    <Naziv>Baza</Naziv>
+    <Opis>Najbolje mesto.</Opis>
+    <DatumOtvaranja>01/01/2018</DatumOtvaranja>
+    <DozvoljenoPusenje>Dozvoljeno</DozvoljenoPusenje>
+    <Kapacitet>100</Kapacitet>
+    <PrimaRezervacije>Ne</PrimaRezervacije>
+    <DostupanHendikepiranim>Ne</DostupanHendikepiranim>
+    <SluziAlkohol>Služi i kasno noću</SluziAlkohol>
+    <CenovnaKategorija>Srednje</CenovnaKategorija>
+    <Etikete>
+      <Etiketa>
+        <Id>Muzika</Id>
+        <Opis>Ziva muzika</Opis>
+        <Boja>Blue</Boja>
+      </Etiketa>
+    </Etikete>
+    <Tip>
+      <Id>001</Id>
+      <Naziv>Kafic</Naziv>
+      <Opis>Kafe lokal</Opis>
+      <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCI\HCI Projekat\HCIProj2\HCIProj2\HCIProj2\Images\java.png</Ikonica>
+    </Tip>
+    <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCIProj2\HCIProj2\HCIProj2\HCIProj2\Images\Icons\download (2).png</Ikonica>
+    <X>0</X>
+    <Y>0</Y>
+    <Visible>true</Visible>
+  </Lokal>
+</ArrayOfLokal>

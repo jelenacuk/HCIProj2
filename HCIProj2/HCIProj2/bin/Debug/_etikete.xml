@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<ArrayOfEtiketa xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Etiketa>
+    <Id>Hrana</Id>
+    <Opis>Lokal sluzi hranu</Opis>
+    <Boja>Yellow</Boja>
+  </Etiketa>
+  <Etiketa>
+    <Id>Muzika</Id>
+    <Opis>Ziva muzika</Opis>
+    <Boja>Blue</Boja>
+  </Etiketa>
+  <Etiketa>
+    <Id>Kviz</Id>
+    <Opis>Kvizovi iz raznih tema</Opis>
+    <Boja>Purple</Boja>
+  </Etiketa>
+  <Etiketa>
+    <Id>Karaoke</Id>
+    <Opis>Lokal organizuje karaoke veceri</Opis>
+    <Boja>Red</Boja>
+  </Etiketa>
+  <Etiketa>
+    <Id>Pet Friendly</Id>
+    <Opis>Lokal prima kucne ljubimce</Opis>
+    <Boja>Green</Boja>
+  </Etiketa>
+</ArrayOfEtiketa>

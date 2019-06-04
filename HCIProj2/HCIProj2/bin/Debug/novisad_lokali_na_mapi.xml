@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<ArrayOfLokal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Lokal>
+    <Id>004</Id>
+    <NaMapi>DA</NaMapi>
+    <Naziv>Latino</Naziv>
+    <Opis>Latino lokal</Opis>
+    <DatumOtvaranja>11/11/2011</DatumOtvaranja>
+    <DozvoljenoPusenje>Dozvoljeno</DozvoljenoPusenje>
+    <Kapacitet>330</Kapacitet>
+    <PrimaRezervacije>Da</PrimaRezervacije>
+    <DostupanHendikepiranim>Ne</DostupanHendikepiranim>
+    <SluziAlkohol>Služi i kasno noću</SluziAlkohol>
+    <CenovnaKategorija>Visoke</CenovnaKategorija>
+    <Etikete />
+    <Tip>
+      <Id>005</Id>
+      <Naziv>Diskoteka</Naziv>
+      <Opis>Mesto za djuskanje!</Opis>
+      <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCIProj2\HCIProj2\HCIProj2\HCIProj2\Images\Icons\download (1).png</Ikonica>
+    </Tip>
+    <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCIProj2\HCIProj2\HCIProj2\HCIProj2\Images\Icons\download (1).png</Ikonica>
+    <X>650</X>
+    <Y>181</Y>
+    <Visible>true</Visible>
+  </Lokal>
+  <Lokal>
+    <Id>002</Id>
+    <NaMapi>DA</NaMapi>
+    <Naziv>Atrijum</Naziv>
+    <Opis>Atrijum, lokal u okviru kampusa.</Opis>
+    <DatumOtvaranja>01/01/2001</DatumOtvaranja>
+    <DozvoljenoPusenje>Dozvoljeno</DozvoljenoPusenje>
+    <Kapacitet>100</Kapacitet>
+    <PrimaRezervacije>Ne</PrimaRezervacije>
+    <DostupanHendikepiranim>Da</DostupanHendikepiranim>
+    <SluziAlkohol>Služi do 23h</SluziAlkohol>
+    <CenovnaKategorija>Niske</CenovnaKategorija>
+    <Etikete>
+      <Etiketa>
+        <Id>Muzika</Id>
+        <Opis>Ziva muzika</Opis>
+        <Boja>Blue</Boja>
+      </Etiketa>
+      <Etiketa>
+        <Id>Hrana</Id>
+        <Opis>Lokal sluzi hranu</Opis>
+        <Boja>Yellow</Boja>
+      </Etiketa>
+    </Etikete>
+    <Tip>
+      <Id>001</Id>
+      <Naziv>Kafic</Naziv>
+      <Opis>Kafe lokal</Opis>
+      <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCI\HCI Projekat\HCIProj2\HCIProj2\HCIProj2\Images\java.png</Ikonica>
+    </Tip>
+    <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCI\HCI Projekat\HCIProj2\HCIProj2\HCIProj2\Images\java.png</Ikonica>
+    <X>431</X>
+    <Y>209</Y>
+    <Visible>true</Visible>
+  </Lokal>
+  <Lokal>
+    <Id>003</Id>
+    <NaMapi>DA</NaMapi>
+    <Naziv>Lazino Sokace</Naziv>
+    <Opis>Neka kafana</Opis>
+    <DatumOtvaranja>12/12/2002</DatumOtvaranja>
+    <DozvoljenoPusenje>Dozvoljeno</DozvoljenoPusenje>
+    <Kapacitet>200</Kapacitet>
+    <PrimaRezervacije>Da</PrimaRezervacije>
+    <DostupanHendikepiranim>Ne</DostupanHendikepiranim>
+    <SluziAlkohol>Služi i kasno noću</SluziAlkohol>
+    <CenovnaKategorija>Visoke</CenovnaKategorija>
+    <Etikete>
+      <Etiketa>
+        <Id>Muzika</Id>
+        <Opis>Ziva muzika</Opis>
+        <Boja>Blue</Boja>
+      </Etiketa>
+    </Etikete>
+    <Tip>
+      <Id>001</Id>
+      <Naziv>Kafic</Naziv>
+      <Opis>Kafe lokal</Opis>
+      <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCI\HCI Projekat\HCIProj2\HCIProj2\HCIProj2\Images\java.png</Ikonica>
+    </Tip>
+    <Ikonica>C:\Users\NikolaS\Documents\FAKS\HCIProj2\HCIProj2\HCIProj2\HCIProj2\Images\Icons\images.png</Ikonica>
+    <X>145</X>
+    <Y>262</Y>
+    <Visible>true</Visible>
+  </Lokal>
+</ArrayOfLokal>

@@ -127,5 +127,15 @@ namespace HCIProj2.Shortcuts
                 new KeyGesture(Key.N,ModifierKeys.Control)
             }
             );
+
+        public static readonly RoutedUICommand PretragaNaMapiCmd = new RoutedUICommand(
+            "pretraga na mapi",
+            "PretragaNaMapiCmd",
+            typeof(RoutedCommand),
+            new InputGestureCollection()
+            {
+                new KeyGesture(Key.P,ModifierKeys.Control)
+            }
+            );
     }
 }

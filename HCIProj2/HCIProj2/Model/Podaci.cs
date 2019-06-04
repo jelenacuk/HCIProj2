@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Xml.Serialization;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace HCIProj2
 {
@@ -15,6 +16,8 @@ namespace HCIProj2
 
         private static Podaci instance = null;
         private string grad;
+        public bool doneWritingEt = false;
+        public bool doneWrittingTip = false;
         private ObservableCollection<Lokal> lokali;
         public ObservableCollection<Lokal> Lokali {
             get { return lokali; }
@@ -93,7 +96,9 @@ namespace HCIProj2
             tipovi = new ObservableCollection<Tip>();
             etikete = new ObservableCollection<Etiketa>();
             lokaliNaMapi = new ObservableCollection<Lokal>();
-        }
+            bool doneWritingEt = false;
+            bool doneWrittingTip = false;
+    }
 
         public static Podaci getInstance(string grad)
         {
@@ -311,9 +316,24 @@ namespace HCIProj2
             return instance;
         }
 
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public static void SacuvajPodatke(string grad)
         {
-            String fileName = "./" + grad + "_lokali" + ".xml";
+            String fileName = "./" + "_tipovi" + ".xml";
+            using (var stream = new FileStream(fileName, FileMode.Create))
+            {
+                XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Tip>));
+                XML.Serialize(stream, instance.Tipovi);
+                instance.doneWrittingTip = true;
+            }
+            fileName = "./" + "_etikete" + ".xml";
+            using (var stream = new FileStream(fileName, FileMode.Create))
+            {
+                XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Etiketa>));
+                XML.Serialize(stream, instance.Etikete);
+                instance.doneWritingEt = true;
+            }
+            fileName = "./" + grad + "_lokali" + ".xml";
             using (var stream = new FileStream(fileName, FileMode.Create))
             {
                 XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Lokal>));
@@ -325,18 +345,7 @@ namespace HCIProj2
                 XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Lokal>));
                 XML.Serialize(stream, instance.LokaliNaMapi);
             }
-            fileName = "./" + "_tipovi" + ".xml";
-            using (var stream = new FileStream(fileName, FileMode.Create))
-            {
-                XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Tip>));
-                XML.Serialize(stream, instance.Tipovi);
-            }
-            fileName = "./" + "_etikete" + ".xml";
-            using (var stream = new FileStream(fileName, FileMode.Create))
-            {
-                XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Etiketa>));
-                XML.Serialize(stream, instance.Etikete);
-            }
+
         }
         public static Podaci JustGiveMeInstance()
         {

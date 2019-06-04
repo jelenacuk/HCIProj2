@@ -15,7 +15,7 @@
     </Window.Resources>
     
     <Window.CommandBindings>
-        <CommandBinding Command="commands:Precice.IzlistajSakrijLokale" Executed="Button_Click"/>
+        <CommandBinding Command="commands:Precice.IzlistajSakrijLokale" Executed="Izlistaj_Click"/>
         <CommandBinding Command="commands:Precice.DodajLokalCmd" Executed="dodajLokal"/>
         <CommandBinding Command="commands:Precice.DodajEtiketuCmd" Executed="dodajEtiketu"/>
         <CommandBinding Command="commands:Precice.DodajTipCmd" Executed="dodajTip"/>
@@ -24,6 +24,8 @@
         <CommandBinding Command="commands:Precice.PrikaziTipoveCmd" Executed="prikaziTipove"/>
         <CommandBinding Command="commands:Precice.PomocCmd" Executed="Help_Executed"/>
         <CommandBinding Command="commands:Precice.NazadCmd" Executed="Nazad_Click"/>
+        <CommandBinding Command="commands:Precice.PretragaNaMapiCmd" Executed="PretragaNaMapi_Click"/>
+        
     </Window.CommandBindings>
 
     <DockPanel>
@@ -43,14 +45,14 @@
                 <MenuItem Command="commands:Precice.PrikaziTipoveCmd" Header="_Prikaži Tipove" FontSize="34" InputGestureText="Alt+E"/>
             </MenuItem>
             <Separator/>
-            <MenuItem Name="PNM" Header="Pretraga"  FontSize="34" BorderThickness="1" BorderBrush="Black" Click="PretragaNaMapi_Click" ToolTip="Pretraži lokale na mapi - CTRL+P">
+            <MenuItem Name="PNM" Header="Pretraga"  FontSize="34" BorderThickness="1" BorderBrush="Black" Command="commands:Precice.PretragaNaMapiCmd" ToolTip="Pretraži lokale na mapi - CTRL+P">
             </MenuItem>
             <Separator></Separator>
             <MenuItem IsEnabled="False" Name="Nazad" Command="commands:Precice.NazadCmd" Header="_Nazad" FontSize="34" BorderThickness="1" BorderBrush="Black" ToolTip="Povratak na odabir gradova = CTRL+N"></MenuItem>
             <Separator></Separator>
             <MenuItem  Name="Pomoc" Command="commands:Precice.NazadCmd" Header="_Pomoc" FontSize="34" BorderThickness="1" BorderBrush="Black">
                 <MenuItem Command="commands:Precice.PomocCmd" Header="_Online Pomoc" FontSize="34" InputGestureText="Ctrl+F1"/>
-                <MenuItem Command="" Header="_Tutorijal" FontSize="34" />
+                <MenuItem Click="Tutorijal_Click" Name="tutorijal" Header="_Tutorijal" FontSize="34" />
             </MenuItem>
 
         </Menu>

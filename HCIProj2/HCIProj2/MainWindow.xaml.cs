@@ -37,6 +37,10 @@ namespace HCIProj2
             MapaPath = Directory.GetCurrentDirectory() + "\\Images\\" + grad + ".png";
             Lokali = Podaci.getInstance(this.grad).Lokali;
             LokaliNaMapi = Podaci.JustGiveMeInstance().LokaliNaMapi;
+            for(int i = 0; i < lokaliNaMapi.Count; i++)
+            {
+                LokaliNaMapi[i].Visible = true;
+            }
             LokaliPins_Draw();
             Nazad.IsEnabled = true;
         }
@@ -115,7 +119,7 @@ namespace HCIProj2
 
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Izlistaj_Click(object sender, RoutedEventArgs e)
         {
             if (this.ListaLokala.Visibility == Visibility.Collapsed)
             {
@@ -580,6 +584,12 @@ namespace HCIProj2
                 return Brushes.Green;
             }
             return Brushes.Purple;
+        }
+
+        private void Tutorijal_Click(object sender, RoutedEventArgs e)
+        {
+            Tutorijal tutorijal = new Tutorijal();
+            tutorijal.Show();
         }
     }
 

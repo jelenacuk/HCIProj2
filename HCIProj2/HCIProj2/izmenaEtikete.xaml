@@ -25,7 +25,7 @@
         <ScrollViewer VerticalScrollBarVisibility="Auto">
 
             <StackPanel Margin="0 0 10 0">
-                <TextBlock Text="Nova etiketa" FontSize="38" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Text="Izmena etikete" FontSize="38" HorizontalAlignment="Center"></TextBlock>
 
                 <!--ID-->
                 <Grid Margin="0 30 0 15">
@@ -34,7 +34,7 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="ID:" FontSize="38" Grid.Row="0" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox AcceptsReturn="True" Name="textB_id" TextChanged="TextB_id_TextChanged" Validation.Error="textB_id_Error" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap"  BorderThickness="5"  FontSize="38">
+                    <TextBox IsReadOnly="True" AcceptsReturn="True" Name="textB_id" TextChanged="TextB_id_TextChanged" Validation.Error="textB_id_Error" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap"  BorderThickness="5"  FontSize="38">
                         <TextBox.Text>
                             <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>

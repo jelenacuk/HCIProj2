@@ -35,36 +35,6 @@ namespace HCIProj2
             }
         }
 
-        private ObservableCollection<Etiketa> etikete;
-        public ObservableCollection<Etiketa> Etikete
-        {
-            get { return etikete; }
-            set
-            {
-                if (value != etikete)
-                {
-                    etikete = value;
-                    OnPropertyChanged("Etikete");
-                }
-            }
-        }
-
-        private ObservableCollection<Tip> tipovi;
-        public ObservableCollection<Tip> Tipovi
-        {
-            get { return tipovi; }
-            set
-            {
-                if (value != tipovi)
-                {
-                    tipovi = value;
-                    OnPropertyChanged("Tipovi");
-                }
-            }
-        }
-
-        public Tip selektovanTip { get; set; }
-        public Etiketa selektovanaEtiketa { get; set; }
         public Lokal SelektovaniLokal { get; set; }
 
         public PretragaNaMapi()
@@ -72,13 +42,9 @@ namespace HCIProj2
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
-            selektovanTip = null;
-            selektovanaEtiketa = null;
             SelektovaniLokal = null;
             DataContext = this;
             Lokali = Podaci.getInstance().LokaliNaMapi;
-            Etikete = Podaci.getInstance().Etikete;
-            Tipovi = Podaci.getInstance().Tipovi;
         }
 
         private void buttonPretraziClick(object sender, RoutedEventArgs e)
@@ -107,6 +73,8 @@ namespace HCIProj2
                 {
                     lokal.Visible = true;
                 }
+                MainWindow.instance.PNM.Header = "Poništi";
+                MainWindow.instance.PNM.ToolTip = "Poništi pretragu lokala na mapi - CTRL+P";
                 MainWindow.instance.LokaliPins_Draw();
                 this.Close();
             }

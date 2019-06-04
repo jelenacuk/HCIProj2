@@ -24,12 +24,11 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="ID:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <TextBox  Name="textB_id" TextChanged="TextB_id_TextChanged" Validation.Error="TextB_id_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" FontSize="38">
+                <TextBox IsReadOnly="True" Name="textB_id" TextChanged="TextB_id_TextChanged" Validation.Error="TextB_id_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" FontSize="38">
                     <TextBox.Text>
                         <Binding Path="Lokal.Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
                                 <validation:Duzina_Provera ValidationStep="RawProposedValue" polje="Id" Min="3" Max="15"/>
-                                <validation:ID_Provera ValidationStep="RawProposedValue" klasa="lokal"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>

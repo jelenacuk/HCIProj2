@@ -173,7 +173,7 @@ namespace HCIProj2
             ikonica_Error = false;
             datum_Error = false;
             Kapacitet = l.Kapacitet.ToString();
-            if (lokal.PrimaRezervacije == "DA")
+            if (lokal.PrimaRezervacije == "Da")
             {
                 SelectedRez = 0;
             }
@@ -181,11 +181,11 @@ namespace HCIProj2
             {
                 SelectedRez = 1;
             }
-            if (lokal.DostupanHendikepiranim == "DA")
+            if (lokal.DostupanHendikepiranim == "Da")
             {
                 SelectedHen = 0;
             }
-            else if (lokal.DostupanHendikepiranim == "NE")
+            else if (lokal.DostupanHendikepiranim == "Ne")
             {
                 SelectedHen = 1;
             }
@@ -311,6 +311,12 @@ namespace HCIProj2
                 LokalOrig.Id = lokal.Id;
                 Lokal.Etikete = IzabraneEtikete;
                 LokalOrig.Etikete = IzabraneEtikete;
+                if (LokalOrig.Tip.Id != ((combo_tipovi.SelectedItem) as Tip).Id)
+                {
+                    LokalOrig.Tip = combo_tipovi.SelectedItem as Tip;
+                    LokalOrig.Ikonica = LokalOrig.Tip.Ikonica;
+                }
+                
                 MainWindow.instance.LokaliPins_Draw();
                 Close();
             }

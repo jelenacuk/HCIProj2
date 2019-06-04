@@ -26,6 +26,14 @@ namespace HCIProj2
 
         private void NoviSad_Click(object sender, RoutedEventArgs e)
         {
+            if (Podaci.JustGiveMeInstance() != null)
+            {
+                while (Podaci.JustGiveMeInstance().doneWritingEt == false || Podaci.JustGiveMeInstance().doneWrittingTip == false)
+                {
+
+                }
+            }
+            
             MainWindow mw = new MainWindow("novisad");
             mw.Show();
             Close();
@@ -33,6 +41,13 @@ namespace HCIProj2
 
         private void Beograd_Click(object sender, RoutedEventArgs e)
         {
+            if (Podaci.JustGiveMeInstance() != null)
+            {
+                while (Podaci.JustGiveMeInstance().doneWritingEt == false || Podaci.JustGiveMeInstance().doneWrittingTip == false)
+                {
+
+                }
+            }
             MainWindow mw = new MainWindow("beograd");
             mw.Show();
             Close();
@@ -40,6 +55,13 @@ namespace HCIProj2
 
         private void Nis_Click(object sender, RoutedEventArgs e)
         {
+            if (Podaci.JustGiveMeInstance() != null)
+            {
+                while (Podaci.JustGiveMeInstance().doneWritingEt == false || Podaci.JustGiveMeInstance().doneWrittingTip == false)
+                {
+
+                }
+            }
             MainWindow mw = new MainWindow("nis");
             mw.Show();
             Close();
@@ -47,6 +69,13 @@ namespace HCIProj2
 
         private void Zrenjanin_Click(object sender, RoutedEventArgs e)
         {
+            if (Podaci.JustGiveMeInstance() != null)
+            {
+                while (Podaci.JustGiveMeInstance().doneWritingEt == false || Podaci.JustGiveMeInstance().doneWrittingTip == false)
+                {
+
+                }
+            }
             MainWindow mw = new MainWindow("zrenjanin");
             mw.Show();
             Close();
@@ -54,6 +83,10 @@ namespace HCIProj2
 
         private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            while (Podaci.JustGiveMeInstance().doneWritingEt == false || Podaci.JustGiveMeInstance().doneWrittingTip == false)
+            {
+
+            }
             PrikaziPomoc pomoc = new PrikaziPomoc("index", this);
             pomoc.Show();
         }

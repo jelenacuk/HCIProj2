@@ -24,7 +24,7 @@
         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0 0 10 0">
 
             <StackPanel>
-                <TextBlock Text="Novi tip" FontSize="38" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Text="Izmena tipa" FontSize="38" HorizontalAlignment="Center"></TextBlock>
 
                 <!--ID-->
                 <Grid Margin="0 30 0 20">
@@ -33,7 +33,7 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="ID:" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox Name="textB_id" TextChanged="textB_id_TextChanged" Validation.Error="textB_id_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" FontSize="38">
+                    <TextBox IsReadOnly="True" Name="textB_id" TextChanged="textB_id_TextChanged" Validation.Error="textB_id_Error" TextWrapping="Wrap" Grid.Column="1" BorderThickness="5" FontSize="38">
                         <TextBox.Text>
                             <Binding Path="Id" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                                 <Binding.ValidationRules>

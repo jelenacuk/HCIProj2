@@ -207,6 +207,7 @@ namespace HCIProj2
         {
             if (e.Data.GetDataPresent("myFormat"))
             {
+
                 Point dropPosition = e.GetPosition(Mapa);
                 Lokal lokalPin = e.Data.GetData("myFormat") as Lokal;
 
@@ -232,8 +233,11 @@ namespace HCIProj2
                     lokalPin.X = (int)dropPosition.X - 16;
                     lokalPin.Y = (int)dropPosition.Y - 16;
                 }
-                lokali.Remove(lokalPin);
-                LokaliNaMapi.Add(lokalPin);
+
+                if (lokali.Remove(lokalPin))
+                {
+                    LokaliNaMapi.Add(lokalPin);
+                }
                 LokaliPins_Draw();
 
             }
@@ -441,9 +445,18 @@ namespace HCIProj2
         }
         private void Ukloni_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show(selektovanLokal.Id);
             if (selektovanLokal != null)
             {
-                LokaliNaMapi.Remove(selektovanLokal);
+                for(int i=0; i < Podaci.JustGiveMeInstance().LokaliNaMapi.Count; i++)
+                {
+                    if(Podaci.JustGiveMeInstance().LokaliNaMapi[i].Id == selektovanLokal.Id)
+                    {
+                        Podaci.JustGiveMeInstance().LokaliNaMapi.Remove(Podaci.JustGiveMeInstance().LokaliNaMapi[i]);
+                    }
+                }
+                //LokaliNaMapi.Remove(selektovanLokal);
+
                 Lokali.Add(selektovanLokal);
                 LokaliPins_Draw();
             }

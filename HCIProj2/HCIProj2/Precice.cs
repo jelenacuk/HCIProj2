@@ -117,5 +117,15 @@ namespace HCIProj2.Shortcuts
                 new KeyGesture(Key.F1,ModifierKeys.Control)
             }
             );
+
+        public static readonly RoutedUICommand NazadCmd = new RoutedUICommand(
+            "nazad",
+            "NazadCmd",
+            typeof(RoutedCommand),
+            new InputGestureCollection()
+            {
+                new KeyGesture(Key.N,ModifierKeys.Control)
+            }
+            );
     }
 }

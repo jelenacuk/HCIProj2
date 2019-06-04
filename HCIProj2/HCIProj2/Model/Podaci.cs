@@ -103,7 +103,7 @@ namespace HCIProj2
                 {
                     instance = new Podaci();
                     instance.grad = grad;
-                    String fileName = "./" + grad + ".xml";
+                    String fileName = "./" + grad + "_lokali" + ".xml";
                     if (File.Exists(fileName) == false)
                     {
                         FileStream fs = File.Create(fileName);
@@ -111,14 +111,86 @@ namespace HCIProj2
                     }
                     using (var stream = new FileStream(fileName, FileMode.OpenOrCreate))
                     {
-                        XmlSerializer XML = new XmlSerializer(typeof(Podaci));
+                        XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Lokal>));
                         try
                         {
-                            var podaci = (Podaci)XML.Deserialize(stream);
-                            if (podaci != null)
+                            var lokali = (ObservableCollection < Lokal >)XML.Deserialize(stream);
+                            if (lokali != null)
                             {
-                                instance = podaci;
-                                return instance;
+                                instance.Lokali = lokali;
+                            }
+                        }
+                        catch
+                        {
+                            return new Podaci();
+                        }
+
+                    }
+
+                    fileName = "./" + grad + "_lokali_na_mapi" + ".xml";
+                    if (File.Exists(fileName) == false)
+                    {
+                        FileStream fs = File.Create(fileName);
+                        return instance;
+                    }
+                    using (var stream = new FileStream(fileName, FileMode.OpenOrCreate))
+                    {
+                        XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Lokal>));
+                        try
+                        {
+                            var lokali = (ObservableCollection<Lokal>)XML.Deserialize(stream);
+                            if (lokali != null)
+                            {
+                                instance.LokaliNaMapi = lokali;
+                            }
+                        }
+                        catch
+                        {
+                            return new Podaci();
+                        }
+
+                    }
+
+                    fileName = "./" +  "_tipovi" + ".xml";
+                    if (File.Exists(fileName) == false)
+                    {
+                        FileStream fs = File.Create(fileName);
+                        return instance;
+                    }
+                    using (var stream = new FileStream(fileName, FileMode.OpenOrCreate))
+                    {
+                        XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Tip>));
+                        try
+                        {
+                            var tipovi = (ObservableCollection<Tip>)XML.Deserialize(stream);
+                            if (tipovi != null)
+                            {
+                                instance.Tipovi = tipovi;
+                               
+                            }
+                        }
+                        catch
+                        {
+                            return new Podaci();
+                        }
+
+                    }
+
+                    fileName = "./" +  "_etikete" + ".xml";
+                    if (File.Exists(fileName) == false)
+                    {
+                        FileStream fs = File.Create(fileName);
+                        return instance;
+                    }
+                    using (var stream = new FileStream(fileName, FileMode.OpenOrCreate))
+                    {
+                        XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Etiketa>));
+                        try
+                        {
+                            var etikete = (ObservableCollection<Etiketa>)XML.Deserialize(stream);
+                            if (etikete != null)
+                            {
+                                instance.Etikete = etikete;
                             }
                         }
                         catch
@@ -134,7 +206,7 @@ namespace HCIProj2
             {
                 instance = new Podaci();
                 instance.grad = grad;
-                String fileName = "./" + grad + ".xml";
+                String fileName = "./" + grad + "_lokali" + ".xml";
                 if (File.Exists(fileName) == false)
                 {
                     FileStream fs = File.Create(fileName);
@@ -142,14 +214,85 @@ namespace HCIProj2
                 }
                 using (var stream = new FileStream(fileName, FileMode.OpenOrCreate))
                 {
-                    XmlSerializer XML = new XmlSerializer(typeof(Podaci));
+                    XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Lokal>));
                     try
                     {
-                        var podaci = (Podaci)XML.Deserialize(stream);
-                        if (podaci != null)
+                        var lokali = (ObservableCollection<Lokal>)XML.Deserialize(stream);
+                        if (lokali != null)
                         {
-                            instance = podaci;
-                            return instance;
+                            instance.Lokali = lokali;
+                        }
+                    }
+                    catch
+                    {
+                        return new Podaci();
+                    }
+
+                }
+
+                fileName = "./" + grad + "_lokali_na_mapi" + ".xml";
+                if (File.Exists(fileName) == false)
+                {
+                    FileStream fs = File.Create(fileName);
+                    return instance;
+                }
+                using (var stream = new FileStream(fileName, FileMode.OpenOrCreate))
+                {
+                    XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Lokal>));
+                    try
+                    {
+                        var lokali = (ObservableCollection<Lokal>)XML.Deserialize(stream);
+                        if (lokali != null)
+                        {
+                            instance.LokaliNaMapi = lokali;
+                        }
+                    }
+                    catch
+                    {
+                        return new Podaci();
+                    }
+
+                }
+
+                fileName = "./" +  "_tipovi" + ".xml";
+                if (File.Exists(fileName) == false)
+                {
+                    FileStream fs = File.Create(fileName);
+                    return instance;
+                }
+                using (var stream = new FileStream(fileName, FileMode.OpenOrCreate))
+                {
+                    XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Tip>));
+                    try
+                    {
+                        var tipovi = (ObservableCollection<Tip>)XML.Deserialize(stream);
+                        if (tipovi != null)
+                        {
+                            instance.Tipovi = tipovi;
+                        }
+                    }
+                    catch
+                    {
+                        return new Podaci();
+                    }
+
+                }
+
+                fileName = "./" + "_etikete" + ".xml";
+                if (File.Exists(fileName) == false)
+                {
+                    FileStream fs = File.Create(fileName);
+                    return instance;
+                }
+                using (var stream = new FileStream(fileName, FileMode.OpenOrCreate))
+                {
+                    XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Etiketa>));
+                    try
+                    {
+                        var lokali = (ObservableCollection<Etiketa>)XML.Deserialize(stream);
+                        if (lokali != null)
+                        {
+                            instance.Etikete = lokali;
                         }
                     }
                     catch
@@ -165,59 +308,34 @@ namespace HCIProj2
 
         public static Podaci getInstance()
         {
-            if (instance == null)
-            {
-                instance = new Podaci();
-                String fileName = "./" + ".xml";
-                if (File.Exists(fileName) == false)
-                {
-                    FileStream fs = File.Create(fileName);
-                    return instance;
-                }
-                using (var stream = new FileStream(fileName, FileMode.OpenOrCreate))
-                {
-                    XmlSerializer XML = new XmlSerializer(typeof(Podaci));
-                    try
-                    {
-                        var podaci = (Podaci)XML.Deserialize(stream);
-                        if (podaci != null)
-                        {
-                            instance = podaci;
-                            return instance;
-                        }
-                    }
-                    catch
-                    {
-                        return new Podaci();
-                    }
-
-                }
-            }
             return instance;
-
-        }
-
-        private ObservableCollection<Lokal> neDodatiLokali;
-        public ObservableCollection<Lokal> NeDodatiLokali
-        {
-            get { return neDodatiLokali; }
-            set
-            {
-                if (value != neDodatiLokali)
-                {
-                    neDodatiLokali = value;
-                    OnPropertyChanged("LokaliNaMapi");
-                }
-            }
         }
 
         public static void SacuvajPodatke(string grad)
         {
-            String fileName = "./" + grad + ".xml";
+            String fileName = "./" + grad + "_lokali" + ".xml";
             using (var stream = new FileStream(fileName, FileMode.Create))
             {
-                XmlSerializer XML = new XmlSerializer(typeof(Podaci));
-                XML.Serialize(stream, instance);
+                XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Lokal>));
+                XML.Serialize(stream, instance.Lokali);
+            }
+            fileName = "./" + grad + "_lokali_na_mapi" + ".xml";
+            using (var stream = new FileStream(fileName, FileMode.Create))
+            {
+                XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Lokal>));
+                XML.Serialize(stream, instance.LokaliNaMapi);
+            }
+            fileName = "./" + "_tipovi" + ".xml";
+            using (var stream = new FileStream(fileName, FileMode.Create))
+            {
+                XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Tip>));
+                XML.Serialize(stream, instance.Tipovi);
+            }
+            fileName = "./" + "_etikete" + ".xml";
+            using (var stream = new FileStream(fileName, FileMode.Create))
+            {
+                XmlSerializer XML = new XmlSerializer(typeof(ObservableCollection<Etiketa>));
+                XML.Serialize(stream, instance.Etikete);
             }
         }
         public static Podaci JustGiveMeInstance()

@@ -258,6 +258,8 @@ namespace HCIProj2
                 {
                     lokal.Visible = true;
                 }
+                MainWindow.instance.PNM.Header = "Poništi";
+                MainWindow.instance.PNM.ToolTip = "Poništi pretragu lokala na mapi - CTRL+P";
                 MainWindow.instance.LokaliPins_Draw();
                 this.Close();
             }
@@ -265,10 +267,19 @@ namespace HCIProj2
 
         private void buttonPonistiClick(object sender, RoutedEventArgs e)
         {
-            foreach (var lokal in Lokali)
-            {
-                lokal.Visible = false;
-            }
+            textBoxIdLokala.Text = "";
+            textBoxKapacitetOd.Text = "";
+            textBoxKapacitetDo.Text = "";
+            textBoxNazivLokala.Text = "";
+            comboBoxRezervacija.Text = "";
+            comboBoxHendikep.Text = "";
+            comboBoxPusenje.Text = "";
+            comboBoxAlkohol.Text = "";
+            comboBoxCene.Text = "";
+            comboBoxEtikete.Text = "";
+            comboBoxTip.Text = "";
+
+            Lokali = Podaci.getInstance().LokaliNaMapi;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

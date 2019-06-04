@@ -121,11 +121,13 @@ namespace HCIProj2
             {
                 this.ListaLokala.Visibility = Visibility.Visible;
                 Izlistaj.Header = "Sakrij Lokale";
+                Izlistaj.ToolTip = "Sakriva listu lokala koji nisu na mapi - CTRL+I";
             }
             else
             {
                 this.ListaLokala.Visibility = Visibility.Hidden;
-                Izlistaj.Header = "Izlistaj lokale";
+                Izlistaj.Header = "Izlistaj Lokale";
+                Izlistaj.ToolTip = "Prikazuje listu lokala koji nisu na mapi - CTRL+I";
             }
 
         }
@@ -540,12 +542,12 @@ namespace HCIProj2
         private void PretragaNaMapi_Click(object sender, RoutedEventArgs e)
         {
             if(this.PNM.Header.Equals("Pretraga")) {
-                this.PNM.Header = "Poništi";
                 PretragaNaMapi pretragaNaMapi = new PretragaNaMapi();
                 pretragaNaMapi.Show();
             } else
             {
                 this.PNM.Header = "Pretraga";
+                this.PNM.ToolTip = "Pretraži lokale na mapi - CTRL+P";
                 foreach (var lokal in LokaliNaMapi)
                 {
                     lokal.Visible = true;
